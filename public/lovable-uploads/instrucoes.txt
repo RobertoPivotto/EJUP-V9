@@ -1,0 +1,48 @@
+# Instruções para Preparação de Imagens
+
+## Logomarcas de Instituições
+As seguintes imagens precisam ser adicionadas na pasta `public/lovable-uploads/logos/`:
+
+1. `oab-brasil.png` - Logotipo da OAB Brasil
+2. `caapr.png` - Logotipo da CAAPR (Caixa de Assistência dos Advogados do Paraná)
+3. `oab-sc.png` - Logotipo da OAB Santa Catarina
+4. `stj.png` - Logotipo do Superior Tribunal de Justiça
+5. `tst.png` - Logotipo do Tribunal Superior do Trabalho
+6. `agu.png` - Logotipo da Advocacia-Geral da União
+7. `mpf.png` - Logotipo do Ministério Público Federal
+
+## Fotografias de Profissionais
+As seguintes imagens precisam ser adicionadas na pasta `public/lovable-uploads/team/`:
+
+1. `person1.jpg` - Fotografia de profissional do direito (tamanho 150x150px, formato retrato)
+2. `person2.jpg` - Fotografia de profissional do direito (tamanho 150x150px, formato retrato)
+3. `person3.jpg` - Fotografia de profissional do direito (tamanho 150x150px, formato retrato)
+4. `instructor.jpg` - Fotografia do instrutor Eduardo Souza (tamanho 200x200px, formato retrato)
+
+## Imagem do Curso
+A imagem `course-preview.jpg` foi substituída por uma imagem do Unsplash na implementação atual. 
+Se desejar usar uma imagem local, adicione-a em `public/lovable-uploads/` com dimensões aproximadas de 800x450 pixels.
+
+Todas as imagens devem respeitar os direitos autorais. Recomendamos que utilize imagens gratuitas de sites como Unsplash, Pexels ou similares, ou que crie novas imagens para este propósito.
+
+## Modificações na Interface
+
+As seguintes modificações foram realizadas na interface:
+
+1. **Seção "Hero"**:
+   - Mantido o título original "Direito com quem faz na prática"
+   - Substituídos os ícones de iniciais por fotos reais de profissionais
+   - Adicionada imagem de capa ao curso em destaque com sobreposição de texto
+   - Melhorado o destaque da tagline "#NãoSejaEngessado" com gradiente de cores
+
+2. **Seção "Quem Confia em Nós"**:
+   - Fundo ajustado para seguir o mesmo padrão do restante da página
+   - Layout dos parceiros modernizado com efeito hover
+   - Adicionado gradiente sutil para melhorar a aparência visual
+   - Logos dos parceiros substituídos por logomarcas de instituições jurídicas
+
+3. **Outros Ajustes**:
+   - Logomarca EJUP aumentada ainda mais no header e footer (altura de 20px)
+   - Ajustes na responsividade da página
+   - Centralização do box de login na página login
+   - Cores harmonizadas seguindo a identidade visual da EJUP 

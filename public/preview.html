@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJUP - Escola Jurídica para Profissionais</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #18181B;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: rgba(24, 24, 27, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #27272A;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            height: 80px;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-color: #18181B;
+        }
+        
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background: linear-gradient(to bottom right, rgba(255, 70, 185, 0.2), rgba(38, 208, 206, 0.1), rgba(255, 134, 74, 0.1));
+            opacity: 0.5;
+            filter: blur(64px);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-card {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-card {
+                margin-top: 0;
+            }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+        }
+        
+        .pink {
+            color: #FF46B9;
+            border-bottom: 2px solid #FF46B9;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #d4d4d8;
+            margin-bottom: 2rem;
+            max-width: 32rem;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: #FF46B9;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: rgba(255, 70, 185, 0.9);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid rgba(255, 70, 185, 0.5);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 70, 185, 0.1);
+        }
+        
+        .btn-cyan {
+            background-color: #26D0CE;
+            color: #18181B;
+        }
+        
+        .btn-cyan:hover {
+            background-color: rgba(38, 208, 206, 0.9);
+        }
+        
+        .card {
+            position: relative;
+        }
+        
+        .card-glow {
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(to right, #FF46B9, #26D0CE, #FF864A);
+            border-radius: 1rem;
+            filter: blur(20px);
+            opacity: 0.4;
+        }
+        
+        .card-content {
+            position: relative;
+            background-color: #27272A;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(63, 63, 70, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        
+        .course-image-container {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .course-image {
+            width: 100%;
+            height: 15rem;
+            object-fit: cover;
+        }
+        
+        .course-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 1rem;
+        }
+        
+        .course-image-overlay-text {
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .instructor {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .instructor-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            margin-right: 0.75rem;
+        }
+        
+        .instructor-info {
+            font-size: 0.875rem;
+        }
+        
+        .instructor-name {
+            font-weight: 500;
+        }
+        
+        .instructor-title {
+            font-size: 0.75rem;
+            color: #71717A;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-item {
+            background-color: rgba(39, 39, 42, 0.6);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        .info-label {
+            font-size: 0.75rem;
+            color: #71717A;
+        }
+        
+        .info-value {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .arrow-icon {
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover .arrow-icon {
+            transform: translateX(0.25rem);
+        }
+        
+        .users {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .users-avatars {
+            display: flex;
+        }
+        
+        .user-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            border: 2px solid white;
+            margin-right: -0.75rem;
+        }
+        
+        .users-text {
+            font-size: 0.875rem;
+            color: #A1A1AA;
+        }
+        
+        .users-text strong {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .tagline {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        
+        .tagline-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #FF46B9, #26D0CE, #FF864A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Partners section */
+        .partners {
+            background-color: #18181B;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .partners-bg {
+            position: absolute;
+            inset: 0;
+        }
+        
+        .partners-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(255, 70, 185, 0.1), rgba(38, 208, 206, 0.05), rgba(255, 134, 74, 0.05));
+            opacity: 0.3;
+            filter: blur(64px);
+        }
+        
+        .partners-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .partners-title h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .partners-title p {
+            color: #A1A1AA;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+        
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem 4rem;
+        }
+        
+        .partner {
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+        
+        .partner:hover {
+            opacity: 0.8;
+        }
+        
+        .partner-inner {
+            position: relative;
+        }
+        
+        .partner-glow {
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(to right, #FF46B9, #26D0CE, #FF864A);
+            border-radius: 0.5rem;
+            opacity: 0;
+            filter: blur(8px);
+            transition: opacity 0.2s;
+        }
+        
+        .partner:hover .partner-glow {
+            opacity: 0.3;
+        }
+        
+        .partner-box {
+            position: relative;
+            background-color: rgba(24, 24, 27, 0.5);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            border: 1px solid #3F3F46;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .partner img {
+            height: 3rem;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.2s;
+        }
+        
+        .partner:hover img {
+            filter: grayscale(0%);
+        }
+        
+        .partners-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            color: #26D0CE;
+            transition: color 0.2s;
+        }
+        
+        .link:hover {
+            color: white;
+        }
+        
+        .link-underline {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            height: 1px;
+            width: 0;
+            background-color: #26D0CE;
+            transition: width 0.2s;
+        }
+        
+        .link:hover .link-underline {
+            width: 100%;
+        }
+        
+        footer {
+            background-color: #27272A;
+            border-top: 1px solid #3F3F46;
+            padding: 4rem 0 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="/lovable-uploads/e5e6ce5d-0718-4a69-892b-3f9d0d68a7a1.png" alt="EJUP Logo" class="logo">
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Direito com quem faz <span class="pink">na prática</span></h1>
+                    
+                    <p>
+                        A EJUP é uma plataforma de educação jurídica que conecta profissionais e estudantes ao conhecimento prático e atualizado.
+                    </p>
+                    
+                    <div class="buttons">
+                        <button class="btn btn-primary">
+                            <span>Explorar Cursos</span>
+                            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="btn btn-secondary">Conhecer a EJUP</button>
+                    </div>
+                    
+                    <div class="users">
+                        <div class="users-avatars">
+                            <img 
+                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
+                                alt="Profissional Jurídico" 
+                                class="user-avatar"
+                            />
+                            <img 
+                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
+                                alt="Profissional Jurídico" 
+                                class="user-avatar"
+                            />
+                            <img 
+                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
+                                alt="Profissional Jurídico" 
+                                class="user-avatar"
+                            />
+                            <div class="user-avatar" style="background-color: #3F3F46; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem;">+</div>
+                        </div>
+                        <div class="users-text">
+                            Mais de <strong>500</strong> profissionais capacitados
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="course-image-container">
+                                <img 
+                                    class="course-image" 
+                                    src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Curso de Contratos Empresariais"
+                                />
+                                <div class="course-image-overlay">
+                                    <div class="course-image-overlay-text">Curso em destaque</div>
+                                </div>
+                            </div>
+                            
+                            <h3>Elaboração de Contratos Empresariais</h3>
+                            
+                            <div class="instructor">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
+                                    alt="Eduardo Souza" 
+                                    class="instructor-avatar"
+                                />
+                                <div class="instructor-info">
+                                    <div class="instructor-name">Eduardo Souza</div>
+                                    <div class="instructor-title">Advogado Empresarial</div>
+                                </div>
+                            </div>
+                            
+                            <div class="course-info">
+                                <div class="course-info-item">
+                                    <div class="info-label">Duração</div>
+                                    <div class="info-value">48 horas</div>
+                                </div>
+                                <div class="course-info-item">
+                                    <div class="info-label">Módulos</div>
+                                    <div class="info-value">8 módulos</div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-cyan" style="width: 100%;">
+                                <span>Ver detalhes</span>
+                                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tagline">
+                <span class="tagline-text">#NãoSejaEngessado</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="partners">
+        <div class="partners-bg">
+            <div class="partners-gradient"></div>
+        </div>
+        
+        <div class="container">
+            <div class="partners-title">
+                <h2>QUEM CONFIA EM NÓS</h2>
+                <p>Parcerias com as principais instituições jurídicas do Brasil para oferecer conteúdo de qualidade e atualizado</p>
+            </div>
+            
+            <div class="partners-grid">
+                <!-- Parceiro 1 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-oab.png" alt="OAB Brasil">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parceiro 2 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-caapr.png" alt="CAAPR">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parceiro 3 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-oabsc.png" alt="OAB Santa Catarina">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parceiro 4 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-stj.png" alt="STJ">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parceiro 5 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-tst.png" alt="TST">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parceiro 6 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-agu.png" alt="AGU">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parceiro 7 -->
+                <div class="partner">
+                    <div class="partner-inner">
+                        <div class="partner-glow"></div>
+                        <div class="partner-box">
+                            <img src="/placeholder-mpf.png" alt="MPF">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="partners-link">
+                <a href="#" class="link">
+                    <span>Ver todos os parceiros</span>
+                    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="link-underline"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <img src="/lovable-uploads/e5e6ce5d-0718-4a69-892b-3f9d0d68a7a1.png" alt="EJUP Logo" class="logo">
+        </div>
+    </footer>
+</body>
+</html> 
