@@ -35,8 +35,8 @@ const CourseMaterials = ({ materials }: CourseMaterialsProps) => {
             key={material.id} 
             className="flex items-center p-3 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 transition-colors"
           >
-            <div className="p-2 bg-ejup-pink/20 rounded mr-3">
-              <BookOpen className="h-5 w-5 text-ejup-pink" />
+            <div className="p-2 bg-ejup-orange/20 rounded mr-3">
+              <BookOpen className="h-5 w-5 text-ejup-orange" />
             </div>
             <div className="flex-1">
               <div className="font-medium">{material.title}</div>

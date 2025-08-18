@@ -169,7 +169,7 @@ const mockArticles: Article[] = [
     content: 'Conteúdo completo do artigo sobre contratos empresariais...',
     excerpt: 'Entenda como contratos bem redigidos podem prevenir litígios e proteger os interesses da empresa.',
     highlightQuote: 'Contratos bem elaborados são a base para relações empresariais sólidas e seguras.',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-orange/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
     images: {
       featured: '/lovable-uploads/course-preview.jpg',
       thumbnail: '/lovable-uploads/course-preview.jpg',
@@ -197,7 +197,7 @@ const mockArticles: Article[] = [
     content: 'Conteúdo completo sobre arbitragem e mediação...',
     excerpt: 'Análise comparativa entre arbitragem e mediação para resolução de conflitos empresariais.',
     highlightQuote: 'A mediação oferece soluções mais ágeis e econômicas para conflitos empresariais.',
-    imageColor: 'bg-gradient-to-br from-ejup-cyan/30 to-ejup-pink/30',
+    imageColor: 'bg-gradient-to-br from-ejup-cyan/30 to-ejup-orange/30',
     images: {
       featured: '/lovable-uploads/course-preview.jpg',
       thumbnail: '/lovable-uploads/course-preview.jpg',
@@ -517,7 +517,7 @@ A responsabilidade civil na economia digital exige constante evolução jurispru
       thumbnailImage: '/lovable-uploads/course-preview.jpg',
       bannerImage: '/lovable-uploads/course-preview.jpg',
       socialImage: '/lovable-uploads/course-preview.jpg',
-      imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+      imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
       highlightQuote: 'A responsabilidade civil na economia digital exige constante evolução jurisprudencial e legislativa.',
       summary: 'Análise abrangente dos novos paradigmas da responsabilidade civil no ambiente digital.',
       authorSpecialization: 'Especialista em Direito Digital',
@@ -546,7 +546,7 @@ const mockPodcasts: Podcast[] = [
     topics: ['Inovação', 'Tecnologia', 'Advocacia', 'Futuro'],
     relatedPodcasts: [2, 3],
     status: 'published',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
     socialImage: '/lovable-uploads/course-preview.jpg'
   },
   {
@@ -586,7 +586,7 @@ const mockPodcasts: Podcast[] = [
     topics: ['Inteligência Artificial', 'Ética', 'Regulamentação', 'Tecnologia'],
     relatedPodcasts: [1, 2],
     status: 'draft',
-    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-pink/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
     socialImage: '/lovable-uploads/course-preview.jpg'
   }
 ];
@@ -652,7 +652,7 @@ const ArticleManagement = () => {
     topics: [] as string[],
     relatedPodcasts: [] as number[],
     status: 'draft' as 'published' | 'draft' | 'scheduled',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
     socialImage: ''
   });
   
@@ -703,7 +703,7 @@ const ArticleManagement = () => {
     content: '',
     excerpt: '',
     highlightQuote: '',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-orange/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
     featuredImage: '',
     thumbnailImage: '',
     bannerImage: '',
@@ -778,7 +778,7 @@ const ArticleManagement = () => {
       content: '',
       excerpt: '',
       highlightQuote: '',
-      imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-orange/30',
+      imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
       featuredImage: '',
       thumbnailImage: '',
       bannerImage: '',
@@ -910,7 +910,7 @@ const ArticleManagement = () => {
       topics: [],
       relatedPodcasts: [],
       status: 'draft',
-      imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+      imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
       socialImage: ''
     });
     // Reset filtros
@@ -1098,7 +1098,7 @@ const ArticleManagement = () => {
             publishedDate: publishingFormData.status === 'approved' ? (submission.publishedDate || new Date().toISOString()) : undefined,
             publishingConfig: {
               ...publishingFormData,
-              imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30'
+              imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30'
             }
           } 
         : submission
@@ -1181,7 +1181,7 @@ const ArticleManagement = () => {
                   </SelectContent>
                 </Select>
               </div>
-              <Button onClick={handleCreateArticle} className="bg-ejup-pink hover:bg-ejup-pink/90">
+              <Button onClick={handleCreateArticle} className="bg-ejup-orange hover:bg-ejup-orange/90">
                 <Plus className="h-4 w-4 mr-2" />
                 Novo Artigo
               </Button>
@@ -1428,7 +1428,7 @@ const ArticleManagement = () => {
                   </SelectContent>
                 </Select>
               </div>
-              <Button onClick={handleCreatePodcast} className="bg-ejup-pink hover:bg-ejup-pink/90">
+              <Button onClick={handleCreatePodcast} className="bg-ejup-orange hover:bg-ejup-orange/90">
                 <Plus className="h-4 w-4 mr-2" />
                 Novo Podcast
               </Button>
@@ -1604,7 +1604,7 @@ const ArticleManagement = () => {
                       <div className="flex items-center gap-3">
                         <Avatar className="h-10 w-10">
                           <AvatarImage src={submission.author.photo} />
-                          <AvatarFallback className="bg-gradient-to-br from-ejup-cyan to-ejup-pink text-white font-semibold">
+                          <AvatarFallback className="bg-gradient-to-br from-ejup-cyan to-ejup-orange text-white font-semibold">
                             {submission.author.name.charAt(0)}
                           </AvatarFallback>
                         </Avatar>
@@ -1719,7 +1719,7 @@ const ArticleManagement = () => {
                                   size="sm"
                                   onClick={() => setCurrentPage(page)}
                                   className={currentPage === page 
-                                    ? "bg-ejup-pink hover:bg-ejup-pink/90 text-white" 
+                                    ? "bg-ejup-orange hover:bg-ejup-orange/90 text-white" 
                                     : "border-gray-600 text-gray-300 hover:bg-gray-700"
                                   }
                                 >
@@ -1834,7 +1834,7 @@ const ArticleManagement = () => {
                             {formData.categories.map(categoryId => {
                               const category = availableCategories.find(c => c.id === categoryId);
                               return category ? (
-                                <div key={categoryId} className="flex items-center gap-1 bg-ejup-pink/20 text-ejup-pink px-2 py-1 rounded text-xs">
+                                <div key={categoryId} className="flex items-center gap-1 bg-ejup-orange/20 text-ejup-orange px-2 py-1 rounded text-xs">
                                   <span>{category.name}</span>
                                   <button
                                     type="button"
@@ -2058,7 +2058,7 @@ const ArticleManagement = () => {
                         type="checkbox"
                         checked={formData.isFeatured}
                         onChange={(e) => setFormData({...formData, isFeatured: e.target.checked, isSubFeatured: e.target.checked ? false : formData.isSubFeatured})}
-                        className="w-4 h-4 text-ejup-pink"
+                        className="w-4 h-4 text-ejup-orange"
                       />
                       <div>
                         <span className="text-sm font-medium text-white">Artigo em Destaque Principal</span>
@@ -2070,7 +2070,7 @@ const ArticleManagement = () => {
                         type="checkbox"
                         checked={formData.isSubFeatured}
                         onChange={(e) => setFormData({...formData, isSubFeatured: e.target.checked, isFeatured: e.target.checked ? false : formData.isFeatured})}
-                        className="w-4 h-4 text-ejup-pink"
+                        className="w-4 h-4 text-ejup-orange"
                       />
                       <div>
                         <span className="text-sm font-medium text-white">Sub-Destaque</span>
@@ -2099,7 +2099,7 @@ const ArticleManagement = () => {
                             setFormData({...formData, featuredSponsors: formData.featuredSponsors.filter(id => id !== sponsor.id)});
                           }
                         }}
-                        className="w-4 h-4 text-ejup-pink"
+                        className="w-4 h-4 text-ejup-orange"
                       />
                       <div className="flex items-center gap-3 flex-1">
                         <img 
@@ -2134,7 +2134,7 @@ const ArticleManagement = () => {
                       {formData.featuredSponsors.map(sponsorId => {
                         const sponsor = mockSponsors.find(s => s.id === sponsorId);
                         return sponsor ? (
-                          <div key={sponsorId} className="flex items-center gap-2 bg-ejup-pink/20 text-ejup-pink px-2 py-1 rounded text-xs">
+                          <div key={sponsorId} className="flex items-center gap-2 bg-ejup-orange/20 text-ejup-orange px-2 py-1 rounded text-xs">
                             <img 
                               src={sponsor.logo} 
                               alt={sponsor.name}
@@ -2252,7 +2252,7 @@ const ArticleManagement = () => {
                             setFormData({...formData, featuredCourses: formData.featuredCourses.filter(id => id !== course.id)});
                           }
                         }}
-                        className="w-4 h-4 text-ejup-pink"
+                        className="w-4 h-4 text-ejup-orange"
                       />
                       <div className="flex-1">
                         <h4 className="text-sm font-semibold text-white leading-tight">{course.title}</h4>
@@ -2282,7 +2282,7 @@ const ArticleManagement = () => {
                           setSelectedCourseCategory('all');
                           setSelectedInstructor('all');
                         }}
-                        className="text-ejup-pink hover:text-ejup-pink/80 mt-2"
+                        className="text-ejup-orange hover:text-ejup-orange/80 mt-2"
                       >
                         Limpar filtros
                       </Button>
@@ -2300,7 +2300,7 @@ const ArticleManagement = () => {
                       {formData.featuredCourses.map(courseId => {
                         const course = mockCourses.find(c => c.id === courseId);
                         return course ? (
-                          <div key={courseId} className="flex items-center gap-2 bg-ejup-pink/20 text-ejup-pink px-2 py-1 rounded text-xs">
+                          <div key={courseId} className="flex items-center gap-2 bg-ejup-orange/20 text-ejup-orange px-2 py-1 rounded text-xs">
                             <span>{course.title}</span>
                             <button
                               type="button"
@@ -2331,7 +2331,7 @@ const ArticleManagement = () => {
               </Button>
               <Button 
                 onClick={handleSaveArticle} 
-                className="bg-ejup-pink hover:bg-ejup-pink/90 px-6"
+                className="bg-ejup-orange hover:bg-ejup-orange/90 px-6"
               >
                 {editingArticle ? '✅ Salvar Alterações' : '➕ Criar Artigo'}
               </Button>
@@ -2379,7 +2379,7 @@ const ArticleManagement = () => {
               <Button 
                 onClick={handleCreateCategory}
                 disabled={!newCategoryName.trim()}
-                className="bg-ejup-pink hover:bg-ejup-pink/90"
+                className="bg-ejup-orange hover:bg-ejup-orange/90"
               >
                 ➕ Criar Categoria
               </Button>
@@ -2614,7 +2614,7 @@ const ArticleManagement = () => {
                                 {category.name}
                               </SelectItem>
                             ))}
-                          <SelectItem value="create-new" className="text-ejup-pink font-medium">
+                          <SelectItem value="create-new" className="text-ejup-orange font-medium">
                             ➕ Criar Nova Categoria
                           </SelectItem>
                         </SelectContent>
@@ -2634,7 +2634,7 @@ const ArticleManagement = () => {
                             type="button"
                             onClick={handleCreatePodcastCategory}
                             disabled={!newPodcastCategory.trim()}
-                            className="bg-ejup-pink hover:bg-ejup-pink/90 px-4"
+                            className="bg-ejup-orange hover:bg-ejup-orange/90 px-4"
                           >
                             ✅
                           </Button>
@@ -2657,7 +2657,7 @@ const ArticleManagement = () => {
                           {podcastFormData.categories.map(categoryId => {
                             const category = availableCategories.find(c => c.id === categoryId);
                             return category ? (
-                              <div key={categoryId} className="flex items-center gap-1 bg-ejup-pink/20 text-ejup-pink px-2 py-1 rounded text-xs">
+                              <div key={categoryId} className="flex items-center gap-1 bg-ejup-orange/20 text-ejup-orange px-2 py-1 rounded text-xs">
                                 <span>{category.name}</span>
                                 <button
                                   type="button"
@@ -2833,7 +2833,7 @@ const ArticleManagement = () => {
                               setPodcastFormData({...podcastFormData, relatedPodcasts: podcastFormData.relatedPodcasts.filter(id => id !== podcast.id)});
                             }
                           }}
-                          className="w-4 h-4 text-ejup-pink"
+                          className="w-4 h-4 text-ejup-orange"
                         />
                         <div className="flex-1">
                           <h4 className="text-sm font-semibold text-white leading-tight">{podcast.title}</h4>
@@ -2874,7 +2874,7 @@ const ArticleManagement = () => {
                       {podcastFormData.relatedPodcasts.map(podcastId => {
                         const podcast = podcasts.find(p => p.id === podcastId);
                         return podcast ? (
-                          <div key={podcastId} className="flex items-center gap-2 bg-ejup-pink/20 text-ejup-pink px-2 py-1 rounded text-xs">
+                          <div key={podcastId} className="flex items-center gap-2 bg-ejup-orange/20 text-ejup-orange px-2 py-1 rounded text-xs">
                             <span className="max-w-40 truncate">{podcast.title}</span>
                             <button
                               type="button"
@@ -2905,7 +2905,7 @@ const ArticleManagement = () => {
               </Button>
               <Button 
                 onClick={handleSavePodcast} 
-                className="bg-ejup-pink hover:bg-ejup-pink/90 px-6"
+                className="bg-ejup-orange hover:bg-ejup-orange/90 px-6"
               >
                 {editingPodcast ? '✅ Salvar Alterações' : '➕ Criar Podcast'}
               </Button>
@@ -2925,7 +2925,7 @@ const ArticleManagement = () => {
                   <div className="flex items-center gap-2">
                     <Avatar className="h-6 w-6">
                       <AvatarImage src={viewingSubmission?.author.photo} />
-                      <AvatarFallback className="bg-gradient-to-br from-ejup-cyan to-ejup-pink text-white text-xs">
+                      <AvatarFallback className="bg-gradient-to-br from-ejup-cyan to-ejup-orange text-white text-xs">
                         {viewingSubmission?.author.name.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
@@ -2971,7 +2971,7 @@ const ArticleManagement = () => {
                 <div className="flex items-start gap-3">
                   <Avatar className="h-12 w-12">
                     <AvatarImage src={viewingSubmission?.author.photo} />
-                    <AvatarFallback className="bg-gradient-to-br from-ejup-cyan to-ejup-pink text-white">
+                    <AvatarFallback className="bg-gradient-to-br from-ejup-cyan to-ejup-orange text-white">
                       {viewingSubmission?.author.name.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
@@ -3174,7 +3174,7 @@ const ArticleManagement = () => {
                             {publishingFormData.categories.map(categoryId => {
                               const category = availableCategories.find(c => c.id === categoryId);
                               return category ? (
-                                <div key={categoryId} className="flex items-center gap-1 bg-ejup-pink/20 text-ejup-pink px-2 py-1 rounded text-xs">
+                                <div key={categoryId} className="flex items-center gap-1 bg-ejup-orange/20 text-ejup-orange px-2 py-1 rounded text-xs">
                                   <span>{category.name}</span>
                                   <button
                                     type="button"
@@ -3283,7 +3283,7 @@ const ArticleManagement = () => {
                         type="checkbox" 
                         checked={publishingFormData.isFeatured}
                         onChange={(e) => setPublishingFormData({...publishingFormData, isFeatured: e.target.checked})}
-                        className="w-4 h-4 text-ejup-pink"
+                        className="w-4 h-4 text-ejup-orange"
                       />
                       <span className="text-sm text-gray-300">🌟 Destacar na homepage (artigo principal)</span>
                     </label>
@@ -3292,7 +3292,7 @@ const ArticleManagement = () => {
                         type="checkbox" 
                         checked={publishingFormData.isSubFeatured}
                         onChange={(e) => setPublishingFormData({...publishingFormData, isSubFeatured: e.target.checked})}
-                        className="w-4 h-4 text-ejup-pink"
+                        className="w-4 h-4 text-ejup-orange"
                       />
                       <span className="text-sm text-gray-300">⭐ Sub-destaque (cards menores)</span>
                     </label>
@@ -3312,7 +3312,7 @@ const ArticleManagement = () => {
                   </Button>
                   <Button 
                     onClick={handleSavePublishingConfig}
-                    className="bg-ejup-pink hover:bg-ejup-pink/90"
+                    className="bg-ejup-orange hover:bg-ejup-orange/90"
                   >
                     Salvar Configurações
                   </Button>

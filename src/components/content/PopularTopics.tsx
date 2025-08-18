@@ -42,12 +42,12 @@ const PopularTopics = ({
             variant={selectedTopics.includes(topic) ? "default" : "outline"}
             className={`cursor-pointer transition-colors ${
               selectedTopics.includes(topic)
-                ? accentColor === 'ejup-pink'
-                  ? 'bg-ejup-pink/10 text-ejup-pink border-ejup-pink/40 hover:bg-ejup-pink/20'
+                ? accentColor === 'ejup-orange'
+                  ? 'bg-ejup-orange/10 text-ejup-orange border-ejup-orange/40 hover:bg-ejup-orange/20'
                   : accentColor === 'ejup-orange'
                     ? 'bg-ejup-orange/10 text-ejup-orange border-ejup-orange/40 hover:bg-ejup-orange/20'
                     : 'bg-ejup-cyan/10 text-ejup-cyan border-ejup-cyan/40 hover:bg-ejup-cyan/20'
-                : 'border-zinc-700 hover:border-ejup-pink hover:text-ejup-pink hover:bg-ejup-pink/5'
+                : 'border-zinc-700 hover:border-ejup-orange hover:text-ejup-orange hover:bg-ejup-orange/5'
             }`}
             onClick={() => handleTopicClick(topic)}
           >

@@ -30,7 +30,7 @@ const PartnersShowcase = () => {
     <section className="bg-ejup-darkBg py-12 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-br from-ejup-pink/10 via-ejup-cyan/5 to-ejup-orange/5 opacity-30 blur-3xl"></div>
+        <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-br from-ejup-orange/10 via-ejup-cyan/5 to-ejup-orange/5 opacity-30 blur-3xl"></div>
       </div>
       
       <div className="ejup-container relative z-10">
@@ -46,7 +46,7 @@ const PartnersShowcase = () => {
               className="relative group cursor-pointer"
             >
               {/* Sombra com gradiente colorido - Efeito bem sutil */}
-              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange opacity-0 group-hover:opacity-15 blur-sm transition-all duration-300"></div>
+              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange opacity-0 group-hover:opacity-15 blur-sm transition-all duration-300"></div>
               
               {/* Card principal */}
               <div className="relative ejup-card hover:scale-[1.02] transition-all duration-300">

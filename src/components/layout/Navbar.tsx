@@ -11,12 +11,15 @@ import {
 import { useCart } from '@/lib/CartContext';
 import { getAllSchools } from '@/utils/courseData';
 
+
 // Mock data para simular usuário logado (em uma aplicação real, isso viria de um contexto de autenticação)
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 const userName = "João Silva";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSchoolsOpen, setIsSchoolsOpen] = useState(false);
+  const [isContentOpen, setIsContentOpen] = useState(false);
   const location = useLocation();
   const { totalItems, toggleCart } = useCart();
   
@@ -88,7 +91,7 @@ const Navbar = () => {
                 <DropdownMenuItem key={school.id} asChild>
                   <Link 
                     to={`/schools/${school.id}`}
-                    className="text-zinc-300 hover:text-white hover:bg-ejup-pink/20 focus:bg-ejup-pink/20 cursor-pointer px-3 py-3 rounded-md transition-all duration-200 flex items-center w-full group"
+                    className="text-zinc-300 hover:text-white hover:bg-ejup-orange/20 focus:bg-ejup-orange/20 cursor-pointer px-3 py-3 rounded-md transition-all duration-200 flex items-center w-full group"
                   >
                     <span className="flex-1 group-hover:translate-x-1 transition-transform duration-200">{school.name}</span>
                     <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-all duration-200 opacity-0 group-hover:opacity-70" />
@@ -98,16 +101,40 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          <Link
-            to="/content/articles"
-            className={`text-sm font-medium transition-colors flex items-center ${
-              isActive('/content/articles')
-                ? 'text-white'
-                : 'text-zinc-400 hover:text-white'
-            }`}
-          >
-            Conteúdo
-          </Link>
+          {/* Dropdown de Conteúdo */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1 outline-none focus:outline-none">
+                Conteúdo
+                <ChevronDown className="h-4 w-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent 
+              className="bg-zinc-900 border-zinc-700 min-w-[200px] z-50 shadow-2xl" 
+              align="start"
+              sideOffset={8}
+              collisionPadding={10}
+            >
+              <DropdownMenuItem asChild>
+                <Link 
+                  to="/content/articles"
+                  className="text-zinc-300 hover:text-white hover:bg-ejup-orange/20 focus:bg-ejup-orange/20 cursor-pointer px-3 py-3 rounded-md transition-all duration-200 flex items-center w-full group"
+                >
+                  <span className="flex-1 group-hover:translate-x-1 transition-transform duration-200">Coluna</span>
+                  <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-all duration-200 opacity-0 group-hover:opacity-70" />
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link 
+                  to="/content/podcast"
+                  className="text-zinc-300 hover:text-white hover:bg-ejup-orange/20 focus:bg-ejup-orange/20 cursor-pointer px-3 py-3 rounded-md transition-all duration-200 flex items-center w-full group"
+                >
+                  <span className="flex-1 group-hover:translate-x-1 transition-transform duration-200">Podcast</span>
+                  <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-all duration-200 opacity-0 group-hover:opacity-70" />
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           
           <Link
             to="/creator"
@@ -130,11 +157,13 @@ const Navbar = () => {
           >
             <ShoppingCart className="h-5 w-5" />
             {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 bg-ejup-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-ejup-orange text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 {totalItems}
               </span>
             )}
           </button>
+
+
 
           {isLoggedIn ? (
             <Button variant="outline" className="border-zinc-700 text-zinc-300" asChild>
@@ -156,7 +185,13 @@ const Navbar = () => {
         {/* Mobile menu button */}
         <button
           className="md:hidden p-2 text-zinc-400 hover:text-white"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+            if (isMenuOpen) {
+              setIsSchoolsOpen(false);
+              setIsContentOpen(false);
+            }
+          }}
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -165,7 +200,7 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden bg-ejup-darkBg border-t border-zinc-800 py-4">
-          <div className="ejup-container flex flex-col gap-4">
+          <div className="ejup-container flex flex-col gap-2">
             <Link
               to="/"
               className={`py-2 text-lg font-medium transition-colors flex items-center ${
@@ -180,33 +215,69 @@ const Navbar = () => {
             
             {/* Escolas no mobile */}
             <div className="py-2">
-              <span className="text-lg font-medium text-zinc-400 mb-2 block">Escolas</span>
-              <div className="ml-4 flex flex-col gap-2">
-                {schools.map((school) => (
-                  <Link
-                    key={school.id}
-                    to={`/schools/${school.id}`}
-                    className="text-base font-medium text-zinc-300 hover:text-white hover:bg-ejup-pink/20 px-3 py-2 rounded-md transition-all duration-200 group flex items-center"
-                    onClick={() => setIsMenuOpen(false)}
-                                      >
+              <button
+                className="text-lg font-medium text-zinc-400 hover:text-white mb-2 flex items-center justify-between w-full transition-colors"
+                onClick={() => setIsSchoolsOpen(!isSchoolsOpen)}
+              >
+                <span>Escolas</span>
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isSchoolsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isSchoolsOpen && (
+                <div className="ml-4 flex flex-col gap-2 mt-2">
+                  {schools.map((school) => (
+                    <Link
+                      key={school.id}
+                      to={`/schools/${school.id}`}
+                      className="text-base font-medium text-zinc-300 hover:text-white hover:bg-ejup-orange/20 px-3 py-2 rounded-md transition-all duration-200 group flex items-center"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsSchoolsOpen(false);
+                      }}
+                    >
                       <span className="flex-1 group-hover:translate-x-1 transition-transform duration-200">{school.name}</span>
                       <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-all duration-200 opacity-0 group-hover:opacity-70" />
                     </Link>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
             
-            <Link
-              to="/content/articles"
-              className={`py-2 text-lg font-medium transition-colors flex items-center ${
-                isActive('/content/articles')
-                  ? 'text-white'
-                  : 'text-zinc-400 hover:text-white'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Conteúdo
-            </Link>
+            {/* Conteúdo no mobile */}
+            <div className="py-2">
+              <button
+                className="text-lg font-medium text-zinc-400 hover:text-white mb-2 flex items-center justify-between w-full transition-colors"
+                onClick={() => setIsContentOpen(!isContentOpen)}
+              >
+                <span>Conteúdo</span>
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isContentOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isContentOpen && (
+                <div className="ml-4 flex flex-col gap-2 mt-2">
+                  <Link
+                    to="/content/articles"
+                    className="text-base font-medium text-zinc-300 hover:text-white hover:bg-ejup-orange/20 px-3 py-2 rounded-md transition-all duration-200 group flex items-center"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsContentOpen(false);
+                    }}
+                  >
+                    <span className="flex-1 group-hover:translate-x-1 transition-transform duration-200">Coluna</span>
+                    <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-all duration-200 opacity-0 group-hover:opacity-70" />
+                  </Link>
+                  <Link
+                    to="/content/podcast"
+                    className="text-base font-medium text-zinc-300 hover:text-white hover:bg-ejup-orange/20 px-3 py-2 rounded-md transition-all duration-200 group flex items-center"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsContentOpen(false);
+                    }}
+                  >
+                    <span className="flex-1 group-hover:translate-x-1 transition-transform duration-200">Podcast</span>
+                    <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-all duration-200 opacity-0 group-hover:opacity-70" />
+                  </Link>
+                </div>
+              )}
+            </div>
             
             <Link
               to="/creator"
@@ -227,12 +298,12 @@ const Navbar = () => {
                   toggleCart();
                   setIsMenuOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 py-2 text-lg font-medium text-zinc-400 hover:text-white transition-colors"
+                className="flex items-center justify-center gap-2 py-2 text-base font-medium text-zinc-400 hover:text-white transition-colors"
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span>Carrinho</span>
                 {totalItems > 0 && (
-                  <span className="bg-ejup-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center ml-1">
+                  <span className="bg-ejup-orange text-white text-xs rounded-full h-5 w-5 flex items-center justify-center ml-1">
                     {totalItems}
                   </span>
                 )}
@@ -247,7 +318,7 @@ const Navbar = () => {
                 </Button>
               ) : (
                 <>
-                  <Button variant="outline" className="border-zinc-700 text-zinc-300 w-full" asChild>
+                  <Button variant="outline" className="border-zinc-700 text-zinc-300 w-full text-lg" asChild>
                     <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                       Login
                       <User className="ml-2 h-4 w-4" />

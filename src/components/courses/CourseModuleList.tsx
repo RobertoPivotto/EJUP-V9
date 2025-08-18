@@ -97,7 +97,7 @@ const CourseModuleList = ({ courseId, modules, currentLessonId, courseName, onLe
                       >
                         <div className="mr-3">
                           {lesson.completed ? (
-                            <CheckCircle className="h-5 w-5 text-ejup-pink" />
+                            <CheckCircle className="h-5 w-5 text-ejup-orange" />
                           ) : (
                             <BookOpen className="h-5 w-5 text-zinc-500" />
                           )}

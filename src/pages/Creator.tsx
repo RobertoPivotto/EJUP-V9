@@ -32,6 +32,7 @@ import {
 import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { handleAnchorClick } from '@/utils/scrollUtils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -128,7 +129,7 @@ const Creator = () => {
       title: "Marketing Digital",
       description: "Estratégias de presença digital e posicionamento para seu escritório ou marca pessoal no universo jurídico.",
       icon: <Instagram className="h-6 w-6 text-white" />,
-      color: "bg-ejup-cyan",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -137,7 +138,7 @@ const Creator = () => {
       title: "Conteúdo Jurídico",
       description: "Produção de artigos, posts e materiais especializados com linguagem adequada ao seu público-alvo.",
       icon: <BookText className="h-6 w-6 text-white" />,
-      color: "bg-ejup-pink",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -155,7 +156,7 @@ const Creator = () => {
       title: "Estratégia Comercial",
       description: "Automação de marketing e estruturação de produtos de recorrência para seu escritório crescer.",
       icon: <BarChart4 className="h-6 w-6 text-white" />,
-      color: "bg-emerald-500",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -164,7 +165,7 @@ const Creator = () => {
       title: "Design Exclusivo",
       description: "Identidade visual, templates e materiais gráficos exclusivos para sua marca no mundo do Direito.",
       icon: <PenTool className="h-6 w-6 text-white" />,
-      color: "bg-purple-500",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -173,7 +174,7 @@ const Creator = () => {
       title: "Sites e Landing Pages",
       description: "Desenvolvimento de websites e páginas de conversão otimizadas para captação de clientes.",
       icon: <Globe className="h-6 w-6 text-white" />,
-      color: "bg-blue-500",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -182,7 +183,7 @@ const Creator = () => {
       title: "Vídeos Institucionais",
       description: "Produção audiovisual profissional para fortalecer a imagem do seu escritório e atrair clientes.",
       icon: <VideoIcon className="h-6 w-6 text-white" />,
-      color: "bg-red-500",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1579632652768-6cb9dcf85912?q=80&w=800&auto=format&fit=crop"
     },
     {
@@ -191,7 +192,7 @@ const Creator = () => {
       title: "Treinamentos On Demand",
       description: "Conteúdos educativos especializados disponíveis 24/7 para capacitação jurídica contínua.",
       icon: <BookText className="h-6 w-6 text-white" />,
-      color: "bg-amber-500",
+      color: "bg-ejup-orange",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
     }
   ];
@@ -216,6 +217,19 @@ const Creator = () => {
   const prevCarousel = () => {
     setCurrentCarouselIndex((prev) => 
       prev - 4 < 0 ? Math.max(0, servicesList.length - 4) : prev - 4
+    );
+  };
+
+  // Funções específicas para mobile (navegação de 1 em 1)
+  const nextCarouselMobile = () => {
+    setCurrentCarouselIndex((prev) => 
+      prev + 1 >= servicesList.length ? 0 : prev + 1
+    );
+  };
+
+  const prevCarouselMobile = () => {
+    setCurrentCarouselIndex((prev) => 
+      prev - 1 < 0 ? servicesList.length - 1 : prev - 1
     );
   };
 
@@ -350,12 +364,12 @@ const Creator = () => {
   return (
     <div className="min-h-screen bg-ejup-darkBg">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-10 md:pt-20">
         {/* Hero Section */}
-        <section className="relative min-h-[80vh] flex items-center py-12 overflow-hidden">
+        <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center py-4 md:py-12 overflow-hidden">
           {/* Background Gradient */}
           <div className="absolute inset-0 bg-ejup-darkBg">
-            <div className="absolute top-0 left-0 right-0 h-[70%] bg-gradient-to-br from-ejup-pink/20 via-ejup-cyan/10 to-ejup-orange/10 opacity-60 blur-3xl"></div>
+            <div className="absolute top-0 left-0 right-0 h-[70%] bg-gradient-to-br from-ejup-orange/20 via-ejup-cyan/10 to-ejup-orange/10 opacity-60 blur-3xl"></div>
           </div>
           
           {/* Content */}
@@ -366,7 +380,7 @@ const Creator = () => {
                 <h1 className="text-4xl md:text-5xl font-bold mb-8">
                   Posicione sua<br />
                   Autoridade com a<br />
-                  <span className="text-ejup-pink border-b-2 border-ejup-pink">EJUP Creator</span>.
+                  <span className="text-ejup-orange border-b-2 border-ejup-orange">EJUP Creator</span>.
                 </h1>
                 
                 <p className="text-lg text-zinc-300 mb-10 max-w-xl leading-relaxed">
@@ -375,7 +389,7 @@ const Creator = () => {
                 
                 <div className="relative group mb-10">
                   {/* Efeito de brilho de fundo */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-ejup-pink/30 via-ejup-cyan/30 to-ejup-orange/30 rounded-lg blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-ejup-orange/30 via-ejup-cyan/30 to-ejup-orange/30 rounded-lg blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   {/* Container principal */}
                   <div className="relative bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 backdrop-blur-sm border border-zinc-600/50 rounded-lg p-2 shadow-2xl flex justify-center">
@@ -383,14 +397,15 @@ const Creator = () => {
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap gap-4 mb-12">
-                  <Button className="bg-ejup-pink hover:bg-ejup-pink/90 group text-sm px-4 py-3" asChild>
-                    <a href="#portfolio">
-                      <span>Ver Nossos Resultados</span>
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                <div className="flex gap-3 mb-12">
+                  <Button 
+                    className="bg-orange-900/40 hover:bg-orange-800/50 backdrop-blur-md border border-orange-800/30 text-orange-100 hover:text-white group text-sm px-3 md:px-4 py-3 flex-1 transition-all duration-300"
+                    onClick={() => handleAnchorClick('#portfolio')}
+                  >
+                    <span>Ver Nossos Resultados</span>
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <Button variant="outline" className="ejup-button-secondary text-sm px-4 py-3" asChild>
+                  <Button variant="outline" className="ejup-button-secondary text-sm px-3 md:px-4 py-3 flex-1" asChild>
                     <a href="mailto:contato@ejup.com.br?subject=Interesse em EJUP Creator">
                       Atendemos em todo o Brasil
                     </a>
@@ -422,8 +437,8 @@ const Creator = () => {
                 </div>
               </div>
               
-              {/* Right Column - Featured Content */}
-              <div className="md:w-1/2 flex-grow max-w-xl relative animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              {/* Right Column - Featured Content - Hidden on mobile */}
+              <div className="hidden md:block md:w-1/2 flex-grow max-w-xl relative animate-slide-up" style={{ animationDelay: '0.4s' }}>
                 {/* Content Label */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
                   <div className="bg-zinc-800 border border-white/20 px-3 py-1 rounded-full">
@@ -436,30 +451,30 @@ const Creator = () => {
                 {/* Navigation Buttons */}
                 <div className="absolute top-1/2 z-20 -translate-y-1/2 -left-12">
                   <Button 
-                    variant="outline" 
+                    variant="ghost" 
                     size="icon" 
-                    className="rounded-full bg-zinc-800/80 border-zinc-700 hover:bg-zinc-700 h-8 w-8 shadow-lg" 
+                    className="h-10 w-10 hover:bg-zinc-800/50 transition-colors" 
                     onClick={prevService}
                   >
-                    <ChevronLeft className="h-4 w-4" />
+                    <ChevronLeft className="h-6 w-6 text-white hover:text-ejup-orange transition-colors" />
                   </Button>
                 </div>
                 
                 <div className="absolute top-1/2 z-20 -translate-y-1/2 -right-12">
                   <Button 
-                    variant="outline" 
+                    variant="ghost" 
                     size="icon" 
-                    className="rounded-full bg-zinc-800/80 border-zinc-700 hover:bg-zinc-700 h-8 w-8 shadow-lg" 
+                    className="h-10 w-10 hover:bg-zinc-800/50 transition-colors" 
                     onClick={nextService}
                   >
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-6 w-6 text-white hover:text-ejup-orange transition-colors" />
                   </Button>
                 </div>
                 
                 {/* Content Card */}
                 <div className="relative w-full group h-[26rem]">
                   {/* Efeito de brilho - visível apenas no hover */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
                   
                   <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 h-full">
                     <div className="bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
@@ -486,12 +501,10 @@ const Creator = () => {
                           <Button 
                             className="w-full flex items-center justify-center py-3 group bg-zinc-800 hover:bg-zinc-700 text-white text-sm" 
                             variant="secondary"
-                            asChild
+                            onClick={() => handleAnchorClick('#servicos')}
                           >
-                            <a href="#servicos">
-                              <span>Saiba mais</span>
-                              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                            </a>
+                            <span>Saiba mais</span>
+                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </div>
                       </div>
@@ -507,7 +520,7 @@ const Creator = () => {
                         key={index}
                         onClick={() => setActiveServiceIndex(index)}
                         className={`h-1.5 rounded-full transition-all duration-300 ${
-                          index === activeServiceIndex ? "w-6 bg-ejup-pink" : "w-1.5 bg-zinc-600"
+                          index === activeServiceIndex ? "w-6 bg-ejup-orange" : "w-1.5 bg-zinc-600"
                         }`}
                         aria-label={`Ver slide ${index + 1}`}
                       />
@@ -520,35 +533,177 @@ const Creator = () => {
         </section>
         
         {/* Services Section */}
-        <section className="py-8 bg-ejup-darkBg">
+        <section id="servicos" className="py-8 bg-ejup-darkBg">
           <div className="ejup-container">
-            <h2 className="text-2xl font-bold text-center mb-3">Nossos Serviços</h2>
+            <h2 className="text-4xl font-bold text-center mb-3">Nossos Serviços</h2>
             <p className="text-base text-zinc-400 text-center max-w-2xl mx-auto mb-8">
               Soluções completas em marketing e posicionamento jurídico
             </p>
             
-            <div className="relative max-w-6xl mx-auto">
-              {/* Setas de navegação do carrossel */}
-              <button
+            {/* Layout para mobile com carrossel */}
+            <div className="md:hidden relative px-12">
+              {/* Setas de navegação laterais */}
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={prevCarouselMobile}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 h-8 w-8 hover:bg-zinc-800/50 transition-colors bg-zinc-900/80 border border-zinc-700"
+              >
+                <ChevronLeft className="h-5 w-5 text-white hover:text-ejup-orange transition-colors" />
+              </Button>
+              
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={nextCarouselMobile}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 h-8 w-8 hover:bg-zinc-800/50 transition-colors bg-zinc-900/80 border border-zinc-700"
+              >
+                <ChevronRight className="h-5 w-5 text-white hover:text-ejup-orange transition-colors" />
+              </Button>
+
+              {/* Carrossel - um por vez no mobile */}
+              <div className="relative w-full group">
+                {(() => {
+                  const service = servicesList[currentCarouselIndex];
+                  return (
+                    <div key={service.id} className="relative group">
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange/20 via-ejup-cyan/20 to-ejup-orange/20 rounded-xl blur opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                      
+                      <div className={`relative bg-ejup-darkCard rounded-xl border border-zinc-700/50 overflow-hidden flex flex-col transition-all duration-500 ease-in-out ${
+                        expandedService === service.id ? 'h-[280px]' : 'h-[160px]'
+                      }`}>
+                        <div className="flex items-start gap-3 p-4 pb-2">
+                          <div className={`${service.color} rounded-lg p-2 flex-shrink-0`}>
+                            {service.icon}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold mb-1">{service.title}</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed">{service.description}</p>
+                          </div>
+                        </div>
+                        
+                        {/* Área de conteúdo expandido dentro do card */}
+                        <div className={`px-4 transition-all duration-500 ease-in-out ${
+                          expandedService === service.id 
+                            ? 'flex-1 opacity-100 transform translate-y-0 pb-2' 
+                            : 'h-0 opacity-0 transform -translate-y-4 overflow-hidden'
+                        }`}>
+                          <div className="bg-zinc-800/30 rounded-lg p-3 border border-zinc-700/30">
+                            {service.id === 1 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-ejup-cyan">Estratégias completas</span> de presença digital incluindo análise de concorrência, criação de personas jurídicas, planejamento de conteúdo, gestão de redes sociais, SEO especializado em Direito, e campanhas de tráfego pago otimizadas para captação de clientes no setor jurídico.
+                              </p>
+                            )}
+                            
+                            {service.id === 2 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-ejup-orange">Produção especializada</span> de artigos técnicos, posts educativos, e-books jurídicos, newsletters, cases de sucesso, comunicados oficiais e materiais de apoio, sempre com linguagem técnica adequada e revisão por profissionais especializados em comunicação jurídica.
+                              </p>
+                            )}
+                            
+                            {service.id === 3 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-ejup-orange">Desenvolvimento completo</span> de produtos educacionais incluindo curadoria de conteúdo, roteirização, produção audiovisual, criação de materiais complementares, plataforma de hospedagem, sistema de certificação e estratégias de monetização para advogados especialistas.
+                              </p>
+                            )}
+                            
+                            {service.id === 4 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-emerald-400">Estruturação avançada</span> de funis de vendas, automação de marketing, implementação de sistemas de CRM e desenvolvimento de produtos de recorrência para crescimento sustentável do seu escritório.
+                              </p>
+                            )}
+                            
+                            {service.id === 5 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-purple-400">Criação completa</span> de identidade visual para escritórios e profissionais do Direito, incluindo marca, papelaria, materiais impressos e digitais, templates para redes sociais e apresentações, com linguagem visual alinhada ao posicionamento jurídico pretendido.
+                              </p>
+                            )}
+                            
+                            {service.id === 6 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-blue-400">Desenvolvimento profissional</span> de websites e páginas de conversão otimizadas para advogados e escritórios, com foco em usabilidade, SEO jurídico, captação de leads e conversão de visitantes em potenciais clientes.
+                              </p>
+                            )}
+                            
+                            {service.id === 7 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-red-400">Produção audiovisual</span> completa para promover sua marca jurídica, incluindo roteirização, gravação em estúdio ou locação, edição profissional, legendagem e otimização para diferentes plataformas digitais.
+                              </p>
+                            )}
+                            
+                            {service.id === 8 && (
+                              <p className="text-zinc-300 text-sm leading-relaxed">
+                                <span className="font-semibold text-amber-400">Conteúdos educativos</span> especializados disponíveis 24/7 para capacitação jurídica contínua, incluindo cursos, workshops e materiais de estudo atualizados constantemente com as mudanças na legislação.
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {/* Botão Ver mais detalhes */}
+                        <div className="p-4 pt-2 mt-auto">
+                          <button
+                            onClick={() => toggleServiceExpansion(service.id)}
+                            className="w-full flex items-center justify-center gap-2 p-2 rounded-lg bg-zinc-700/50 hover:bg-zinc-600/50 transition-colors duration-300"
+                          >
+                            <span className="text-sm font-medium text-zinc-300">
+                              {expandedService === service.id ? 'Ver menos' : 'Ver mais detalhes'}
+                            </span>
+                            <div className={`transition-transform duration-300 ${
+                              expandedService === service.id ? 'rotate-180' : 'rotate-0'
+                            }`}>
+                              <ChevronDown className="h-4 w-4 text-ejup-cyan" />
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+              
+              {/* Indicadores para mobile */}
+              <div className="flex justify-center gap-2 mt-6">
+                {servicesList.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentCarouselIndex(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentCarouselIndex === index 
+                        ? 'w-8 bg-ejup-cyan' 
+                        : 'w-2 bg-zinc-600 hover:bg-zinc-500'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Layout para desktop (original) */}
+            <div className="hidden md:block relative max-w-6xl mx-auto">
+              {/* Setas de navegação do carrossel desktop */}
+              <Button 
+                variant="ghost" 
+                size="icon" 
                 onClick={prevCarousel}
                 disabled={currentCarouselIndex === 0}
-                className="absolute left-[-70px] top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-zinc-800/90 hover:bg-zinc-700 border border-zinc-700 hover:border-zinc-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+                className="absolute left-[-70px] top-1/2 -translate-y-1/2 z-20 h-10 w-10 hover:bg-zinc-800/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <ChevronLeft className="h-5 w-5 text-white" />
-              </button>
+                <ChevronLeft className="h-6 w-6 text-white hover:text-ejup-orange transition-colors" />
+              </Button>
               
-              <button
+              <Button 
+                variant="ghost" 
+                size="icon" 
                 onClick={nextCarousel}
                 disabled={currentCarouselIndex + 4 >= servicesList.length}
-                className="absolute right-[-70px] top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-zinc-800/90 hover:bg-zinc-700 border border-zinc-700 hover:border-zinc-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+                className="absolute right-[-70px] top-1/2 -translate-y-1/2 z-20 h-10 w-10 hover:bg-zinc-800/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <ChevronRight className="h-5 w-5 text-white" />
-              </button>
+                <ChevronRight className="h-6 w-6 text-white hover:text-ejup-orange transition-colors" />
+              </Button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 {getCurrentServices().map((service) => (
                   <div key={service.id} className="relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink/20 via-ejup-cyan/20 to-ejup-orange/20 rounded-xl blur opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange/20 via-ejup-cyan/20 to-ejup-orange/20 rounded-xl blur opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
                     
                     <div className={`relative bg-ejup-darkCard rounded-xl border border-zinc-700/50 overflow-hidden flex flex-col transition-all duration-500 ease-in-out ${
                       expandedService === service.id ? 'h-[320px]' : 'h-[200px]'
@@ -578,7 +733,7 @@ const Creator = () => {
                           
                           {service.id === 2 && (
                             <p className="text-zinc-300 text-sm leading-relaxed">
-                              <span className="font-semibold text-ejup-pink">Produção especializada</span> de artigos técnicos, posts educativos, e-books jurídicos, newsletters, cases de sucesso, comunicados oficiais e materiais de apoio, sempre com linguagem técnica adequada e revisão por profissionais especializados em comunicação jurídica.
+                              <span className="font-semibold text-ejup-orange">Produção especializada</span> de artigos técnicos, posts educativos, e-books jurídicos, newsletters, cases de sucesso, comunicados oficiais e materiais de apoio, sempre com linguagem técnica adequada e revisão por profissionais especializados em comunicação jurídica.
                             </p>
                           )}
                           
@@ -641,7 +796,7 @@ const Creator = () => {
                 ))}
               </div>
               
-              {/* Indicadores centrais */}
+              {/* Indicadores centrais para desktop */}
               <div className="flex justify-center gap-2 mt-6">
                 {Array.from({ length: Math.ceil(servicesList.length / 4) }).map((_, index) => (
                   <button
@@ -672,11 +827,11 @@ const Creator = () => {
             {/* Portfolio Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {/* Brand Identity Card */}
-              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-pink/50 transition-all duration-300 overflow-hidden">
+              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-orange/50 transition-all duration-300 overflow-hidden">
                 <div className="relative">
                   <div className="w-full h-40 bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 flex flex-col justify-center items-center group-hover:scale-105 transition-transform duration-300">
                     <div className="grid grid-cols-3 gap-2 mb-4">
-                      <div className="w-6 h-6 bg-ejup-pink rounded"></div>
+                      <div className="w-6 h-6 bg-ejup-orange rounded"></div>
                       <div className="w-6 h-6 bg-ejup-cyan rounded"></div>
                       <div className="w-6 h-6 bg-ejup-orange rounded"></div>
                     </div>
@@ -684,7 +839,7 @@ const Creator = () => {
                     <div className="text-zinc-400 text-xs mt-1">Escritório & Advocacia</div>
                   </div>
                   <div className="absolute top-2 left-2">
-                    <Badge className="bg-ejup-pink text-white text-xs">Branding</Badge>
+                    <Badge className="bg-ejup-orange text-white text-xs">Branding</Badge>
                   </div>
                 </div>
                 <CardContent className="p-4">
@@ -692,7 +847,7 @@ const Creator = () => {
                   <p className="text-zinc-400 text-xs mb-3 leading-relaxed">
                     Criação completa de marca e identidade para escritórios jurídicos
                   </p>
-                  <Button className="w-full bg-ejup-pink hover:bg-ejup-pink/90 text-sm h-9" asChild>
+                  <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-sm h-9" asChild>
                     <a href="#" onClick={() => alert('Em breve!')}>
                       <LayoutGrid className="w-3 h-3 mr-2" />
                       Ver Projeto
@@ -702,12 +857,12 @@ const Creator = () => {
               </Card>
 
               {/* Video Content Card */}
-              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-pink/50 transition-all duration-300 overflow-hidden">
+              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-orange/50 transition-all duration-300 overflow-hidden">
                 <div className="relative">
                   <div className="w-full h-40 bg-gradient-to-br from-zinc-900 to-black p-4 flex flex-col justify-between group-hover:scale-105 transition-transform duration-300">
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-ejup-pink rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-ejup-orange rounded-full flex items-center justify-center">
                           <Camera className="w-4 h-4 text-white" />
                         </div>
                         <div>
@@ -732,7 +887,7 @@ const Creator = () => {
                     <PlayCircle className="w-12 h-12 text-white group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <div className="absolute top-2 left-2">
-                    <Badge className="bg-ejup-pink text-white text-xs">Vídeo</Badge>
+                    <Badge className="bg-ejup-orange text-white text-xs">Vídeo</Badge>
                   </div>
                 </div>
                 <CardContent className="p-4">
@@ -740,7 +895,7 @@ const Creator = () => {
                   <p className="text-zinc-400 text-xs mb-3 leading-relaxed">
                     Conteúdo em vídeo profissional para redes sociais e cursos
                   </p>
-                  <Button className="w-full bg-ejup-pink hover:bg-ejup-pink/90 text-sm h-9" asChild>
+                  <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-sm h-9" asChild>
                     <a href="#" onClick={() => alert('Em breve!')}>
                       <VideoIcon className="w-3 h-3 mr-2" />
                       Ver Demo
@@ -750,7 +905,7 @@ const Creator = () => {
               </Card>
 
               {/* Course Development Card */}
-              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-pink/50 transition-all duration-300 overflow-hidden">
+              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-orange/50 transition-all duration-300 overflow-hidden">
                 <div className="relative">
                   <div className="w-full h-40 bg-gradient-to-br from-zinc-800 to-zinc-900 p-4 flex flex-col justify-between group-hover:scale-105 transition-transform duration-300">
                     <div className="space-y-2">
@@ -781,7 +936,7 @@ const Creator = () => {
                     </div>
                   </div>
                   <div className="absolute top-2 left-2">
-                    <Badge className="bg-ejup-pink text-white text-xs">Educação</Badge>
+                    <Badge className="bg-ejup-orange text-white text-xs">Educação</Badge>
                   </div>
                 </div>
                 <CardContent className="p-4">
@@ -789,7 +944,7 @@ const Creator = () => {
                   <p className="text-zinc-400 text-xs mb-3 leading-relaxed">
                     Desenvolvimento de conteúdo educacional especializado
                   </p>
-                  <Button className="w-full bg-ejup-pink hover:bg-ejup-pink/90 text-sm h-9" asChild>
+                  <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-sm h-9" asChild>
                     <a href="#" onClick={() => alert('Em breve!')}>
                       <BookText className="w-3 h-3 mr-2" />
                       Ver Curso
@@ -799,7 +954,7 @@ const Creator = () => {
               </Card>
 
               {/* Digital Marketing Card */}
-              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-pink/50 transition-all duration-300 overflow-hidden">
+              <Card className="group bg-ejup-darkCard border-zinc-700/50 hover:border-ejup-orange/50 transition-all duration-300 overflow-hidden">
                 <div className="relative">
                   <div className="w-full h-40 bg-gradient-to-br from-zinc-800 to-zinc-900 p-4 flex flex-col justify-between group-hover:scale-105 transition-transform duration-300">
                     <div className="space-y-2">
@@ -808,10 +963,10 @@ const Creator = () => {
                         <div className="text-ejup-cyan text-xs">+24%</div>
                       </div>
                       <div className="flex items-end gap-1 h-16">
-                        <div className="w-2 bg-ejup-pink h-6 rounded-t"></div>
+                        <div className="w-2 bg-ejup-orange h-6 rounded-t"></div>
                         <div className="w-2 bg-ejup-cyan h-10 rounded-t"></div>
                         <div className="w-2 bg-ejup-orange h-8 rounded-t"></div>
-                        <div className="w-2 bg-ejup-pink h-12 rounded-t"></div>
+                        <div className="w-2 bg-ejup-orange h-12 rounded-t"></div>
                         <div className="w-2 bg-ejup-cyan h-16 rounded-t"></div>
                         <div className="w-2 bg-ejup-orange h-10 rounded-t"></div>
                       </div>
@@ -825,7 +980,7 @@ const Creator = () => {
                     </div>
                   </div>
                   <div className="absolute top-2 left-2">
-                    <Badge className="bg-ejup-pink text-white text-xs">Marketing</Badge>
+                    <Badge className="bg-ejup-orange text-white text-xs">Marketing</Badge>
                   </div>
                 </div>
                 <CardContent className="p-4">
@@ -833,7 +988,7 @@ const Creator = () => {
                   <p className="text-zinc-400 text-xs mb-3 leading-relaxed">
                     Estratégias e campanhas para posicionamento digital
                   </p>
-                  <Button className="w-full bg-ejup-pink hover:bg-ejup-pink/90 text-sm h-9" asChild>
+                  <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-sm h-9" asChild>
                     <a href="#" onClick={() => alert('Em breve!')}>
                       <TrendingUp className="w-3 h-3 mr-2" />
                       Ver Estratégia
@@ -871,7 +1026,7 @@ const Creator = () => {
                 e posicionar você como referência no mercado jurídico.
               </p>
               <div className="flex justify-center">
-                <Button className="bg-ejup-pink hover:bg-ejup-pink/90 text-white px-8 py-3" asChild>
+                <Button className="bg-ejup-orange hover:bg-ejup-orange/90 text-white px-8 py-3" asChild>
                   <a href="mailto:contato@ejup.com.br?subject=Interesse em EJUP Creator">
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Falar com Consultor
@@ -895,9 +1050,9 @@ const Creator = () => {
                   {/* Box 1 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -916,9 +1071,9 @@ const Creator = () => {
                   {/* Box 2 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -937,9 +1092,9 @@ const Creator = () => {
                   {/* Box 3 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -958,9 +1113,9 @@ const Creator = () => {
                   {/* Box 4 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -981,9 +1136,9 @@ const Creator = () => {
                   {/* Box 5 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -1002,9 +1157,9 @@ const Creator = () => {
                   {/* Box 6 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -1023,9 +1178,9 @@ const Creator = () => {
                   {/* Box 7 */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -1044,9 +1199,9 @@ const Creator = () => {
                   {/* Box 8 - Análise de Dados Jurídicos */}
                   <div className="w-full sm:w-1/2 lg:w-1/4 px-3 mb-4">
                     <div className="relative group h-full">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange to-ejup-cyan rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="relative h-full rounded-xl overflow-hidden hover:scale-[1.01] transition-all duration-300">
-                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-5 min-h-[180px]">
+                        <div className="bg-ejup-darkCard h-full rounded-xl border border-zinc-700/50 overflow-hidden p-4 min-h-[140px]">
                           <div className="flex flex-col h-full">
                             <div className="flex items-start gap-3 mb-3">
                               <div className="bg-ejup-orange rounded-lg p-2 flex-shrink-0">
@@ -1067,7 +1222,7 @@ const Creator = () => {
               
               {/* CTA Button */}
               <div className="text-center mt-8">
-                <Button className="bg-ejup-pink hover:bg-ejup-pink/90 group text-base px-8 py-4" asChild>
+                <Button className="bg-ejup-orange hover:bg-ejup-orange/90 group text-base px-8 py-4" asChild>
                   <a href="mailto:contato@ejup.com.br?subject=Interesse em falar com especialista EJUP Creator">
                     <span>Fale com um especialista</span>
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

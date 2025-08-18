@@ -41,7 +41,7 @@ const CourseCard = ({
   duration,
   modules,
   level,
-  imageBg = 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+  imageBg = 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
   image,
   promoted,
   caap,
@@ -110,12 +110,12 @@ const CourseCard = ({
   return (
     <div className="relative w-full group h-full">
       {/* Efeito de brilho - atrás do card */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
       
       <div className="relative bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col hover:scale-[1.02] transition-all duration-300">
         {/* Imagem do curso */}
         <Link to={`/courses/${id}`} className="block">
-          <div className="relative h-48 overflow-hidden bg-zinc-800">
+          <div className="relative h-32 md:h-48 overflow-hidden bg-zinc-800">
             {image ? (
               <>
                 <img 
@@ -158,26 +158,32 @@ const CourseCard = ({
             
             {/* Informações do Instrutor com altura fixa */}
             <div className="mb-3">
-              {instructors && instructors.length > 1 ? (
-                // Múltiplos instrutores
-                <div className="space-y-2">
+              {instructors && instructors.length > 2 ? (
+                // Múltiplos instrutores (mais de 2) - mostra apenas o primeiro + indicador
+                <div className="flex items-center h-12">
+                  <div className="w-10 h-10 rounded-full bg-ejup-cyan flex items-center justify-center text-sm font-medium text-black mr-3">
+                    {instructors[0].initials}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-base font-medium truncate">{instructors[0].name} <span className="text-zinc-400">+{instructors.length - 1}</span></div>
+                    <div className="text-sm text-orange-700 truncate">{instructors[0].role}</div>
+                  </div>
+                </div>
+              ) : instructors && instructors.length === 2 ? (
+                // Exatamente 2 instrutores - mostra ambos
+                <div className="space-y-1">
                   <div className="text-xs text-zinc-400 font-medium">Instrutores:</div>
-                  <div className="flex items-center gap-2 overflow-x-auto">
-                    {instructors.slice(0, 3).map((inst, index) => (
+                  <div className="flex items-center gap-2">
+                    {instructors.map((inst, index) => (
                       <div key={index} className="flex items-center gap-2 flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-ejup-cyan flex items-center justify-center text-xs font-medium text-black">
+                        <div className="w-6 h-6 rounded-full bg-ejup-cyan flex items-center justify-center text-xs font-medium text-black">
                           {inst.initials}
                         </div>
                         <div className="text-xs">
-                          <div className="font-medium text-white truncate max-w-20">{inst.name}</div>
+                          <div className="font-medium text-white truncate max-w-16">{inst.name}</div>
                         </div>
                       </div>
                     ))}
-                    {instructors.length > 3 && (
-                      <div className="text-xs text-zinc-400 flex-shrink-0">
-                        +{instructors.length - 3} mais
-                      </div>
-                    )}
                   </div>
                 </div>
               ) : (
@@ -188,20 +194,13 @@ const CourseCard = ({
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="text-base font-medium truncate">{instructor}</div>
-                    <div className="text-sm text-zinc-500 truncate">{instructorRole}</div>
+                    <div className="text-sm text-orange-700 truncate">{instructorRole}</div>
                   </div>
                 </div>
               )}
             </div>
             
-            {/* Exibe promoção se houver - altura fixa */}
-            <div className="mb-3 h-5">
-              {promoted && !caap && (
-                <span className="text-xs text-zinc-400">
-                  Oferecido por {promoted.by}
-                </span>
-              )}
-            </div>
+
           </Link>
           
           {/* Detalhes do curso - sempre na mesma posição */}
@@ -228,7 +227,7 @@ const CourseCard = ({
                 size="sm"
                 className={`relative ${
                   isInCart || showSuccess
-                    ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-white border-0' 
+                    ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-black border-0' 
                     : 'bg-zinc-800 hover:bg-zinc-700 text-white border-0'
                 }`}
                 onClick={isInCart ? () => openCart() : handleAddToCart}
@@ -252,16 +251,15 @@ const CourseCard = ({
               </Button>
             </div>
             
-            <div className="grid grid-cols-2 gap-3">
-              <Button className="w-full bg-ejup-pink hover:bg-ejup-pink/90 text-white border-0 py-4" 
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
+              <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white border-0 py-2 md:py-4" 
                 onClick={isInCart ? () => openCart() : handleBuyNow}>
-                <span className="text-sm">Comprar agora</span>
+                <span className="text-xs md:text-sm">Comprar agora</span>
               </Button>
               
-              <Button className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 py-4 group" asChild>
+              <Button className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 py-2 md:py-4" asChild>
                 <Link to={`/courses/${id}`}>
-                  <span className="text-sm">Ver detalhes</span>
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <span className="text-xs md:text-sm">Ver detalhes</span>
                 </Link>
               </Button>
             </div>

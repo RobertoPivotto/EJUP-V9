@@ -131,12 +131,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               {/* Botão de notificação */}
               <button className="relative p-2 text-zinc-400 hover:text-white">
                 <FiBell size={18} />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-ejup-pink rounded-full"></span>
+                <span className="absolute top-1 right-1 w-2 h-2 bg-ejup-orange rounded-full"></span>
               </button>
               
               {/* Avatar do usuário */}
               <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-ejup-cyan to-ejup-pink text-white flex items-center justify-center font-medium shadow-lg shadow-ejup-cyan/10">
+                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-ejup-cyan to-ejup-orange text-white flex items-center justify-center font-medium shadow-lg shadow-ejup-cyan/10">
                   {adminInitials}
                 </div>
                 <div className="hidden md:block">

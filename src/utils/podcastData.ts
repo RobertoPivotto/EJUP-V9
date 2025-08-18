@@ -45,7 +45,7 @@ export const mockPodcastData: PodcastData[] = [
     topics: ['Inteligência Artificial', 'Automação', 'Competências Digitais', 'Futuro da Advocacia'],
     relatedPodcasts: [2, 3],
     status: 'published',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
     socialImage: '/lovable-uploads/course-preview.jpg'
   },
   {
@@ -99,7 +99,7 @@ export const mockPodcastData: PodcastData[] = [
     topics: ['Legal Design', 'Consultoria', 'Tecnologia', 'Empreendedorismo'],
     relatedPodcasts: [1, 4],
     status: 'published',
-    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-pink/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
     socialImage: '/lovable-uploads/course-preview.jpg'
   },
   {

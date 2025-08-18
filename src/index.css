@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+  
   :root {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -12,8 +16,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
+    --primary: 16 70% 47%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
@@ -24,9 +28,11 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 346.8 77.2% 49.8%;
+    --ring: 16 70% 47%;
     --radius: 0.75rem;
   }
+
+
   
   /* Solução definitiva: força barra de scroll sempre visível */
   html {
@@ -60,7 +66,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-ejup-pink/20 selection:text-white;
+    @apply border-border selection:bg-ejup-orange/20 selection:text-white;
   }
   
   html {
@@ -110,11 +116,11 @@
   }
 
   .ejup-gradient-text {
-    @apply bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange bg-clip-text text-transparent;
   }
   
   .ejup-button-primary {
-    @apply bg-ejup-pink hover:bg-ejup-pink/90 text-white font-medium rounded-lg px-6 py-3 transition-all;
+    @apply bg-ejup-orange hover:bg-ejup-orange/90 text-white font-medium rounded-lg px-6 py-3 transition-all;
   }
 
   .ejup-button-secondary {
@@ -126,7 +132,7 @@
   }
 
   .ejup-input {
-    @apply bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-ejup-pink/50 focus:ring-1 focus:ring-ejup-pink/30 outline-none transition-all;
+    @apply bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-ejup-orange/50 focus:ring-1 focus:ring-ejup-orange/30 outline-none transition-all;
   }
 
   .ejup-section {
@@ -256,9 +262,8 @@ body.cart-open {
 
 /* Cores específicas da EJUP */
 :root {
-  --ejup-pink: 335 85% 65%;
-  --ejup-cyan: 195 85% 65%;
-  --ejup-orange: 25 85% 65%;
+  --ejup-cyan: 0 0% 100%;
+  --ejup-orange: 16 70% 47%;
   --ejup-dark-bg: 240 9% 7%;
   --ejup-dark-card: 240 9% 9%;
 }
@@ -342,8 +347,8 @@ body.cart-open {
   }
 }
 
-.bg-ejup-pink {
-  background-color: hsl(var(--ejup-pink));
+.bg-ejup-orange {
+  background-color: hsl(var(--ejup-orange));
 }
 
 .bg-ejup-cyan {
@@ -362,8 +367,8 @@ body.cart-open {
   background-color: hsl(var(--ejup-dark-card));
 }
 
-.text-ejup-pink {
-  color: hsl(var(--ejup-pink));
+.text-ejup-orange {
+  color: hsl(var(--ejup-orange));
 }
 
 .text-ejup-cyan {
@@ -374,8 +379,8 @@ body.cart-open {
   color: hsl(var(--ejup-orange));
 }
 
-.border-ejup-pink {
-  border-color: hsl(var(--ejup-pink));
+.border-ejup-orange {
+  border-color: hsl(var(--ejup-orange));
 }
 
 .border-ejup-cyan {

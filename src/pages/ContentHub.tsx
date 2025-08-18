@@ -30,7 +30,7 @@ const blogPosts: BlogPost[] = [
     date: '10 de maio, 2025',
     category: 'empresarial',
     readTime: '5 min',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ const blogPosts: BlogPost[] = [
     date: '28 de abril, 2025',
     category: 'resolucao',
     readTime: '6 min',
-    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-pink/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const blogPosts: BlogPost[] = [
     date: '20 de abril, 2025',
     category: 'tributario',
     readTime: '8 min',
-    imageColor: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-orange/30',
+    imageColor: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
   },
 ];
 
@@ -180,7 +180,7 @@ const ContentHub = () => {
               {filteredContent.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredContent.map((post: any) => (
-                    <Link to={`/content/blog/${post.id}`} key={post.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-pink/5">
+                    <Link to={`/content/blog/${post.id}`} key={post.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-orange/5">
                       <div className={`h-32 ${post.imageColor}`}></div>
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-4">
@@ -216,7 +216,7 @@ const ContentHub = () => {
               {filteredContent.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredContent.map((episode: any) => (
-                    <Link to={`/content/podcast/${episode.id}`} key={episode.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-pink/5">
+                    <Link to={`/content/podcast/${episode.id}`} key={episode.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-orange/5">
                       <div className={`h-32 ${episode.imageColor} flex items-center justify-center`}>
                         <div className="w-16 h-16 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center">
                           <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

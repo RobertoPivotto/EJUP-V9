@@ -28,7 +28,7 @@ const RelatedCourses = ({ courses }: RelatedCoursesProps) => {
   return (
     <div className="bg-zinc-800/20 rounded-xl border border-zinc-700/30 p-6">
       <div className="flex items-center gap-2 mb-6">
-        <GraduationCap className="h-5 w-5 text-ejup-pink" />
+        <GraduationCap className="h-5 w-5 text-ejup-orange" />
         <h2 className="text-xl font-serif font-semibold">Cursos relacionados</h2>
       </div>
       
@@ -36,7 +36,7 @@ const RelatedCourses = ({ courses }: RelatedCoursesProps) => {
         {courses.map((course) => (
           <div 
             key={course.id}
-            className="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-700/50 group hover:border-ejup-pink/30 transition-colors"
+            className="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-700/50 group hover:border-ejup-orange/30 transition-colors"
           >
             <div className="relative">
               <img 
@@ -51,14 +51,14 @@ const RelatedCourses = ({ courses }: RelatedCoursesProps) => {
                 }}
               />
               <div className="absolute top-3 left-3">
-                <Badge className="bg-ejup-pink text-white border-none">Curso em destaque</Badge>
+                <Badge className="bg-ejup-orange text-white border-none">Curso em destaque</Badge>
               </div>
             </div>
             
             <div className="p-5">
               <div className="mb-4">
                 <div className="text-sm text-zinc-400 mb-1">Curso</div>
-                <h3 className="text-xl font-bold group-hover:text-ejup-pink transition-colors">
+                <h3 className="text-xl font-bold group-hover:text-ejup-orange transition-colors">
                   {course.title}
                 </h3>
               </div>
@@ -104,7 +104,7 @@ const RelatedCourses = ({ courses }: RelatedCoursesProps) => {
               
               <Button 
                 asChild 
-                className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/50 group-hover:border-ejup-pink/30 group-hover:text-ejup-pink"
+                className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/50 group-hover:border-ejup-orange/30 group-hover:text-ejup-orange"
               >
                 <Link to={`/courses/${course.id}`} className="flex items-center justify-center">
                   Ver detalhes

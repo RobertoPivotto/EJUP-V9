@@ -26,31 +26,36 @@ const MyCourses = () => {
     const continueLinkUrl = getContinueLink(course.moduleId, course.lessonId, course.lastPosition);
     
     return (
-      <Card className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-pink/50 transition-all overflow-hidden flex flex-col">
+      <Card className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-orange/50 transition-all overflow-hidden flex flex-col">
         <div className="relative">
           <img 
             src={course.image} 
             alt={course.title} 
-            className="w-full h-40 object-cover"
+            className="w-full h-32 md:h-40 object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full h-1 bg-zinc-700">
-            <div className="bg-ejup-pink h-1" style={{ width: `${course.progress}%` }}></div>
+            <div className="bg-ejup-orange h-1" style={{ width: `${course.progress}%` }}></div>
           </div>
         </div>
-        <CardContent className="p-4 flex flex-col flex-grow">
+        <CardContent className="p-3 md:p-4 flex flex-col flex-grow">
           <div className="flex justify-between items-center mb-1">
-            <h3 className="font-semibold">{course.title}</h3>
+            <h3 className="font-semibold text-sm md:text-base line-clamp-2">{course.title}</h3>
             {course.caap && (
-              <Badge variant="outline" className="border-ejup-cyan text-ejup-cyan text-xs">CAAP</Badge>
+              <Badge variant="outline" className="border-ejup-cyan text-ejup-cyan text-xs hidden md:inline-flex">CAAP</Badge>
             )}
           </div>
-          <p className="text-sm text-zinc-400 mb-4">{course.module} | {course.lesson}</p>
+          <p className="text-xs md:text-sm text-zinc-400 mb-3 md:mb-4 line-clamp-1">{course.module} | {course.lesson}</p>
           <Link 
             to={continueLinkUrl}
-            className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-pink hover:border-ejup-pink text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
+            className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-orange hover:border-ejup-orange text-white font-medium rounded-lg px-3 md:px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-xs md:text-sm no-underline"
           >
-            <FiPlay size={14} />
-            Continuar
+            <span className="md:hidden flex items-center gap-2">
+              <FiPlay size={12} />
+              Acessar Curso
+            </span>
+            <span className="hidden md:inline">
+              Acessar Curso
+            </span>
           </Link>
         </CardContent>
       </Card>
@@ -198,10 +203,11 @@ const MyCourses = () => {
     setCurrentNewsIndex((prev) => (prev - 1 + latestNews.length) % latestNews.length);
   };
 
-  // Mostrar 3 notícias por vez no carrossel
+  // Mostrar 2 notícias por vez no mobile, 3 no desktop
   const getVisibleNews = () => {
     const result = [];
-    for (let i = 0; i < 3; i++) {
+    const itemsToShow = window.innerWidth < 768 ? 2 : 3; // 2 no mobile, 3 no desktop
+    for (let i = 0; i < itemsToShow; i++) {
       const index = (currentNewsIndex + i) % latestNews.length;
       result.push(latestNews[index]);
     }
@@ -232,10 +238,10 @@ const MyCourses = () => {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {getVisibleNews().map((news) => (
-              <Card key={news.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-pink/50 transition-all overflow-hidden flex flex-col">
-                <div className="relative h-32">
+              <Card key={news.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-orange/50 transition-all overflow-hidden flex flex-col">
+                <div className="relative h-24 md:h-32">
                   <img 
                     src={news.image} 
                     alt={news.title} 
@@ -245,7 +251,7 @@ const MyCourses = () => {
                     <Badge 
                       className={`text-xs ${
                         news.category === 'EJUP' 
-                          ? 'bg-ejup-pink text-white' 
+                          ? 'bg-ejup-orange text-white' 
                           : 'bg-ejup-cyan text-black'
                       }`}
                     >
@@ -253,11 +259,11 @@ const MyCourses = () => {
                     </Badge>
                   </div>
                 </div>
-                <CardContent className="p-4 flex flex-col flex-grow">
-                  <h3 className="font-semibold text-sm mb-3 line-clamp-2 flex-grow">{news.title}</h3>
+                <CardContent className="p-3 md:p-4 flex flex-col flex-grow">
+                  <h3 className="font-semibold text-xs md:text-sm mb-2 md:mb-3 line-clamp-2 flex-grow">{news.title}</h3>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-xs text-zinc-400">{news.date}</span>
-                    <button className="text-ejup-pink text-xs hover:underline">
+                    <button className="text-ejup-orange text-xs hover:underline">
                       Leia mais
                     </button>
                   </div>
@@ -267,24 +273,22 @@ const MyCourses = () => {
           </div>
         </section>
         
-
-
         {/* Continue Assistindo */}
-        <section className="mb-12">
+        <section className="mb-10">
           <h2 className="text-2xl font-bold mb-6">Continue Assistindo</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {continueCourses.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}
           </div>
         </section>
 
-        {/* Recomendados para Você - Direcionam para página de compra */}
-        <section className="mb-12">
+        {/* Recomendados para Você - Direcionam para página de compra (apenas desktop) */}
+        <section className="mb-12 hidden md:block">
           <h2 className="text-2xl font-bold mb-6">Recomendados para Você</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {recommendedCourses.map((course) => (
-              <Card key={course.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-pink/50 transition-all overflow-hidden flex flex-col">
+              <Card key={course.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-orange/50 transition-all overflow-hidden flex flex-col">
                 <div className="relative">
                   <img 
                     src={course.image} 
@@ -293,7 +297,7 @@ const MyCourses = () => {
                   />
                   {/* Badge indicando que é um curso para compra */}
                   <div className="absolute top-2 right-2">
-                    <Badge className="bg-ejup-pink/90 text-white text-xs">
+                    <Badge className="bg-ejup-orange/90 text-white text-xs">
                       Novo
                     </Badge>
                   </div>
@@ -318,7 +322,7 @@ const MyCourses = () => {
                   {/* Link direciona para página de detalhes/compra */}
                   <Link 
                     to={`/courses/${course.id}`}
-                    className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-pink hover:border-ejup-pink text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
+                    className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-orange hover:border-ejup-orange text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
                   >
                     <FiBook size={14} />
                     Ver Curso

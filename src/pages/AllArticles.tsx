@@ -11,6 +11,7 @@ import ColumnSponsors, { Sponsor } from '@/components/content/ColumnSponsors';
 import PopularTopics from '@/components/content/PopularTopics';
 import UpcomingEvents, { Event } from '@/components/content/UpcomingEvents';
 import ContentFilter from '@/components/content/ContentFilter';
+import FilteredTags from '@/components/content/FilteredTags';
 
 // Mock data for articles (expanded version)
 const articles = [
@@ -88,7 +89,7 @@ const articles = [
       'Jurisprudência',
       'Planejamento'
     ],
-    featured: false
+    featured: true
   },
   {
     id: 5,
@@ -107,7 +108,7 @@ const articles = [
       'Fiscalização',
       'Recursos Humanos'
     ],
-    featured: false
+    featured: true
   },
   {
     id: 6,
@@ -805,6 +806,17 @@ const AllArticles = () => {
     setSearchTerm(term);
   };
 
+  // Handler for removing individual topics
+  const handleRemoveTopic = (topicToRemove: string) => {
+    setSelectedTopics(prev => prev.filter(topic => topic !== topicToRemove));
+  };
+
+  // Handler for clearing all filters
+  const handleClearAllFilters = () => {
+    setSelectedTopics([]);
+    setSearchTerm('');
+  };
+
   return (
     <div className="min-h-screen bg-ejup-darkBg">
       <Navbar />
@@ -839,7 +851,14 @@ const AllArticles = () => {
           topics={allCategories}
           onFilterChange={handleFilterChange}
           onSearchChange={handleSearchChange}
-          accentColor="ejup-pink"
+          accentColor="ejup-orange"
+        />
+        
+        {/* Filtered Tags - Mobile only */}
+        <FilteredTags
+          selectedTopics={selectedTopics}
+          onRemoveTopic={handleRemoveTopic}
+          onClearAll={handleClearAllFilters}
         />
       </div>
 
@@ -892,35 +911,40 @@ const AllArticles = () => {
                     </div>
                   )}
                   
-                  {/* Artigos em destaque em duas colunas */}
+                  {/* Artigos em destaque - Layout podcast style no mobile */}
                   {filteredArticles.filter(a => a.featured).length > 1 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                      {filteredArticles.filter(a => a.featured).slice(1, 3).map((article) => (
-                        <Link key={article.id} to={`/content/blog/${article.id}`} className="group">
-                          <div className="aspect-[16/9] rounded-lg overflow-hidden mb-4">
-                            <img 
-                              src={article.image} 
-                              alt={article.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
-                              {article.role}
-                            </span>
-                            <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
-                              {article.category}
-                            </span>
-                          </div>
-                          <h3 className="text-xl font-semibold mb-2 group-hover:text-ejup-cyan transition-colors">
-                            {article.title}
-                          </h3>
-                          <p className="text-zinc-400 text-sm mb-4">
-                            {article.excerpt}
-                          </p>
-                          <div className="flex justify-between items-center text-xs text-zinc-500">
-                            <span>{article.author}</span>
-                            {article.readTime && <span>{article.readTime}</span>}
+                    <div className="grid grid-cols-1 gap-6 mb-12">
+                      {filteredArticles.filter(a => a.featured).slice(1, 4).map((article) => (
+                        <Link key={article.id} to={`/content/blog/${article.id}`} className="block bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden hover:border-ejup-orange/50 transition-all duration-300 group">
+                          <div className="flex flex-col md:flex-row h-full">
+                            <div className="md:w-1/3 relative">
+                              <img
+                                src={article.image}
+                                alt={article.title}
+                                className="w-full h-48 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-black/20"></div>
+                            </div>
+                            <div className="flex-1 p-4 md:p-6">
+                              <div className="flex flex-wrap gap-2 mb-3">
+                                <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
+                                  {article.role}
+                                </span>
+                                <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
+                                  {article.category}
+                                </span>
+                              </div>
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 text-zinc-300 group-hover:text-white transition-colors line-clamp-2">
+                                {article.title}
+                              </h3>
+                              <p className="text-zinc-400 text-sm mb-4 line-clamp-2 md:line-clamp-3">
+                                {article.excerpt}
+                              </p>
+                              <div className="flex justify-between items-center text-xs text-zinc-500 mt-auto">
+                                <span>{article.author}</span>
+                                {article.readTime && <span>{article.readTime}</span>}
+                              </div>
+                            </div>
                           </div>
                         </Link>
                       ))}
@@ -936,7 +960,7 @@ const AllArticles = () => {
                       .filter(article => !article.featured || (article.featured && filteredArticles.filter(a => a.featured).indexOf(article) >= 3))
                       .map((article) => (
                       <Link key={article.id} to={`/content/blog/${article.id}`} className="group border-b border-zinc-800 pb-6 mb-6 block">
-                        <h3 className="text-lg font-serif font-semibold mb-1 group-hover:text-ejup-cyan transition-colors">
+                        <h3 className="text-lg font-serif font-semibold mb-1 text-zinc-300 group-hover:text-white transition-colors">
                           {article.title}
                         </h3>
                         <p className="text-zinc-400 text-sm mb-2 line-clamp-2">
@@ -957,35 +981,40 @@ const AllArticles = () => {
                     Resultados ({filteredArticles.length})
                   </h2>
                   
-                  {/* Artigos com imagem em duas colunas */}
+                  {/* Artigos com imagem - Layout podcast style */}
                   {filteredArticles.filter(a => a.image).length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div className="grid grid-cols-1 gap-6 mb-8">
                       {filteredArticles.filter(a => a.image).slice(0, 4).map((article) => (
-                        <Link key={article.id} to={`/content/blog/${article.id}`} className="group mb-8">
-                          <div className="aspect-[16/9] rounded-lg overflow-hidden mb-4">
-                            <img 
-                              src={article.image} 
-                              alt={article.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
-                              {article.role}
-                            </span>
-                            <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
-                              {article.category}
-                            </span>
-                          </div>
-                          <h3 className="text-xl font-semibold mb-2 group-hover:text-ejup-cyan transition-colors">
-                            {article.title}
-                          </h3>
-                          <p className="text-zinc-400 text-sm mb-4">
-                            {article.excerpt}
-                          </p>
-                          <div className="flex justify-between items-center text-xs text-zinc-500">
-                            <span>{article.author}</span>
-                            {article.readTime && <span>{article.readTime}</span>}
+                        <Link key={article.id} to={`/content/blog/${article.id}`} className="block bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden hover:border-ejup-orange/50 transition-all duration-300 group">
+                          <div className="flex flex-col md:flex-row h-full">
+                            <div className="md:w-1/3 relative">
+                              <img
+                                src={article.image}
+                                alt={article.title}
+                                className="w-full h-48 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-black/20"></div>
+                            </div>
+                            <div className="flex-1 p-4 md:p-6">
+                              <div className="flex flex-wrap gap-2 mb-3">
+                                <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
+                                  {article.role}
+                                </span>
+                                <span className="text-xs font-medium px-3 py-1 rounded-full bg-zinc-800 text-zinc-300">
+                                  {article.category}
+                                </span>
+                              </div>
+                              <h3 className="text-lg md:text-xl font-semibold mb-2 text-zinc-300 group-hover:text-white transition-colors line-clamp-2">
+                                {article.title}
+                              </h3>
+                              <p className="text-zinc-400 text-sm mb-4 line-clamp-2 md:line-clamp-3">
+                                {article.excerpt}
+                              </p>
+                              <div className="flex justify-between items-center text-xs text-zinc-500 mt-auto">
+                                <span>{article.author}</span>
+                                {article.readTime && <span>{article.readTime}</span>}
+                              </div>
+                            </div>
                           </div>
                         </Link>
                       ))}
@@ -998,7 +1027,7 @@ const AllArticles = () => {
                       .filter((article, index) => !article.image || (article.image && index >= 4))
                       .map((article) => (
                       <Link key={article.id} to={`/content/blog/${article.id}`} className="group border-b border-zinc-800 pb-6 mb-6 block">
-                        <h3 className="text-lg font-serif font-semibold mb-1 group-hover:text-ejup-cyan transition-colors">
+                        <h3 className="text-lg font-serif font-semibold mb-1 text-zinc-300 group-hover:text-white transition-colors">
                           {article.title}
                         </h3>
                         <p className="text-zinc-400 text-sm mb-2 line-clamp-2">
@@ -1026,7 +1055,7 @@ const AllArticles = () => {
             {/* Coluna Lateral (4 colunas) */}
             <div className="lg:col-span-4 space-y-8">
               {/* Destaque para Podcasts */}
-              <div className="bg-gradient-to-br from-ejup-cyan/20 to-ejup-pink/20 rounded-lg border border-zinc-700/50 overflow-hidden">
+              <div className="bg-gradient-to-br from-ejup-cyan/20 to-ejup-orange/20 rounded-lg border border-zinc-700/50 overflow-hidden">
                 <div className="relative aspect-video">
                   <img 
                     src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
@@ -1060,15 +1089,17 @@ const AllArticles = () => {
                 topics={allCategories} 
                 onTopicClick={handleFilterChange}
                 selectedTopics={selectedTopics}
-                accentColor="ejup-pink"
+                accentColor="ejup-orange"
               />
               
               {/* Próximos Eventos */}
-              <UpcomingEvents events={upcomingEvents} />
+              <div className="hidden md:block">
+                <UpcomingEvents events={upcomingEvents} />
+              </div>
               
               {/* Segundo destaque, se houver */}
               {filteredArticles.filter(a => a.featured).length > 1 && (
-                <div className="bg-ejup-darkCard rounded-lg border border-zinc-700/50 overflow-hidden">
+                <div className="bg-ejup-darkCard rounded-lg border border-zinc-700/50 overflow-hidden hidden md:block">
                   <div className="aspect-video">
                     <img 
                       src={filteredArticles.filter(a => a.featured)[1].image} 
@@ -1077,9 +1108,9 @@ const AllArticles = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <Badge className="mb-2 bg-ejup-pink text-white border-none">Em Destaque</Badge>
+                    <Badge className="mb-2 bg-ejup-orange text-white border-none">Em Destaque</Badge>
                     <Link to={`/content/blog/${filteredArticles.filter(a => a.featured)[1].id}`}>
-                      <h3 className="text-lg font-serif font-semibold mb-2 hover:text-ejup-cyan transition-colors">
+                      <h3 className="text-lg font-serif font-semibold mb-2 text-zinc-300 hover:text-white transition-colors">
                         {filteredArticles.filter(a => a.featured)[1].title}
                       </h3>
                     </Link>

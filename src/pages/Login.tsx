@@ -94,14 +94,21 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="bg-zinc-800 border-zinc-700"
+                  className="bg-zinc-800 border-zinc-700 text-white"
+                  style={{
+                    backgroundColor: '#27272a',
+                    color: '#ffffff',
+                    WebkitBoxShadow: '0 0 0 30px #27272a inset',
+                    WebkitTextFillColor: '#ffffff',
+                    caretColor: '#ffffff'
+                  }}
                 />
               </div>
               
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <Label htmlFor="password">Senha</Label>
-                  <a href="#" className="text-sm text-ejup-pink hover:underline">
+                  <a href="#" className="text-sm text-ejup-orange hover:underline">
                     Esqueceu a senha?
                   </a>
                 </div>
@@ -112,13 +119,20 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-zinc-800 border-zinc-700"
+                  className="bg-zinc-800 border-zinc-700 text-white"
+                  style={{
+                    backgroundColor: '#27272a',
+                    color: '#ffffff',
+                    WebkitBoxShadow: '0 0 0 30px #27272a inset',
+                    WebkitTextFillColor: '#ffffff',
+                    caretColor: '#ffffff'
+                  }}
                 />
               </div>
               
               <Button 
                 type="submit" 
-                className="w-full bg-ejup-pink hover:bg-ejup-pink/90"
+                className="w-full bg-ejup-orange hover:bg-ejup-orange/90"
                 disabled={isLoading}
               >
                 {isLoading ? "Entrando..." : "Entrar"}
@@ -126,7 +140,7 @@ const Login = () => {
               
               <div className="text-center text-sm text-zinc-400 mt-4">
                 Não tem uma conta?{" "}
-                <a href="#" className="text-ejup-pink hover:underline">
+                <a href="#" className="text-ejup-orange hover:underline">
                   Criar conta
                 </a>
               </div>

@@ -25,7 +25,7 @@ const InternalFooter = () => {
               Privacidade
             </Link>
             <Link 
-              to="/contact" 
+              to="/faq" 
               className="text-zinc-500 hover:text-white text-xs transition-colors"
             >
               Suporte

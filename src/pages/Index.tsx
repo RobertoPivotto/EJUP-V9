@@ -1,5 +1,6 @@
 import Hero from '@/components/home/Hero';
 import FeaturedCourses from '@/components/home/FeaturedCourses';
+import AboutSection from '@/components/home/AboutSection';
 import PartnersShowcase from '@/components/home/PartnersShowcase';
 import ContentPreview from '@/components/home/ContentPreview';
 import Navbar from '@/components/layout/Navbar';
@@ -12,6 +13,7 @@ const Index = () => {
       <main>
         <Hero />
         <FeaturedCourses />
+        <AboutSection />
         <ContentPreview />
         <PartnersShowcase />
       </main>

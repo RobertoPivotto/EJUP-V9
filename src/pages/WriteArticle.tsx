@@ -132,7 +132,7 @@ const WriteArticle = () => {
                   </Alert>
                 </CardContent>
                 <CardFooter>
-                  <Button onClick={handleAgreement} className="bg-ejup-pink hover:bg-ejup-pink/90">
+                  <Button onClick={handleAgreement} className="bg-ejup-orange hover:bg-ejup-orange/90">
                     Entendi e quero escrever um artigo
                   </Button>
                 </CardFooter>
@@ -150,7 +150,7 @@ const WriteArticle = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="title">Título do Artigo <span className="text-ejup-pink">*</span></Label>
+                      <Label htmlFor="title">Título do Artigo <span className="text-ejup-orange">*</span></Label>
                       <Input
                         id="title"
                         placeholder="Ex: O Impacto da Lei Geral de Proteção de Dados no Setor Empresarial"
@@ -175,7 +175,7 @@ const WriteArticle = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="keywords">Palavras-chave <span className="text-ejup-pink">*</span></Label>
+                        <Label htmlFor="keywords">Palavras-chave <span className="text-ejup-orange">*</span></Label>
                         <Input
                           id="keywords"
                           placeholder="Ex: LGPD, proteção de dados, direito digital, compliance"
@@ -188,7 +188,7 @@ const WriteArticle = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="category">Categoria <span className="text-ejup-pink">*</span></Label>
+                        <Label htmlFor="category">Categoria <span className="text-ejup-orange">*</span></Label>
                         <Select required onValueChange={setCategory} value={category}>
                           <SelectTrigger className="bg-zinc-800 border-zinc-700">
                             <SelectValue placeholder="Selecione uma categoria" />
@@ -228,7 +228,7 @@ const WriteArticle = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="content">Corpo do Artigo <span className="text-ejup-pink">*</span></Label>
+                      <Label htmlFor="content">Corpo do Artigo <span className="text-ejup-orange">*</span></Label>
                       <Textarea
                         id="content"
                         placeholder="Redija o corpo do seu artigo com parágrafos bem estruturados. Use o formato Markdown para criar subtítulos (## Subtítulo) e listas."
@@ -246,7 +246,7 @@ const WriteArticle = () => {
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="conclusion">Conclusão <span className="text-ejup-pink">*</span></Label>
+                      <Label htmlFor="conclusion">Conclusão <span className="text-ejup-orange">*</span></Label>
                       <Textarea
                         id="conclusion"
                         placeholder="Resuma os principais pontos abordados e apresente sua conclusão."
@@ -281,7 +281,7 @@ const WriteArticle = () => {
                   <CardContent className="space-y-6">
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="author-bio">Minicurrículo <span className="text-ejup-pink">*</span></Label>
+                        <Label htmlFor="author-bio">Minicurrículo <span className="text-ejup-orange">*</span></Label>
                         <Textarea
                           id="author-bio"
                           placeholder="Descreva sua formação, atuação profissional e áreas de especialidade (máx. 500 caracteres)."
@@ -364,19 +364,19 @@ const WriteArticle = () => {
                             </h3>
                             <ul className="space-y-3">
                               <li className="flex items-start gap-2">
-                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-pink" />
+                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-orange" />
                                 <span className="text-sm">Maior credibilidade junto aos leitores</span>
                               </li>
                               <li className="flex items-start gap-2">
-                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-pink" />
+                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-orange" />
                                 <span className="text-sm">Aumento da sua visibilidade profissional</span>
                               </li>
                               <li className="flex items-start gap-2">
-                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-pink" />
+                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-orange" />
                                 <span className="text-sm">Maior chance de aprovação dos seus artigos</span>
                               </li>
                               <li className="flex items-start gap-2">
-                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-pink" />
+                                <div className="mt-1 h-2 w-2 rounded-full bg-ejup-orange" />
                                 <span className="text-sm">Possibilidade de ser convidado para eventos</span>
                               </li>
                             </ul>
@@ -386,7 +386,7 @@ const WriteArticle = () => {
                     </div>
                   </CardContent>
                   <CardFooter className="flex justify-end">
-                    <Button type="submit" className="bg-ejup-pink hover:bg-ejup-pink/90">
+                    <Button type="submit" className="bg-ejup-orange hover:bg-ejup-orange/90">
                       Enviar Artigo para Aprovação
                     </Button>
                   </CardFooter>

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Check, Search, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import MobileFilterDropdown from './MobileFilterDropdown';
 
 interface ContentFilterProps {
   topics: string[];
@@ -94,8 +95,8 @@ const ContentFilter = ({ topics, onFilterChange, onSearchChange, accentColor }: 
     const baseClass = "py-1 px-3 text-sm border-zinc-700 transition-colors ";
     
     if (selectedTopics.includes(topic) || (topic === "Todos" && selectedTopics.length === 0)) {
-      // Sempre usar ejup-pink para botões selecionados, independente do accentColor
-      return `${baseClass} bg-ejup-pink/10 text-ejup-pink border-ejup-pink/40`;
+      // Sempre usar ejup-orange para botões selecionados, independente do accentColor
+      return `${baseClass} bg-ejup-orange/10 text-ejup-orange border-ejup-orange/40`;
     } else {
       return `${baseClass} bg-zinc-800/70 text-zinc-400 hover:bg-zinc-800`;
     }
@@ -123,7 +124,7 @@ const ContentFilter = ({ topics, onFilterChange, onSearchChange, accentColor }: 
             variant="outline" 
             size="sm"
             onClick={clearFilters}
-            className="flex items-center gap-1 py-1 px-3 text-sm text-zinc-400 border-zinc-700 hover:bg-zinc-800"
+            className="hidden md:flex items-center gap-1 py-1 px-3 text-sm text-zinc-400 border-zinc-700 hover:bg-zinc-800"
           >
             <X className="h-3 w-3" />
             <span>Limpar filtros</span>
@@ -131,7 +132,16 @@ const ContentFilter = ({ topics, onFilterChange, onSearchChange, accentColor }: 
         )}
       </div>
       
-      <div className="flex flex-wrap gap-2">
+      {/* Mobile Filter Dropdown */}
+      <MobileFilterDropdown
+        topics={topics}
+        selectedTopics={selectedTopics}
+        onFilterChange={onFilterChange}
+        accentColor={accentColor as 'ejup-orange' | 'ejup-cyan'}
+      />
+      
+      {/* Desktop Filter Buttons */}
+      <div className="hidden md:flex flex-wrap gap-2">
         {allTopics.map(topic => (
           <Button
             key={topic}
@@ -163,19 +173,19 @@ const ContentFilter = ({ topics, onFilterChange, onSearchChange, accentColor }: 
             <div className="absolute top-full left-0 mt-1 w-48 bg-zinc-800 border border-zinc-700 rounded-md shadow-lg z-10">
               <div className="p-1">
                 <button
-                  className={`w-full text-left px-3 py-2 text-sm rounded-md ${opType === 'all' ? 'bg-ejup-pink/10 text-ejup-pink' : 'text-zinc-300 hover:bg-zinc-700'}`}
+                  className={`w-full text-left px-3 py-2 text-sm rounded-md ${opType === 'all' ? 'bg-ejup-orange/10 text-ejup-orange' : 'text-zinc-300 hover:bg-zinc-700'}`}
                   onClick={() => handleOpinionType('all')}
                 >
                   Todos
                 </button>
                 <button
-                  className={`w-full text-left px-3 py-2 text-sm rounded-md ${opType === 'coluna' ? 'bg-ejup-pink/10 text-ejup-pink' : 'text-zinc-300 hover:bg-zinc-700'}`}
+                  className={`w-full text-left px-3 py-2 text-sm rounded-md ${opType === 'coluna' ? 'bg-ejup-orange/10 text-ejup-orange' : 'text-zinc-300 hover:bg-zinc-700'}`}
                   onClick={() => handleOpinionType('coluna')}
                 >
                   Colunas
                 </button>
                 <button
-                  className={`w-full text-left px-3 py-2 text-sm rounded-md ${opType === 'artigo' ? 'bg-ejup-pink/10 text-ejup-pink' : 'text-zinc-300 hover:bg-zinc-700'}`}
+                  className={`w-full text-left px-3 py-2 text-sm rounded-md ${opType === 'artigo' ? 'bg-ejup-orange/10 text-ejup-orange' : 'text-zinc-300 hover:bg-zinc-700'}`}
                   onClick={() => handleOpinionType('artigo')}
                 >
                   Artigos

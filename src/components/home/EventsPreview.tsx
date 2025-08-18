@@ -54,11 +54,11 @@ const EventsPreview = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {upcomingEvents.map((event) => (
-            <Link to={`/events/${event.id}`} key={event.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-pink/5">
+            <Link to={`/events/${event.id}`} key={event.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-orange/5">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <Calendar className="h-4 w-4 text-ejup-pink mr-2" />
+                    <Calendar className="h-4 w-4 text-ejup-orange mr-2" />
                     <span className="text-sm text-zinc-300">{event.date}</span>
                   </div>
                   <span className={`text-xs px-3 py-1 rounded-full ${
@@ -73,7 +73,7 @@ const EventsPreview = () => {
                 <h3 className="text-xl font-semibold mb-3">{event.title}</h3>
                 
                 <div className="flex items-center mb-5">
-                  <div className="w-8 h-8 rounded-full bg-ejup-pink flex items-center justify-center text-xs font-medium text-white mr-2">
+                  <div className="w-8 h-8 rounded-full bg-ejup-orange flex items-center justify-center text-xs font-medium text-white mr-2">
                     {event.speakerInitials}
                   </div>
                   <div>
@@ -89,7 +89,7 @@ const EventsPreview = () => {
                     <div className="text-zinc-400">{event.time}</div>
                     <div className="text-zinc-300">{event.location}</div>
                   </div>
-                  <Button size="sm" variant="outline" className="border-ejup-pink/30 hover:bg-ejup-pink/10">
+                  <Button size="sm" variant="outline" className="border-ejup-orange/30 hover:bg-ejup-orange/10">
                     Inscrever-se
                   </Button>
                 </div>

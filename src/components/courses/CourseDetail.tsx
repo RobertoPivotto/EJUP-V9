@@ -101,15 +101,19 @@ const CourseDetail = ({
   // Verificar se o curso já está no carrinho
   const isInCart = items.some(item => item.id === id);
   
-  // Obter progresso salvo
-  const savedProgress = getSavedProgress();
+  // Estado para progresso salvo
+  const [savedProgress, setSavedProgress] = useState<any>(null);
   const hasProgress = savedProgress && savedProgress.lastLessonId;
 
   // Inicializar dados e verificar se o curso foi comprado
   useEffect(() => {
     initializePurchasedCourses();
     setIsPurchased(isCourseOwned(id));
-  }, [id]);
+    
+    // Obter progresso salvo apenas uma vez
+    const progress = getSavedProgress();
+    setSavedProgress(progress);
+  }, [id, getSavedProgress]);
   
   // Função para alternar expansão do módulo
   const toggleModule = (moduleId: number) => {
@@ -154,11 +158,15 @@ const CourseDetail = ({
   };
 
   const handleImageError = () => {
-    setImageError(true);
+    if (!imageError) {
+      setImageError(true);
+    }
   };
 
   const handleInstructorImageError = () => {
-    setInstructorImageError(true);
+    if (!instructorImageError) {
+      setInstructorImageError(true);
+    }
   };
 
   return (
@@ -180,6 +188,146 @@ const CourseDetail = ({
             <p className="text-lg text-zinc-300">{description}</p>
           </div>
           
+          {/* Card de Vídeo para Mobile */}
+          <div className="mb-8 lg:hidden">
+            <div className="ejup-card">
+              {/* Vídeo do professor */}
+              <div className="aspect-video bg-zinc-900 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Fallback para caso o vídeo não carregue */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-ejup-orange/30 via-ejup-cyan/20 to-ejup-orange/30 z-0">
+                    {instructors && instructors.length > 1 ? (
+                      <div className="flex items-center gap-2 mb-3">
+                        {instructors.slice(0, 3).map((inst, index) => (
+                          <div key={index} className="w-16 h-16 rounded-full bg-ejup-cyan flex items-center justify-center text-sm font-medium text-black">
+                            {inst.initials}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="w-24 h-24 rounded-full bg-ejup-cyan flex items-center justify-center text-2xl font-medium text-black mb-3">
+                        {instructor.initials}
+                      </div>
+                    )}
+                    <p className="text-white text-center font-medium">Vídeo de apresentação do curso</p>
+                    <p className="text-zinc-300 text-sm text-center mt-1">
+                      {instructors && instructors.length > 1 
+                        ? `Com ${instructors.length} instrutores especialistas`
+                        : `Com ${instructor.name}, ${instructor.role}`
+                      }
+                    </p>
+                  </div>
+                  
+                  {/* Vídeo do YouTube */}
+                  <iframe 
+                    className="w-full h-full relative z-10"
+                    src={videoUrl || `https://www.youtube.com/embed/dQw4w9WgXcQ?si=example`} 
+                    title={`Vídeo de apresentação: ${title}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                    onError={(e) => {
+                      // Esconder o iframe em caso de erro
+                      (e.target as HTMLIFrameElement).style.display = 'none';
+                    }}
+                  ></iframe>
+                </div>
+              </div>
+              <div className="p-6">
+                {!isPurchased && <div className="text-3xl font-bold mb-4">{price}</div>}
+                
+                {hasProgress && isPurchased && (
+                  <div className="mb-4 p-3 bg-zinc-800/50 rounded-lg">
+                    <div className="text-sm text-zinc-400 mb-1">Seu progresso:</div>
+                    <div className="text-sm">
+                      Última aula: Módulo {savedProgress?.moduleId}
+                    </div>
+                  </div>
+                )}
+                
+                <div className="space-y-4 text-sm mb-6">
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <span>{duration} de curso</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                      </svg>
+                    </div>
+                    <span>{modules.length} módulos</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                      </svg>
+                    </div>
+                    <span>{calculateTotalLessons(modules)} aulas</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                    </div>
+                    <span>Acesso online</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <span>Certificado de conclusão</span>
+                  </div>
+                </div>
+                
+                {isPurchased ? (
+                  // Se o curso foi comprado, mostrar botão de continuar/iniciar
+                  <Link to={getContinueLink(1, 1)}>
+                    <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white">
+                      <Play className="w-4 h-4 mr-2" />
+                      {hasProgress ? 'Continuar Assistindo' : 'Acessar Curso'}
+                    </Button>
+                  </Link>
+                ) : (
+                  // Se não foi comprado, mostrar apenas opção de compra
+                  <Button 
+                    className={`w-full ${
+                      isInCart || showSuccess
+                        ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-black'
+                        : 'bg-ejup-orange/20 hover:bg-ejup-orange/30 text-white border border-ejup-orange/30 hover:border-ejup-orange/50'
+                    } font-semibold transition-all duration-300`}
+                    onClick={handleAddToCart}
+                  >
+                    {isInCart ? (
+                      <>
+                        <Check className="w-4 h-4 mr-2" />
+                        No carrinho
+                      </>
+                    ) : showSuccess ? (
+                      <>
+                        <Check className="w-4 h-4 mr-2" />
+                        Adicionado!
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        Adquirir agora
+                      </>
+                    )}
+                  </Button>
+                )}
+              </div>
+            </div>
+          </div>
+
           <Tabs defaultValue="overview">
             <TabsList className="mb-6">
               <TabsTrigger value="overview">Visão Geral</TabsTrigger>
@@ -196,8 +344,8 @@ const CourseDetail = ({
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                   {objectives.map((objective, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="mr-2 mt-0.5 bg-ejup-pink/20 rounded-full p-0.5">
-                        <CheckIcon className="h-4 w-4 text-ejup-pink" />
+                      <div className="mr-2 mt-0.5 bg-ejup-orange/20 rounded-full p-0.5">
+                        <CheckIcon className="h-4 w-4 text-ejup-orange" />
                       </div>
                       <span className="text-zinc-300 text-sm">{objective}</span>
                     </li>
@@ -283,7 +431,7 @@ const CourseDetail = ({
                         </div>
                         <div className="flex-1">
                           <h4 className="text-lg font-semibold text-white mb-1">{inst.name}</h4>
-                          <p className="text-ejup-cyan text-sm font-medium mb-3">{inst.role}</p>
+                          <p className="text-orange-700 text-sm font-medium mb-3">{inst.role}</p>
                           <p className="text-zinc-300 text-sm leading-relaxed">{inst.bio}</p>
                         </div>
                       </div>
@@ -311,79 +459,16 @@ const CourseDetail = ({
             </TabsContent>
           </Tabs>
           
-          {showRelatedCourses && relatedCourses && relatedCourses.length > 0 && (
-            <div className="mt-12">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-ejup-cyan/20 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-ejup-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-white">Cursos Relacionados</h3>
-                  <p className="text-sm text-zinc-400">Aprofunde seus conhecimentos com estes cursos complementares</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {relatedCourses.map((course) => (
-                  <div key={course.id} className="bg-zinc-900/40 border border-zinc-700/50 rounded-xl p-5 hover:bg-zinc-800/40 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-3 h-3 bg-ejup-cyan rounded-full mt-2"></div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-white mb-2 line-clamp-2">
-                          {course.title}
-                        </h4>
-                        <div className="flex items-center gap-4 text-xs text-zinc-500 mb-3">
-                          <div className="flex items-center gap-1">
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                            </svg>
-                            <span>R$ {course.price}</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <Button 
-                            variant="ghost" 
-                            size="sm"
-                            onClick={() => {
-                              // Adicionar ao carrinho e redirecionar para checkout
-                              const courseItem = {
-                                id: parseInt(course.id) || Date.now(),
-                                title: course.title,
-                                price: extractPriceValue(course.price),
-                                image: imageError ? '/placeholder.svg' : getAvatarUrl(course.title)
-                              };
-                              addItem(courseItem);
-                              window.location.href = '/checkout';
-                            }}
-                            className="text-ejup-cyan hover:text-ejup-cyan/80 hover:bg-ejup-cyan/10 p-0 h-auto font-medium text-sm"
-                          >
-                            <ShoppingCart className="w-3 h-3 mr-1" />
-                            Comprar agora
-                          </Button>
-                          <div className="flex items-center gap-1 text-xs text-zinc-500">
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                            <span>Popular</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+
         </div>
         
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 hidden lg:block">
           <div className="ejup-card sticky top-24">
             {/* Vídeo do professor */}
             <div className="aspect-video bg-zinc-900 relative overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Fallback para caso o vídeo não carregue */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-ejup-pink/30 via-ejup-cyan/20 to-ejup-orange/30 z-0">
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-ejup-orange/30 via-ejup-cyan/20 to-ejup-orange/30 z-0">
                   {instructors && instructors.length > 1 ? (
                     <div className="flex items-center gap-2 mb-3">
                       {instructors.slice(0, 3).map((inst, index) => (
@@ -421,25 +506,76 @@ const CourseDetail = ({
                 ></iframe>
               </div>
             </div>
-            <div className="p-6">
-              {!isPurchased && <div className="text-3xl font-bold mb-4">{price}</div>}
-              
-              {isPurchased ? (
-                // Se o curso foi comprado, mostrar botão de continuar/iniciar
-                <Link to={getContinueLink(1, 1)}>
-                  <Button className="w-full mb-4 bg-ejup-pink hover:bg-ejup-pink/90 text-white">
-                    <Play className="w-4 h-4 mr-2" />
-                    {hasProgress ? 'Continuar Assistindo' : 'Acessar Curso'}
-                  </Button>
-                </Link>
-              ) : (
-                // Se não foi comprado, mostrar apenas opção de compra
-                <div className="space-y-3 mb-4">
+                          <div className="p-6">
+                {!isPurchased && <div className="text-3xl font-bold mb-4">{price}</div>}
+                
+                {hasProgress && isPurchased && (
+                  <div className="mb-4 p-3 bg-zinc-800/50 rounded-lg">
+                    <div className="text-sm text-zinc-400 mb-1">Seu progresso:</div>
+                    <div className="text-sm">
+                      Última aula: Módulo {savedProgress?.moduleId}
+                    </div>
+                  </div>
+                )}
+                
+                <div className="space-y-4 text-sm mb-6">
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <span>{duration} de curso</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                      </svg>
+                    </div>
+                    <span>{modules.length} módulos</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                      </svg>
+                    </div>
+                    <span>{calculateTotalLessons(modules)} aulas</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                    </div>
+                    <span>Acesso online</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="mr-3 text-ejup-cyan">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <span>Certificado de conclusão</span>
+                  </div>
+                </div>
+                
+                {isPurchased ? (
+                  // Se o curso foi comprado, mostrar botão de continuar/iniciar
+                  <Link to={getContinueLink(1, 1)}>
+                    <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white">
+                      <Play className="w-4 h-4 mr-2" />
+                      {hasProgress ? 'Continuar Assistindo' : 'Acessar Curso'}
+                    </Button>
+                  </Link>
+                ) : (
+                  // Se não foi comprado, mostrar apenas opção de compra
                   <Button 
                     className={`w-full ${
                       isInCart || showSuccess
-                        ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-white'
-                        : 'bg-ejup-pink/20 hover:bg-ejup-pink/30 text-white border border-ejup-pink/30 hover:border-ejup-pink/50'
+                        ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-black'
+                        : 'bg-ejup-orange/20 hover:bg-ejup-orange/30 text-white border border-ejup-orange/30 hover:border-ejup-orange/50'
                     } font-semibold transition-all duration-300`}
                     onClick={handleAddToCart}
                   >
@@ -460,61 +596,8 @@ const CourseDetail = ({
                       </>
                     )}
                   </Button>
-                </div>
-              )}
-              
-              {hasProgress && isPurchased && (
-                <div className="mb-4 p-3 bg-zinc-800/50 rounded-lg">
-                  <div className="text-sm text-zinc-400 mb-1">Seu progresso:</div>
-                  <div className="text-sm">
-                    Última aula: Módulo {savedProgress?.moduleId}
-                  </div>
-                </div>
-              )}
-              
-              <div className="space-y-4 text-sm">
-                <div className="flex items-center">
-                  <div className="mr-3 text-ejup-cyan">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <span>{duration} de curso</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-3 text-ejup-cyan">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
-                    </svg>
-                  </div>
-                  <span>{modules.length} módulos</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-3 text-ejup-cyan">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                    </svg>
-                  </div>
-                  <span>{calculateTotalLessons(modules)} aulas</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-3 text-ejup-cyan">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                  </div>
-                  <span>Acesso online</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-3 text-ejup-cyan">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <span>Certificado de conclusão</span>
-                </div>
+                )}
               </div>
-            </div>
           </div>
         </div>
       </div>

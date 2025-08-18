@@ -179,26 +179,26 @@ const Checkout = () => {
   const renderStepIndicator = () => {
     return (
       <div className="flex items-center justify-center mb-8">
-        <div className={`flex flex-col items-center ${currentStep >= 1 ? 'text-ejup-pink' : 'text-zinc-500'}`}>
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-ejup-pink text-white' : 'bg-zinc-800 text-zinc-400'}`}>
+        <div className={`flex flex-col items-center ${currentStep >= 1 ? 'text-ejup-orange' : 'text-zinc-500'}`}>
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-ejup-orange text-white' : 'bg-zinc-800 text-zinc-400'}`}>
             <User className="h-6 w-6" />
           </div>
           <span className="text-sm mt-2 font-medium">Conta</span>
         </div>
         
-        <div className={`w-24 h-0.5 ${currentStep >= 2 ? 'bg-ejup-pink' : 'bg-zinc-700'} mx-4`}></div>
+        <div className={`w-24 h-0.5 ${currentStep >= 2 ? 'bg-ejup-orange' : 'bg-zinc-700'} mx-4`}></div>
         
-        <div className={`flex flex-col items-center ${currentStep >= 2 ? 'text-ejup-pink' : 'text-zinc-500'}`}>
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-ejup-pink text-white' : 'bg-zinc-800 text-zinc-400'}`}>
+        <div className={`flex flex-col items-center ${currentStep >= 2 ? 'text-ejup-orange' : 'text-zinc-500'}`}>
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-ejup-orange text-white' : 'bg-zinc-800 text-zinc-400'}`}>
             <MapPin className="h-6 w-6" />
           </div>
           <span className="text-sm mt-2 font-medium">Endereço de Faturamento</span>
         </div>
         
-        <div className={`w-24 h-0.5 ${currentStep >= 3 ? 'bg-ejup-pink' : 'bg-zinc-700'} mx-4`}></div>
+        <div className={`w-24 h-0.5 ${currentStep >= 3 ? 'bg-ejup-orange' : 'bg-zinc-700'} mx-4`}></div>
         
-        <div className={`flex flex-col items-center ${currentStep >= 3 ? 'text-ejup-pink' : 'text-zinc-500'}`}>
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-ejup-pink text-white' : 'bg-zinc-800 text-zinc-400'}`}>
+        <div className={`flex flex-col items-center ${currentStep >= 3 ? 'text-ejup-orange' : 'text-zinc-500'}`}>
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-ejup-orange text-white' : 'bg-zinc-800 text-zinc-400'}`}>
             <CardIcon className="h-6 w-6" />
           </div>
           <span className="text-sm mt-2 font-medium">Pagamento</span>
@@ -231,7 +231,7 @@ const Checkout = () => {
                 <Input id="login-password" name="password" type="password" placeholder="Sua senha" required value={formData.password} onChange={handleInputChange} />
               </div>
               
-              <Button type="button" className="w-full bg-ejup-pink hover:bg-ejup-pink/90" onClick={handleNextStep}>
+              <Button type="button" className="w-full bg-ejup-orange hover:bg-ejup-orange/90" onClick={handleNextStep}>
                 Continuar
               </Button>
               
@@ -296,7 +296,7 @@ const Checkout = () => {
                 <Input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirme sua senha" required value={formData.confirmPassword} onChange={handleInputChange} />
               </div>
               
-              <Button type="button" className="w-full bg-ejup-pink hover:bg-ejup-pink/90" onClick={handleNextStep}>
+              <Button type="button" className="w-full bg-ejup-orange hover:bg-ejup-orange/90" onClick={handleNextStep}>
                 Continuar
               </Button>
               
@@ -338,7 +338,7 @@ const Checkout = () => {
         <h2 className="text-xl font-semibold mb-4">Endereço de Faturamento</h2>
         <div className="space-y-6">
           <div className="flex items-center gap-2 text-sm text-zinc-400">
-            <FileText className="h-4 w-4 text-ejup-pink" />
+            <FileText className="h-4 w-4 text-ejup-orange" />
             <span>Informe seu endereço para emissão da nota fiscal</span>
           </div>
           
@@ -436,7 +436,7 @@ const Checkout = () => {
               <Button type="button" variant="outline" className="flex-1" onClick={handlePrevStep}>
                 Voltar
               </Button>
-              <Button type="button" className="flex-1 bg-ejup-pink hover:bg-ejup-pink/90" onClick={handleNextStep}>
+              <Button type="button" className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90" onClick={handleNextStep}>
                 Continuar para pagamento
               </Button>
             </div>
@@ -456,7 +456,7 @@ const Checkout = () => {
         <div className="mb-5 bg-zinc-900/50 rounded-lg p-3">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-medium flex items-center">
-              <Tag className="h-4 w-4 mr-1 text-ejup-pink" />
+              <Tag className="h-4 w-4 mr-1 text-ejup-orange" />
               Cupom de desconto
             </h3>
             
@@ -488,9 +488,9 @@ const Checkout = () => {
           </div>
           
           {appliedCoupon && (
-            <div className="mt-2 flex items-center justify-between bg-ejup-pink/10 p-2 rounded-md border border-ejup-pink/30">
+            <div className="mt-2 flex items-center justify-between bg-ejup-orange/10 p-2 rounded-md border border-ejup-orange/30">
               <div className="flex items-center">
-                <Check className="h-4 w-4 text-ejup-pink mr-2" />
+                <Check className="h-4 w-4 text-ejup-orange mr-2" />
                 <p className="text-sm font-medium">
                   {appliedCoupon.code} 
                   <span className="text-xs text-zinc-400 ml-2">
@@ -512,30 +512,30 @@ const Checkout = () => {
           <TabsList className="grid grid-cols-4 gap-1 bg-zinc-900 p-1 rounded-lg mb-4">
             <TabsTrigger 
               value="credit-card" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-pink/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
             >
-              <CreditCard className="h-5 w-5 text-ejup-pink mb-1" />
+              <CreditCard className="h-5 w-5 text-ejup-orange mb-1" />
               <span className="text-xs">Cartão</span>
             </TabsTrigger>
             <TabsTrigger 
               value="pix" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-pink/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
             >
-              <Key className="h-5 w-5 text-ejup-pink mb-1" />
+              <Key className="h-5 w-5 text-ejup-orange mb-1" />
               <span className="text-xs">PIX</span>
             </TabsTrigger>
             <TabsTrigger 
               value="qrcode" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-pink/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
             >
-              <QrCode className="h-5 w-5 text-ejup-pink mb-1" />
+              <QrCode className="h-5 w-5 text-ejup-orange mb-1" />
               <span className="text-xs">QR Code</span>
             </TabsTrigger>
             <TabsTrigger 
               value="bank-slip" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-pink/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
             >
-              <Landmark className="h-5 w-5 text-ejup-pink mb-1" />
+              <Landmark className="h-5 w-5 text-ejup-orange mb-1" />
               <span className="text-xs">Boleto</span>
             </TabsTrigger>
           </TabsList>
@@ -569,7 +569,7 @@ const Checkout = () => {
                   <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
                     Voltar
                   </Button>
-                  <Button type="submit" className="flex-1 bg-ejup-pink hover:bg-ejup-pink/90 h-9 text-sm" disabled={isProcessing}>
+                  <Button type="submit" className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
                     {isProcessing ? 'Processando...' : 'Confirmar pagamento'}
                   </Button>
                 </div>
@@ -592,7 +592,7 @@ const Checkout = () => {
                     <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
                       Voltar
                     </Button>
-                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-pink hover:bg-ejup-pink/90 h-9 text-sm" disabled={isProcessing}>
+                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
                       {isProcessing ? '...' : 'Confirmar'}
                     </Button>
                   </div>
@@ -613,7 +613,7 @@ const Checkout = () => {
                     <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
                       Voltar
                     </Button>
-                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-pink hover:bg-ejup-pink/90 h-9 text-sm" disabled={isProcessing}>
+                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
                       {isProcessing ? '...' : 'Confirmar'}
                     </Button>
                   </div>
@@ -634,7 +634,7 @@ const Checkout = () => {
                     <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
                       Voltar
                     </Button>
-                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-pink hover:bg-ejup-pink/90 h-9 text-sm" disabled={isProcessing}>
+                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
                       {isProcessing ? '...' : 'Gerar boleto'}
                     </Button>
                   </div>
@@ -680,7 +680,7 @@ const Checkout = () => {
                 <div className="ejup-card sticky top-24 w-full">
                   <div className="p-6">
                     <h2 className="text-xl font-semibold mb-4 flex items-center">
-                      <ShoppingCart className="h-5 w-5 mr-2 text-ejup-pink" />
+                      <ShoppingCart className="h-5 w-5 mr-2 text-ejup-orange" />
                       Resumo do pedido
                     </h2>
                     
@@ -714,7 +714,7 @@ const Checkout = () => {
                                 Digital
                               </span>
                             </div>
-                            <div className="font-semibold text-ejup-pink text-sm mt-1">
+                            <div className="font-semibold text-ejup-orange text-sm mt-1">
                               R$ {item.price.toFixed(2).replace('.', ',')}
                             </div>
                           </div>

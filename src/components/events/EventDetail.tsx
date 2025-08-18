@@ -165,7 +165,7 @@ const EventDetail = ({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
               <div className="bg-zinc-800/50 rounded-lg p-4">
                 <div className="flex items-center mb-2">
-                  <Calendar className="h-5 w-5 text-ejup-pink mr-2" />
+                  <Calendar className="h-5 w-5 text-ejup-orange mr-2" />
                   <span className="text-sm font-medium">Data</span>
                 </div>
                 <p className="text-zinc-300">{date}</p>
@@ -213,8 +213,8 @@ const EventDetail = ({
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                   {topics.map((topic, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="mr-2 mt-0.5 bg-ejup-pink/20 rounded-full p-0.5">
-                        <CheckIcon className="h-4 w-4 text-ejup-pink" />
+                      <div className="mr-2 mt-0.5 bg-ejup-orange/20 rounded-full p-0.5">
+                        <CheckIcon className="h-4 w-4 text-ejup-orange" />
                       </div>
                       <span className="text-zinc-300 text-sm">{topic}</span>
                     </li>
@@ -243,9 +243,9 @@ const EventDetail = ({
                 
                 <div className="space-y-4">
                   {agenda.map((item, index) => (
-                    <div key={index} className="flex items-start border-l-2 border-ejup-pink/30 pl-4 pb-4">
+                    <div key={index} className="flex items-start border-l-2 border-ejup-orange/30 pl-4 pb-4">
                       <div className="min-w-0 flex-1">
-                        <div className="text-sm font-medium text-ejup-pink mb-1">{item.time}</div>
+                        <div className="text-sm font-medium text-ejup-orange mb-1">{item.time}</div>
                         <div className="text-zinc-300">{item.activity}</div>
                       </div>
                     </div>
@@ -278,7 +278,7 @@ const EventDetail = ({
             <div className="aspect-video bg-zinc-900 relative overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Fallback para caso o vídeo não carregue */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-ejup-pink/30 via-ejup-cyan/20 to-ejup-orange/30 z-0">
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-ejup-orange/30 via-ejup-cyan/20 to-ejup-orange/30 z-0">
                   <div className="w-24 h-24 rounded-full bg-ejup-cyan flex items-center justify-center text-2xl font-medium text-black mb-3">
                     {speaker.initials}
                   </div>
@@ -324,7 +324,7 @@ const EventDetail = ({
                 className={`w-full mb-4 ${
                   isInCart || showSuccess
                     ? 'bg-ejup-cyan hover:bg-ejup-cyan/90'
-                    : 'bg-ejup-pink hover:bg-ejup-pink/90'
+                    : 'bg-ejup-orange hover:bg-ejup-orange/90'
                 } text-white`}
                 onClick={isFree ? () => setShowRegistrationForm(true) : handleAddToCart}
               >
@@ -351,7 +351,7 @@ const EventDetail = ({
               {/* Informações do evento */}
               <div className="space-y-3 text-sm">
                 <div className="flex items-center text-zinc-300">
-                  <Calendar className="h-4 w-4 mr-3 text-ejup-pink" />
+                  <Calendar className="h-4 w-4 mr-3 text-ejup-orange" />
                   <span>{date}</span>
                 </div>
                 <div className="flex items-center text-zinc-300">

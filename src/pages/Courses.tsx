@@ -5,28 +5,59 @@ import Footer from '@/components/layout/Footer';
 import CourseCard from '@/components/courses/CourseCard';
 import SearchAndFilter from '@/components/ui/SearchAndFilter';
 import { X } from 'lucide-react';
-import { getAllCourses, getCoursesBySchool, getSchoolById, CourseData } from '@/utils/courseData';
+import { getAllCourses, getCoursesBySchool, getSchoolById, getAllSchools, CourseData } from '@/utils/courseData';
 
-const filters = [
-  {
-    id: 'category',
-    name: 'Categoria',
-    options: [
-      { id: 'empresarial', name: 'Direito Empresarial' },
-      { id: 'digital', name: 'Direito Digital' },
-      { id: 'resolucao', name: 'Resolução de Conflitos' },
-      { id: 'trabalhista', name: 'Direito Trabalhista' },
-      { id: 'tributario', name: 'Direito Tributário' },
-    ],
-  }
-];
+// Mapeamento de categorias por escola
+const categoriesBySchool = {
+  'direito': [
+    { id: 'empresarial', name: 'Direito Empresarial' },
+    { id: 'trabalhista', name: 'Direito Trabalhista' },
+    { id: 'tributario', name: 'Direito Tributário' },
+    { id: 'digital', name: 'Direito Digital' },
+    { id: 'resolucao', name: 'Resolução de Conflitos' },
+  ],
+  'power-skills': [
+    { id: 'resolucao', name: 'Resolução de Conflitos' },
+  ],
+  'gestao-tech': [
+    { id: 'digital', name: 'Direito Digital' },
+    { id: 'empresarial', name: 'Direito Empresarial' },
+    { id: 'tributario', name: 'Direito Tributário' },
+  ],
+};
 
 const Courses = () => {
   const { schoolId } = useParams<{ schoolId?: string }>();
   const [baseCourses, setBaseCourses] = useState<CourseData[]>([]);
   const [filteredCourses, setFilteredCourses] = useState<CourseData[]>([]);
-  const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>({});
+  const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
   const [currentSchool, setCurrentSchool] = useState<any>(null);
+  
+  // Função para gerar filtros dinamicamente
+  const getDynamicFilters = () => {
+    const filters = [];
+    
+    // Se não estamos em uma escola específica, mostrar seletor de escola
+    if (!schoolId) {
+      filters.push({
+        id: 'school',
+        name: 'Escolas da EJUP',
+        options: getAllSchools().map(school => ({ id: school.id, name: school.name })),
+      });
+    }
+    
+    // Se uma escola estiver selecionada (via URL ou filtro), adicionar categorias correspondentes
+    const selectedSchool = schoolId || activeFilters.school;
+    if (selectedSchool && categoriesBySchool[selectedSchool as keyof typeof categoriesBySchool]) {
+      filters.push({
+        id: 'category',
+        name: 'Categoria',
+        options: categoriesBySchool[selectedSchool as keyof typeof categoriesBySchool],
+      });
+    }
+    
+    return filters;
+  };
   
   // Determinar quais cursos exibir baseado na escola ou mostrar todos
   useEffect(() => {
@@ -65,67 +96,56 @@ const Courses = () => {
     const newFilters = { ...activeFilters };
     
     if (value && value !== 'all') {
-      if (!newFilters[filterId]) {
-        newFilters[filterId] = [];
-      }
-      // Toggle the filter: if it's already selected, remove it; if not, add it
-      if (newFilters[filterId].includes(value)) {
-        newFilters[filterId] = newFilters[filterId].filter(v => v !== value);
-        if (newFilters[filterId].length === 0) {
-          delete newFilters[filterId];
-        }
-      } else {
-        newFilters[filterId] = [...newFilters[filterId], value];
+      newFilters[filterId] = value;
+      
+      // Se mudou a escola, limpar o filtro de categoria e atualizar cursos base
+      if (filterId === 'school') {
+        delete newFilters.category;
+        // Atualizar cursos base para a escola selecionada
+        const schoolCourses = getCoursesBySchool(value);
+        setBaseCourses(schoolCourses);
+        setFilteredCourses(schoolCourses);
       }
     } else {
-      // Clear all filters for this category
       delete newFilters[filterId];
+      
+      // Se removeu o filtro de escola, voltar para todos os cursos
+      if (filterId === 'school') {
+        const allCourses = getAllCourses();
+        setBaseCourses(allCourses);
+        setFilteredCourses(allCourses);
+      }
     }
     
     setActiveFilters(newFilters);
     
-    // Apply filters
-    let filtered = [...baseCourses];
-    
-    Object.entries(newFilters).forEach(([key, values]) => {
-      switch (key) {
-        case 'category':
-          filtered = filtered.filter(course => values.includes(course.category));
-          break;
-      }
-    });
-    
-    setFilteredCourses(filtered);
-  };
-
-  const removeFilter = (filterId: string, value: string) => {
-    const newFilters = { ...activeFilters };
-    if (newFilters[filterId]) {
-      newFilters[filterId] = newFilters[filterId].filter(v => v !== value);
-      if (newFilters[filterId].length === 0) {
-        delete newFilters[filterId];
-      }
+    // Apply filters (só aplicar se não mudou escola, pois escola já foi aplicada acima)
+    if (filterId !== 'school') {
+      let filtered = [...baseCourses];
+      
+      Object.entries(newFilters).forEach(([key, value]) => {
+        switch (key) {
+          case 'category':
+            filtered = filtered.filter(course => course.category === value);
+            break;
+          case 'school':
+            // Escola já foi aplicada na mudança de baseCourses
+            break;
+        }
+      });
+      
+      setFilteredCourses(filtered);
     }
-    setActiveFilters(newFilters);
-    
-    // Apply filters
-    let filtered = [...baseCourses];
-    
-    Object.entries(newFilters).forEach(([key, values]) => {
-      switch (key) {
-        case 'category':
-          filtered = filtered.filter(course => values.includes(course.category));
-          break;
-      }
-    });
-    
-    setFilteredCourses(filtered);
   };
 
+  const removeFilter = (filterId: string) => {
+    handleFilterChange(filterId, 'all');
+  };
 
 
   const getFilterDisplayName = (filterId: string, value: string) => {
-    const filter = filters.find(f => f.id === filterId);
+    const dynamicFilters = getDynamicFilters();
+    const filter = dynamicFilters.find(f => f.id === filterId);
     const option = filter?.options.find(o => o.id === value);
     return option?.name || value;
   };
@@ -150,7 +170,7 @@ const Courses = () => {
           <SearchAndFilter 
             onSearch={handleSearch}
             onFilterChange={handleFilterChange}
-            filters={filters}
+            filters={getDynamicFilters()}
             activeFilters={activeFilters}
           />
           
@@ -159,28 +179,26 @@ const Courses = () => {
             <div className="mb-6">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm text-zinc-400">Filtros ativos:</span>
-                {Object.entries(activeFilters).map(([filterId, values]) => 
-                  values.map(value => (
-                    <span 
-                      key={`${filterId}-${value}`}
-                      className="inline-flex items-center gap-1 text-sm text-ejup-pink"
+                {Object.entries(activeFilters).map(([filterId, value]) => (
+                  <span 
+                    key={`${filterId}-${value}`}
+                    className="inline-flex items-center gap-1 text-sm text-ejup-orange"
+                  >
+                    {getFilterDisplayName(filterId, value)}
+                    <button
+                      onClick={() => removeFilter(filterId)}
+                      className="ml-1 hover:text-white transition-colors"
                     >
-                      {getFilterDisplayName(filterId, value)}
-                      <button
-                        onClick={() => removeFilter(filterId, value)}
-                        className="ml-1 hover:text-white transition-colors"
-                      >
-                        <X className="h-3 w-3" />
-                      </button>
-                    </span>
-                  ))
-                ).flat()}
+                      <X className="h-3 w-3" />
+                    </button>
+                  </span>
+                ))}
               </div>
             </div>
           )}
           
           {filteredCourses.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
               {filteredCourses.map((course) => (
                 <CourseCard 
                   key={course.id}

@@ -65,7 +65,7 @@ const ColumnSponsors = ({ sponsors, title = "Patrocinadores" }: ColumnSponsorsPr
       <div className="mt-4 text-center">
         <Link
           to="/creator"
-          className="text-xs text-ejup-pink hover:underline"
+          className="text-xs text-ejup-orange hover:underline"
         >
           Saiba como patrocinar
         </Link>

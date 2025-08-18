@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import CartDrawer from '@/components/cart/CartDrawer';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 // Import pages
 import Index from './pages/Index';
@@ -20,6 +21,9 @@ import Checkout from "./pages/Checkout";
 import WriteArticle from "./pages/WriteArticle";
 import ArticleDetail from "./pages/ArticleDetail";
 import AccountSettings from "./pages/AccountSettings";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import FAQ from "./pages/FAQ";
 
 // Admin Pages
 import AdminLogin from "./pages/Admin/Login";
@@ -39,6 +43,9 @@ import ContentHub from "./pages/ContentHub";
 import InstructorCourseView from "./pages/Instructor/CourseView";
 
 function App() {
+  // Hook para scroll to top em mudanças de rota
+  useScrollToTop();
+
   return (
     <div className="App">
       <Routes>
@@ -50,7 +57,7 @@ function App() {
         
         {/* School Routes */}
         <Route path="/schools/:schoolId" element={<Courses />} />
-        <Route path="/content" element={<ContentHub />} />
+        <Route path="/content" element={<Navigate to="/content/articles" replace />} />
         <Route path="/content/articles" element={<AllArticles />} />
         <Route path="/content/podcast" element={<AllPodcasts />} />
         <Route path="/content/blog/:id" element={<ArticleDetail />} />
@@ -58,6 +65,9 @@ function App() {
         <Route path="/creator" element={<Creator />} />
         <Route path="/login" element={<Login />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/faq" element={<FAQ />} />
         
         {/* Internal Routes */}
         <Route path="/dashboard" element={<Navigate to="/my-courses" replace />} />

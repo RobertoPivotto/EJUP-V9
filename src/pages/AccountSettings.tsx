@@ -144,50 +144,83 @@ const AccountSettings = () => {
   return (
     <div className="min-h-screen bg-ejup-darkBg">
       <InternalHeader />
-      <main className="pt-20">
-        <div className="ejup-container py-12">
-          <div className="mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Configurações da Conta</h1>
-            <p className="text-zinc-400">
+      <main className="pt-6 md:pt-20">
+        <div className="ejup-container py-4 md:py-12">
+          <div className="mb-6 md:mb-12">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4">Configurações da Conta</h1>
+            <p className="text-sm md:text-base text-zinc-400">
               Gerencie suas preferências e informações pessoais
             </p>
           </div>
 
-          <div className="bg-zinc-900/70 rounded-xl border border-zinc-800 p-6">
+          <div className="bg-zinc-900/70 rounded-xl border border-zinc-800 p-4 md:p-6">
             <Tabs defaultValue="profile" className="w-full">
-              <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-8">
+              {/* Layout mobile com duas linhas e desktop com uma linha */}
+              <div className="md:hidden mb-12">
+                <div className="grid grid-cols-3 gap-2 mb-14">
+                  <TabsList className="col-span-3 grid grid-cols-3 gap-1 bg-transparent p-0 rounded-lg">
+                    <TabsTrigger value="profile" className="flex flex-col items-center gap-2 py-4 px-1 text-xs rounded-md min-h-[68px] bg-zinc-800/30 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-ejup-orange data-[state=active]:shadow-none border-0 ring-0 focus-visible:ring-0">
+                      <UserCircle size={18} />
+                      <span>Perfil</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="address" className="flex flex-col items-center gap-2 py-4 px-1 text-xs rounded-md min-h-[68px] bg-zinc-800/30 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-ejup-orange data-[state=active]:shadow-none border-0 ring-0 focus-visible:ring-0">
+                      <MapPin size={18} />
+                      <span>Endereço</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="security" className="flex flex-col items-center gap-2 py-4 px-1 text-xs rounded-md min-h-[68px] bg-zinc-800/30 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-ejup-orange data-[state=active]:shadow-none border-0 ring-0 focus-visible:ring-0">
+                      <Shield size={18} />
+                      <span>Segurança</span>
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <TabsList className="col-span-2 grid grid-cols-2 gap-1 bg-transparent p-0 rounded-lg">
+                    <TabsTrigger value="payment" className="flex flex-col items-center gap-2 py-4 px-1 text-xs rounded-md min-h-[68px] bg-zinc-800/30 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-ejup-orange data-[state=active]:shadow-none border-0 ring-0 focus-visible:ring-0">
+                      <CreditCard size={18} />
+                      <span>Pagamento</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="notifications" className="flex flex-col items-center gap-2 py-4 px-1 text-xs rounded-md min-h-[68px] bg-zinc-800/30 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-ejup-orange data-[state=active]:shadow-none border-0 ring-0 focus-visible:ring-0">
+                      <Bell size={18} />
+                      <span>Notificações</span>
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
+              </div>
+
+              {/* Layout desktop */}
+              <TabsList className="hidden md:grid md:grid-cols-5 gap-2 mb-8">
                 <TabsTrigger value="profile" className="flex items-center gap-2">
                   <UserCircle size={16} />
-                  <span className="hidden md:inline">Perfil</span>
+                  <span>Perfil</span>
                 </TabsTrigger>
                 <TabsTrigger value="address" className="flex items-center gap-2">
                   <MapPin size={16} />
-                  <span className="hidden md:inline">Endereço</span>
+                  <span>Endereço</span>
                 </TabsTrigger>
                 <TabsTrigger value="security" className="flex items-center gap-2">
                   <Shield size={16} />
-                  <span className="hidden md:inline">Segurança</span>
+                  <span>Segurança</span>
                 </TabsTrigger>
                 <TabsTrigger value="payment" className="flex items-center gap-2">
                   <CreditCard size={16} />
-                  <span className="hidden md:inline">Pagamento</span>
+                  <span>Pagamento</span>
                 </TabsTrigger>
                 <TabsTrigger value="notifications" className="flex items-center gap-2">
                   <Bell size={16} />
-                  <span className="hidden md:inline">Notificações</span>
+                  <span>Notificações</span>
                 </TabsTrigger>
               </TabsList>
 
               {/* Aba Perfil */}
-              <TabsContent value="profile">
+              <TabsContent value="profile" className="mt-0">
                 <Card className="bg-zinc-800/30 border-zinc-700">
-                                      <CardHeader>
-                      <CardTitle>Informações Pessoais</CardTitle>
-                      <CardDescription>
-                        Atualize suas informações pessoais básicas
-                      </CardDescription>
-                    </CardHeader>
-                  <CardContent className="space-y-6">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-lg">Informações Pessoais</CardTitle>
+                    <CardDescription className="text-sm">
+                      Atualize suas informações pessoais básicas
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4 md:space-y-6 pt-0">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Nome Completo *</Label>
@@ -244,7 +277,7 @@ const AccountSettings = () => {
                     <Button 
                       onClick={handleSaveProfile}
                       disabled={isLoading}
-                      className="bg-ejup-pink hover:bg-ejup-pink/90"
+                      className="bg-ejup-orange hover:bg-ejup-orange/90"
                     >
                       {isLoading ? 'Salvando...' : 'Salvar Alterações'}
                     </Button>
@@ -253,7 +286,7 @@ const AccountSettings = () => {
               </TabsContent>
 
               {/* Aba Endereço */}
-              <TabsContent value="address">
+              <TabsContent value="address" className="mt-0">
                 <Card className="bg-zinc-800/30 border-zinc-700">
                   <CardHeader>
                     <CardTitle>Endereço</CardTitle>
@@ -335,7 +368,7 @@ const AccountSettings = () => {
                     <Button 
                       onClick={handleSaveProfile}
                       disabled={isLoading}
-                      className="bg-ejup-pink hover:bg-ejup-pink/90"
+                      className="bg-ejup-orange hover:bg-ejup-orange/90"
                     >
                       {isLoading ? 'Salvando...' : 'Salvar Endereço'}
                     </Button>
@@ -389,7 +422,7 @@ const AccountSettings = () => {
                       <Button 
                         onClick={handleChangePassword}
                         disabled={isLoading || !formData.currentPassword || !formData.newPassword}
-                        className="bg-ejup-pink hover:bg-ejup-pink/90"
+                        className="bg-ejup-orange hover:bg-ejup-orange/90"
                       >
                         {isLoading ? 'Alterando...' : 'Alterar Senha'}
                       </Button>
@@ -430,7 +463,7 @@ const AccountSettings = () => {
               </TabsContent>
 
               {/* Aba Pagamento */}
-              <TabsContent value="payment">
+              <TabsContent value="payment" className="mt-0">
                 <Card className="bg-zinc-800/30 border-zinc-700">
                   <CardHeader>
                     <CardTitle>Métodos de Pagamento</CardTitle>
@@ -442,11 +475,11 @@ const AccountSettings = () => {
                     <div className="bg-zinc-800/80 border border-zinc-700 rounded-lg p-4">
                       <div className="flex justify-between items-center mb-4">
                         <div className="flex items-center gap-2">
-                          <CreditCard className="h-5 w-5 text-ejup-pink" />
+                          <CreditCard className="h-5 w-5 text-ejup-orange" />
                           <p className="font-medium">Cartão de Crédito Principal</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Badge variant="secondary" className="bg-ejup-pink/20 border-ejup-pink/20 text-ejup-pink">
+                          <Badge variant="secondary" className="bg-ejup-orange/20 border-ejup-orange/20 text-ejup-orange">
                             Padrão
                           </Badge>
                           <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-red-400">
@@ -499,7 +532,7 @@ const AccountSettings = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="bg-ejup-pink hover:bg-ejup-pink/90">
+                    <Button className="bg-ejup-orange hover:bg-ejup-orange/90">
                       Adicionar Cartão
                     </Button>
                   </CardFooter>
@@ -507,7 +540,7 @@ const AccountSettings = () => {
               </TabsContent>
 
               {/* Aba Notificações */}
-              <TabsContent value="notifications">
+              <TabsContent value="notifications" className="mt-0">
                 <Card className="bg-zinc-800/30 border-zinc-700">
                   <CardHeader>
                     <CardTitle>Preferências de Notificação</CardTitle>
@@ -581,7 +614,7 @@ const AccountSettings = () => {
                     <Button 
                       onClick={handleSaveNotifications}
                       disabled={isLoading}
-                      className="bg-ejup-pink hover:bg-ejup-pink/90"
+                      className="bg-ejup-orange hover:bg-ejup-orange/90"
                     >
                       {isLoading ? 'Salvando...' : 'Salvar Preferências'}
                     </Button>

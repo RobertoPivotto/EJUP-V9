@@ -49,7 +49,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       {/* Gradiente de fundo avançado */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -inset-[10%] bg-gradient-to-br from-ejup-pink/30 via-ejup-cyan/20 to-ejup-orange/20 opacity-30 blur-3xl animate-slow-spin"></div>
+        <div className="absolute -inset-[10%] bg-gradient-to-br from-ejup-orange/30 via-ejup-cyan/20 to-ejup-orange/20 opacity-30 blur-3xl animate-slow-spin"></div>
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_70%)]"></div>
       </div>
@@ -65,12 +65,12 @@ export default function AdminLogin() {
         
         {/* Card com efeito de borda brilhante */}
         <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-700"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-700"></div>
           
           <Card className="relative bg-zinc-900/90 backdrop-blur-xl border-zinc-800 shadow-2xl rounded-xl">
             <CardHeader className="space-y-1 text-center pb-2">
               <div className="flex justify-center mb-1">
-                <div className="bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange h-1 w-16 rounded-full"></div>
+                <div className="bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange h-1 w-16 rounded-full"></div>
               </div>
               <CardTitle className="text-2xl font-bold bg-gradient-to-r from-white to-zinc-300 text-transparent bg-clip-text">Área Administrativa</CardTitle>
               <CardDescription className="text-zinc-400">

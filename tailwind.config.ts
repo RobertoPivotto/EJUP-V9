@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
+	
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -65,8 +65,8 @@ export default {
 				// EJUP brand colors
 				ejup: {
 					pink: '#FF46B9',
-					cyan: '#26D0CE',
-					orange: '#FF864A',
+					cyan: '#ffffff',
+					orange: '#CC5A28',
 					purple: '#8A33F1',
 					darkBg: '#18181B',
 					darkCard: '#27272A',
@@ -81,6 +81,7 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				heading: ['Poppins', 'sans-serif'],
+				modern: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

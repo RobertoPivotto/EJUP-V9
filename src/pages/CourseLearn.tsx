@@ -588,10 +588,11 @@ const CourseLearn = () => {
           </div>
           
           <button 
-            className="md:hidden text-zinc-400 hover:text-white"
+            className="md:hidden text-zinc-400 hover:text-white flex items-center gap-1 px-3 py-2 rounded-md transition-colors"
             onClick={() => setIsSidebarOpen(true)}
           >
-            <Menu className="h-6 w-6" />
+            <span className="text-sm font-medium">Módulos</span>
+            <span className="text-ejup-orange font-bold">+</span>
           </button>
         </div>
       </header>
@@ -705,7 +706,7 @@ const CourseLearn = () => {
                           <ul className="space-y-2">
                             {currentLesson.keyPoints.map((point, index) => (
                               <li key={index} className="flex">
-                                <CheckIcon className="h-5 w-5 text-ejup-pink mr-2 shrink-0" />
+                                <CheckIcon className="h-5 w-5 text-ejup-orange mr-2 shrink-0" />
                                 <span>{point}</span>
                               </li>
                             ))}
@@ -797,52 +798,25 @@ const CourseLearn = () => {
                 )}
               </Tabs>
               
-              {/* Lesson Navigation Footer */}
-              <div className="mt-8 flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <Button variant="outline" asChild>
-                    <Link to={`/my-courses`}>
-                      <ArrowLeft className="mr-2 h-4 w-4" />
-                      Voltar para meus cursos
-                    </Link>
-                  </Button>
-                  
-                  {!currentLesson.completed && (
-                    <Button 
-                      variant="outline" 
-                      onClick={markLessonAsCompleted}
-                      className="border-emerald-600 text-emerald-400 hover:bg-emerald-600/10"
-                    >
-                      <CheckCircle className="mr-2 h-4 w-4" />
-                      Marcar como concluída
-                    </Button>
-                  )}
-                </div>
+              {/* Lesson Action Footer */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:justify-between sm:items-center">
+                <Button variant="outline" asChild>
+                  <Link to={`/my-courses`}>
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Voltar para meus cursos
+                  </Link>
+                </Button>
                 
-                <div className="flex items-center gap-2">
-                  {previousLesson && (
-                    <Button variant="outline" onClick={handlePreviousLesson}>
-                      <ChevronLeft className="mr-2 h-4 w-4" />
-                      {previousLesson.title.length > 20 
-                        ? `${previousLesson.title.substring(0, 20)}...` 
-                        : previousLesson.title}
-                    </Button>
-                  )}
-                  
-                  {nextLesson ? (
-                    <Button onClick={handleNextLesson} className="bg-ejup-pink hover:bg-ejup-pink/90">
-                      {nextLesson.title.length > 20 
-                        ? `${nextLesson.title.substring(0, 20)}...` 
-                        : nextLesson.title}
-                      <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  ) : (
-                    <Button className="bg-emerald-600 hover:bg-emerald-700">
-                      Concluir curso
-                      <CheckCircle className="ml-2 h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
+                {!currentLesson.completed && (
+                  <Button 
+                    variant="outline" 
+                    onClick={markLessonAsCompleted}
+                    className="border-emerald-600 text-emerald-400 hover:bg-emerald-600/10"
+                  >
+                    <CheckCircle className="mr-2 h-4 w-4" />
+                    Marcar como concluída
+                  </Button>
+                )}
               </div>
             </div>
           ) : (

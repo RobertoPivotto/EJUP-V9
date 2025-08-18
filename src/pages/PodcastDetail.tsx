@@ -238,7 +238,7 @@ const PodcastDetail = () => {
                       </div>
                       <div>
                         <div className="font-medium text-white">{guest}</div>
-                        <div className="text-sm text-zinc-400">{podcast.guestsRoles[index] || 'Especialista'}</div>
+                        <div className="text-sm text-orange-700">{podcast.guestsRoles[index] || 'Especialista'}</div>
                       </div>
                     </div>
                   ))}

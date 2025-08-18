@@ -177,7 +177,7 @@ const Dashboard = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {getVisibleNews().map((news) => (
-              <Card key={news.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-pink/50 transition-all overflow-hidden flex flex-col">
+              <Card key={news.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-orange/50 transition-all overflow-hidden flex flex-col">
                 <div className="relative h-32">
                   <img 
                     src={news.image} 
@@ -188,7 +188,7 @@ const Dashboard = () => {
                     <Badge 
                       className={`text-xs ${
                         news.category === 'EJUP' 
-                          ? 'bg-ejup-pink text-white' 
+                          ? 'bg-ejup-orange text-white' 
                           : 'bg-ejup-cyan text-black'
                       }`}
                     >
@@ -200,7 +200,7 @@ const Dashboard = () => {
                   <h3 className="font-semibold text-sm mb-3 line-clamp-2 flex-grow">{news.title}</h3>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-xs text-zinc-400">{news.date}</span>
-                    <button className="text-ejup-pink text-xs hover:underline">
+                    <button className="text-ejup-orange text-xs hover:underline">
                       Leia mais
                     </button>
                   </div>
@@ -222,7 +222,7 @@ const Dashboard = () => {
               />
               <div className="absolute bottom-0 left-0 p-8 z-20">
                 <div className="flex gap-2 mb-3">
-                  <Badge className="bg-ejup-pink text-white">DESTACADO</Badge>
+                  <Badge className="bg-ejup-orange text-white">DESTACADO</Badge>
                   <Badge variant="outline" className="border-ejup-cyan text-ejup-cyan bg-black/40">
                     CAAP
                   </Badge>
@@ -245,7 +245,7 @@ const Dashboard = () => {
           <h2 className="text-2xl font-bold mb-6">Continue Assistindo</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {continueCourses.map((course) => (
-              <Card key={course.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-pink/50 transition-all overflow-hidden flex flex-col">
+              <Card key={course.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-orange/50 transition-all overflow-hidden flex flex-col">
                 <div className="relative">
                   <img 
                     src={course.image} 
@@ -253,7 +253,7 @@ const Dashboard = () => {
                     className="w-full h-40 object-cover"
                   />
                   <div className="absolute bottom-0 left-0 w-full h-1 bg-zinc-700">
-                    <div className="bg-ejup-pink h-1" style={{ width: `${course.progress}%` }}></div>
+                    <div className="bg-ejup-orange h-1" style={{ width: `${course.progress}%` }}></div>
                   </div>
                 </div>
                 <CardContent className="p-4 flex flex-col flex-grow">
@@ -266,10 +266,15 @@ const Dashboard = () => {
                   <p className="text-sm text-zinc-400 mb-4">{course.module} | {course.lesson}</p>
                   <Link 
                     to={`/courses/${course.id}/learn?module=${course.moduleId}&lesson=${course.lessonId}&t=${course.lastPosition}`}
-                    className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-pink hover:border-ejup-pink text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
+                    className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-orange hover:border-ejup-orange text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
                   >
-                    <FiPlay size={14} />
-                    Continuar
+                    <span className="md:hidden flex items-center gap-2">
+                      <FiPlay size={14} />
+                      Continuar
+                    </span>
+                    <span className="hidden md:inline">
+                      Acessar Curso
+                    </span>
                   </Link>
                 </CardContent>
               </Card>
@@ -282,7 +287,7 @@ const Dashboard = () => {
           <h2 className="text-2xl font-bold mb-6">Recomendados para Você</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {recommendedCourses.map((course) => (
-              <Card key={course.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-pink/50 transition-all overflow-hidden flex flex-col">
+              <Card key={course.id} className="bg-zinc-800/50 border-zinc-700 hover:border-ejup-orange/50 transition-all overflow-hidden flex flex-col">
                 <div className="relative">
                   <img 
                     src={course.image} 
@@ -309,7 +314,7 @@ const Dashboard = () => {
                   </div>
                   <Link 
                     to={`/courses/${course.id}`}
-                    className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-pink hover:border-ejup-pink text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
+                    className="border border-zinc-600 bg-zinc-800/50 hover:bg-ejup-orange hover:border-ejup-orange text-white font-medium rounded-lg px-6 py-2 transition-all flex items-center justify-center gap-2 mt-auto w-full text-sm no-underline"
                   >
                     <FiBook size={14} />
                     Ver Curso

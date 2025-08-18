@@ -256,7 +256,7 @@ const Events = () => {
               {filteredEvents.map((event) => (
                 <div key={event.id} className="relative w-full group h-full">
                   {/* Efeito de brilho - atrás do card */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-pink via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                   
                   <div className="relative bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col hover:scale-[1.02] transition-all duration-300">
                     {/* Imagem do evento */}
@@ -329,7 +329,7 @@ const Events = () => {
                         
                         {/* Informações do palestrante com altura fixa */}
                         <div className="flex items-center mb-4 h-12">
-                          <div className="w-10 h-10 rounded-full bg-ejup-pink flex items-center justify-center text-sm font-medium text-white mr-3">
+                          <div className="w-10 h-10 rounded-full bg-ejup-orange flex items-center justify-center text-sm font-medium text-white mr-3">
                             {event.speakerInitials}
                           </div>
                           <div className="min-w-0 flex-1">
@@ -366,7 +366,7 @@ const Events = () => {
                         
                         <div className="grid grid-cols-1 gap-4">
                           {!event.isPast ? (
-                            <Button className="w-full bg-ejup-pink hover:bg-ejup-pink/90 text-white border-0 py-6">
+                            <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white border-0 py-6">
                               <span className="text-base">
                                 {event.isFree ? 'Inscrever-se Grátis' : 'Adquirir Ingresso'}
                               </span>

@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import ContentFilter from '@/components/content/ContentFilter';
+import FilteredTags from '@/components/content/FilteredTags';
 import { getPublishedPodcasts } from '@/utils/podcastData';
 
 const AllPodcasts = () => {
@@ -42,6 +43,17 @@ const AllPodcasts = () => {
     });
   };
 
+  // Handler for removing individual topics
+  const handleRemoveTopic = (topicToRemove: string) => {
+    setSelectedTopics(prev => prev.filter(topic => topic !== topicToRemove));
+  };
+
+  // Handler for clearing all filters
+  const handleClearAllFilters = () => {
+    setSelectedTopics([]);
+    setSearchTerm('');
+  };
+
   return (
     <div className="min-h-screen bg-ejup-darkBg">
       <Navbar />
@@ -58,7 +70,7 @@ const AllPodcasts = () => {
             </p>
             <div className="mt-4">
               <Button variant="outline" className="border-ejup-orange/50 text-ejup-orange hover:bg-ejup-orange/10" asChild>
-                <Link to="/content">
+                <Link to="/content/articles">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Ver todo o conteúdo
                 </Link>
@@ -72,6 +84,13 @@ const AllPodcasts = () => {
             onFilterChange={setSelectedTopics}
             onSearchChange={setSearchTerm}
             accentColor="ejup-orange"
+          />
+          
+          {/* Filtered Tags - Mobile only */}
+          <FilteredTags
+            selectedTopics={selectedTopics}
+            onRemoveTopic={handleRemoveTopic}
+            onClearAll={handleClearAllFilters}
           />
 
           {/* Episodes Grid */}

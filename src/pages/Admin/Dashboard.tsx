@@ -107,7 +107,7 @@ export default function AdminDashboard() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-r from-ejup-pink/5 via-ejup-cyan/10 to-ejup-orange/5 p-0.5 rounded-xl">
+        <div className="bg-gradient-to-r from-ejup-orange/5 via-ejup-cyan/10 to-ejup-orange/5 p-0.5 rounded-xl">
           <div className="bg-zinc-900/70 backdrop-blur-sm rounded-lg p-6">
             <h2 className="text-lg font-medium text-white mb-4 flex items-center gap-2">
               <FiTrendingUp className="text-ejup-cyan" /> 

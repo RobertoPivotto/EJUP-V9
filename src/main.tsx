@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
 import { CartProvider } from "./lib/CartContext";
+
 import { Toaster } from "@/components/ui/sonner";
 
 // Importar sistema de tratamento de erros

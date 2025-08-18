@@ -11,7 +11,7 @@ export const schools: School[] = [
     id: 'direito',
     name: 'Escola de Direito',
     description: 'Cursos focados em áreas tradicionais e especializadas do Direito',
-    color: 'ejup-pink'
+    color: 'ejup-orange'
   },
   {
     id: 'power-skills',
@@ -96,9 +96,127 @@ export const coursesDatabase: CourseData[] = [
     category: 'empresarial',
     modalidade: 'online',
     schools: ['direito', 'gestao-tech'], // Direito empresarial + gestão jurídica
-    imageBg: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-cyan/30',
+    imageBg: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-cyan/30',
     image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-    price: 297
+    price: 297,
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    objectives: [
+      'Dominar os fundamentos do direito contratual empresarial',
+      'Elaborar contratos juridicamente sólidos e eficientes',
+      'Identificar e mitigar riscos contratuais específicos',
+      'Aplicar as melhores práticas do mercado corporativo',
+      'Desenvolver habilidades de negociação contratual',
+      'Adaptar contratos às necessidades específicas de cada negócio',
+      'Compreender as implicações legais de cada cláusula',
+      'Implementar sistemas de gestão contratual eficazes'
+    ],
+    moduleDetails: [
+      {
+        id: 1,
+        title: 'Fundamentos da Contratação Empresarial',
+        duration: '6h 30min',
+        lessons: [
+          { title: 'Princípios básicos do direito contratual', duration: '25 min' },
+          { title: 'Elementos essenciais dos contratos', duration: '30 min' },
+          { title: 'Autonomia da vontade vs função social', duration: '28 min' },
+          { title: 'Boa-fé objetiva e responsabilidade contratual', duration: '22 min' },
+          { title: 'Exercícios práticos - Módulo 1', duration: '45 min' },
+          { title: 'Estudo de caso: Análise de contrato real', duration: '1h 30min' }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Estrutura e Redação Contratual',
+        duration: '8h 15min',
+        lessons: [
+          { title: 'Anatomia de um contrato empresarial', duration: '35 min' },
+          { title: 'Linguagem jurídica clara e objetiva', duration: '30 min' },
+          { title: 'Cláusulas padrão vs específicas', duration: '40 min' },
+          { title: 'Técnicas de redação avançadas', duration: '45 min' },
+          { title: 'Workshop prático de redação', duration: '1h 15min' },
+          { title: 'Revisão e edição de contratos', duration: '50 min' },
+          { title: 'Exercício: Elaboração de contrato completo', duration: '2h 40min' }
+        ]
+      },
+      {
+        id: 3,
+        title: 'Tipos de Contratos Empresariais',
+        duration: '10h 45min',
+        lessons: [
+          { title: 'Contratos de compra e venda empresarial', duration: '1h 20min' },
+          { title: 'Contratos de prestação de serviços B2B', duration: '1h 35min' },
+          { title: 'Contratos de distribuição e representação', duration: '1h 25min' },
+          { title: 'Contratos de licenciamento e franquia', duration: '1h 40min' },
+          { title: 'Joint ventures e parcerias estratégicas', duration: '1h 30min' },
+          { title: 'Contratos de consultoria e assessoria', duration: '1h 15min' },
+          { title: 'Contratos tecnológicos e digitais', duration: '1h 20min' },
+          { title: 'Workshop: Escolhendo o tipo contratual ideal', duration: '40 min' }
+        ]
+      },
+      {
+        id: 4,
+        title: 'Gestão de Riscos Contratuais',
+        duration: '7h 30min',
+        lessons: [
+          { title: 'Identificação e mapeamento de riscos', duration: '45 min' },
+          { title: 'Cláusulas de limitação de responsabilidade', duration: '1h 10min' },
+          { title: 'Garantias, seguros e cauções', duration: '1h 20min' },
+          { title: 'Força maior e caso fortuito', duration: '50 min' },
+          { title: 'Cláusulas penais e multas contratuais', duration: '1h 15min' },
+          { title: 'Resolução de conflitos e arbitragem', duration: '1h 30min' },
+          { title: 'Simulação: Gestão de crise contratual', duration: '40 min' }
+        ]
+      },
+      {
+        id: 5,
+        title: 'Negociação e Fechamento',
+        duration: '5h 20min',
+        lessons: [
+          { title: 'Estratégias de negociação contratual', duration: '55 min' },
+          { title: 'Técnicas de persuasão e argumentação', duration: '45 min' },
+          { title: 'Due diligence contratual', duration: '1h 15min' },
+          { title: 'Documentação e formalização', duration: '50 min' },
+          { title: 'Pós-contratação: gestão e acompanhamento', duration: '40 min' },
+          { title: 'Role-play: Simulação de negociação', duration: '55 min' }
+        ]
+      },
+      {
+        id: 6,
+        title: 'Aspectos Tributários e Regulatórios',
+        duration: '4h 45min',
+        lessons: [
+          { title: 'Implicações tributárias dos contratos', duration: '1h 10min' },
+          { title: 'Compliance e aspectos regulatórios', duration: '1h 5min' },
+          { title: 'LGPD e proteção de dados contratuais', duration: '55 min' },
+          { title: 'Aspectos trabalhistas em contratos B2B', duration: '45 min' },
+          { title: 'Checklist de conformidade legal', duration: '50 min' }
+        ]
+      },
+      {
+        id: 7,
+        title: 'Tecnologia e Contratos Digitais',
+        duration: '6h 10min',
+        lessons: [
+          { title: 'Contratos eletrônicos e assinatura digital', duration: '1h 20min' },
+          { title: 'Blockchain e smart contracts', duration: '1h 15min' },
+          { title: 'Inteligência artificial e automação', duration: '1h 5min' },
+          { title: 'Plataformas de gestão contratual', duration: '50 min' },
+          { title: 'Segurança da informação em contratos', duration: '45 min' },
+          { title: 'Tendências e futuro dos contratos', duration: '55 min' }
+        ]
+      },
+      {
+        id: 8,
+        title: 'Projeto Final e Certificação',
+        duration: '3h 30min',
+        lessons: [
+          { title: 'Briefing do projeto final', duration: '30 min' },
+          { title: 'Desenvolvimento do projeto individual', duration: '2h' },
+          { title: 'Apresentação e feedback', duration: '45 min' },
+          { title: 'Avaliação final', duration: '15 min' }
+        ]
+      }
+    ]
   },
   {
     id: 2,
@@ -161,7 +279,7 @@ export const coursesDatabase: CourseData[] = [
     category: 'resolucao',
     modalidade: 'hibrido',
     schools: ['direito', 'power-skills'], // Resolução de conflitos + habilidades comportamentais
-    imageBg: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-pink/30',
+    imageBg: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
     image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     price: 247
   },
@@ -179,7 +297,7 @@ export const coursesDatabase: CourseData[] = [
     category: 'trabalhista',
     modalidade: 'online',
     schools: ['direito'], // Exclusivamente direito trabalhista
-    imageBg: 'bg-gradient-to-br from-ejup-pink/30 to-ejup-orange/30',
+    imageBg: 'bg-gradient-to-br from-ejup-orange/30 to-ejup-orange/30',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     price: 327
   },
@@ -197,7 +315,7 @@ export const coursesDatabase: CourseData[] = [
     category: 'tributario',
     modalidade: 'presencial',
     schools: ['direito', 'gestao-tech'], // Direito tributário + gestão jurídica
-    imageBg: 'bg-gradient-to-br from-ejup-cyan/30 to-ejup-pink/30',
+    imageBg: 'bg-gradient-to-br from-ejup-cyan/30 to-ejup-orange/30',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
     promoted: {
       by: 'Mendes & Pacheco Advocacia',
@@ -257,7 +375,7 @@ export const getAllSchools = (): School[] => {
 // Configuração de cursos relacionados
 export const getRelatedCourses = (mainCourseId: number) => {
   const relatedConfig: Record<number, { show: boolean, courseIds: number[] }> = {
-    1: { show: true, courseIds: [6, 5] },
+    1: { show: false, courseIds: [] },
     2: { show: false, courseIds: [] },
     3: { show: true, courseIds: [1] },
     4: { show: false, courseIds: [] },

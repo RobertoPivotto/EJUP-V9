@@ -149,16 +149,16 @@ const ShareSection = ({ title }: { title: string }) => {
     <div className="flex flex-col items-center my-8 bg-zinc-800/30 rounded-lg p-6 border border-zinc-700/30">
       <h3 className="text-lg font-medium mb-4">Compartilhe este artigo</h3>
       <div className="flex space-x-4">
-        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-pink/10 hover:text-ejup-pink hover:border-ejup-pink">
+        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-orange/10 hover:text-ejup-orange hover:border-ejup-orange">
           <Facebook size={16} />
         </Button>
-        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-pink/10 hover:text-ejup-pink hover:border-ejup-pink">
+        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-orange/10 hover:text-ejup-orange hover:border-ejup-orange">
           <Twitter size={16} />
         </Button>
-        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-pink/10 hover:text-ejup-pink hover:border-ejup-pink">
+        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-orange/10 hover:text-ejup-orange hover:border-ejup-orange">
           <Linkedin size={16} />
         </Button>
-        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-pink/10 hover:text-ejup-pink hover:border-ejup-pink">
+        <Button variant="outline" size="sm" className="rounded-full w-10 h-10 p-0 border-zinc-700 hover:bg-ejup-orange/10 hover:text-ejup-orange hover:border-ejup-orange">
           <Mail size={16} />
         </Button>
       </div>
@@ -261,7 +261,7 @@ const ArticleDetail = () => {
                 
                 {/* Primeiro parágrafo em destaque - estilo jornal */}
                 <div className="mb-8">
-                  <div className="border-l-4 border-ejup-pink pl-4 py-2 italic font-serif text-lg text-zinc-300">
+                  <div className="border-l-4 border-ejup-orange pl-4 py-2 italic font-serif text-lg text-zinc-300">
                     {article.excerpt}
                   </div>
                 </div>
@@ -287,7 +287,7 @@ const ArticleDetail = () => {
                              prose-p:text-zinc-300 prose-p:leading-relaxed
                              prose-strong:text-white prose-strong:font-semibold
                              prose-li:text-zinc-300 prose-li:my-1
-                             prose-blockquote:border-ejup-pink prose-blockquote:bg-zinc-800/30 prose-blockquote:p-4 prose-blockquote:rounded-r-md prose-blockquote:not-italic"
+                             prose-blockquote:border-ejup-orange prose-blockquote:bg-zinc-800/30 prose-blockquote:p-4 prose-blockquote:rounded-r-md prose-blockquote:not-italic"
                   dangerouslySetInnerHTML={{ __html: article.content }}
                 />
                 
@@ -319,7 +319,7 @@ const ArticleDetail = () => {
                 {/* Citação em destaque */}
                 <div className="bg-zinc-800/50 rounded-xl border border-zinc-700/50 p-6 relative">
                   <div className="flex items-start">
-                    <Quote className="h-8 w-8 text-ejup-pink mr-4 mt-1 flex-shrink-0" />
+                    <Quote className="h-8 w-8 text-ejup-orange mr-4 mt-1 flex-shrink-0" />
                     <div>
                       <p className="text-lg font-serif italic text-zinc-200 mb-4">
                         "Contratos bem elaborados são a base para relações empresariais sólidas e seguras."

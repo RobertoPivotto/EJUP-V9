@@ -748,7 +748,7 @@ p{
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  background-color: hsl(var(--ejup-pink));
+  background-color: hsl(var(--ejup-orange));
 }
 
 .ejup-button-primary:hover{
@@ -2423,20 +2423,20 @@ p{
   border-color: rgb(255 122 80 / 0.5);
 }
 
-.border-ejup-pink{
+.border-ejup-orange{
   --tw-border-opacity: 1;
   border-color: rgb(255 71 145 / var(--tw-border-opacity, 1));
 }
 
-.border-ejup-pink\/30{
+.border-ejup-orange\/30{
   border-color: rgb(255 71 145 / 0.3);
 }
 
-.border-ejup-pink\/40{
+.border-ejup-orange\/40{
   border-color: rgb(255 71 145 / 0.4);
 }
 
-.border-ejup-pink\/50{
+.border-ejup-orange\/50{
   border-color: rgb(255 71 145 / 0.5);
 }
 
@@ -2670,16 +2670,16 @@ p{
   background-color: rgb(255 122 80 / 0.9);
 }
 
-.bg-ejup-pink{
+.bg-ejup-orange{
   --tw-bg-opacity: 1;
   background-color: rgb(255 71 145 / var(--tw-bg-opacity, 1));
 }
 
-.bg-ejup-pink\/10{
+.bg-ejup-orange\/10{
   background-color: rgb(255 71 145 / 0.1);
 }
 
-.bg-ejup-pink\/20{
+.bg-ejup-orange\/20{
   background-color: rgb(255 71 145 / 0.2);
 }
 
@@ -2951,31 +2951,31 @@ p{
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-ejup-pink{
+.from-ejup-orange{
   --tw-gradient-from: #FF4791 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 71 145 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-ejup-pink\/10{
+.from-ejup-orange\/10{
   --tw-gradient-from: rgb(255 71 145 / 0.1) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 71 145 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-ejup-pink\/20{
+.from-ejup-orange\/20{
   --tw-gradient-from: rgb(255 71 145 / 0.2) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 71 145 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-ejup-pink\/30{
+.from-ejup-orange\/30{
   --tw-gradient-from: rgb(255 71 145 / 0.3) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 71 145 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-ejup-pink\/5{
+.from-ejup-orange\/5{
   --tw-gradient-from: rgb(255 71 145 / 0.05) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 71 145 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -3093,23 +3093,23 @@ p{
   --tw-gradient-to: rgb(255 122 80 / 0.05) var(--tw-gradient-to-position);
 }
 
-.to-ejup-pink{
+.to-ejup-orange{
   --tw-gradient-to: #FF4791 var(--tw-gradient-to-position);
 }
 
-.to-ejup-pink\/20{
+.to-ejup-orange\/20{
   --tw-gradient-to: rgb(255 71 145 / 0.2) var(--tw-gradient-to-position);
 }
 
-.to-ejup-pink\/30{
+.to-ejup-orange\/30{
   --tw-gradient-to: rgb(255 71 145 / 0.3) var(--tw-gradient-to-position);
 }
 
-.to-ejup-pink\/5{
+.to-ejup-orange\/5{
   --tw-gradient-to: rgb(255 71 145 / 0.05) var(--tw-gradient-to-position);
 }
 
-.to-ejup-pink\/80{
+.to-ejup-orange\/80{
   --tw-gradient-to: rgb(255 71 145 / 0.8) var(--tw-gradient-to-position);
 }
 
@@ -3620,7 +3620,7 @@ p{
   color: rgb(255 122 80 / var(--tw-text-opacity, 1));
 }
 
-.text-ejup-pink{
+.text-ejup-orange{
   --tw-text-opacity: 1;
   color: rgb(255 71 145 / var(--tw-text-opacity, 1));
 }
@@ -4115,7 +4115,7 @@ body.cart-open {
 /* Cores específicas da EJUP */
 
 :root {
-  --ejup-pink: 335 85% 65%;
+  --ejup-orange: 335 85% 65%;
   --ejup-cyan: 195 85% 65%;
   --ejup-orange: 25 85% 65%;
   --ejup-dark-bg: 240 9% 7%;
@@ -4215,8 +4215,8 @@ body.cart-open {
   }
 }
 
-.bg-ejup-pink {
-  background-color: hsl(var(--ejup-pink));
+.bg-ejup-orange {
+  background-color: hsl(var(--ejup-orange));
 }
 
 .bg-ejup-cyan {
@@ -4235,8 +4235,8 @@ body.cart-open {
   background-color: hsl(var(--ejup-dark-card));
 }
 
-.text-ejup-pink {
-  color: hsl(var(--ejup-pink));
+.text-ejup-orange {
+  color: hsl(var(--ejup-orange));
 }
 
 .text-ejup-cyan {
@@ -4247,8 +4247,8 @@ body.cart-open {
   color: hsl(var(--ejup-orange));
 }
 
-.border-ejup-pink {
-  border-color: hsl(var(--ejup-pink));
+.border-ejup-orange {
+  border-color: hsl(var(--ejup-orange));
 }
 
 .border-ejup-cyan {
@@ -4405,16 +4405,16 @@ body.cart-open {
   border-color: rgb(255 122 80 / 0.5);
 }
 
-.hover\:border-ejup-pink:hover{
+.hover\:border-ejup-orange:hover{
   --tw-border-opacity: 1;
   border-color: rgb(255 71 145 / var(--tw-border-opacity, 1));
 }
 
-.hover\:border-ejup-pink\/30:hover{
+.hover\:border-ejup-orange\/30:hover{
   border-color: rgb(255 71 145 / 0.3);
 }
 
-.hover\:border-ejup-pink\/50:hover{
+.hover\:border-ejup-orange\/50:hover{
   border-color: rgb(255 71 145 / 0.5);
 }
 
@@ -4468,23 +4468,23 @@ body.cart-open {
   background-color: rgb(255 122 80 / 0.9);
 }
 
-.hover\:bg-ejup-pink\/10:hover{
+.hover\:bg-ejup-orange\/10:hover{
   background-color: rgb(255 71 145 / 0.1);
 }
 
-.hover\:bg-ejup-pink\/20:hover{
+.hover\:bg-ejup-orange\/20:hover{
   background-color: rgb(255 71 145 / 0.2);
 }
 
-.hover\:bg-ejup-pink\/30:hover{
+.hover\:bg-ejup-orange\/30:hover{
   background-color: rgb(255 71 145 / 0.3);
 }
 
-.hover\:bg-ejup-pink\/5:hover{
+.hover\:bg-ejup-orange\/5:hover{
   background-color: rgb(255 71 145 / 0.05);
 }
 
-.hover\:bg-ejup-pink\/90:hover{
+.hover\:bg-ejup-orange\/90:hover{
   background-color: rgb(255 71 145 / 0.9);
 }
 
@@ -4565,7 +4565,7 @@ body.cart-open {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.hover\:from-ejup-pink\/90:hover{
+.hover\:from-ejup-orange\/90:hover{
   --tw-gradient-from: rgb(255 71 145 / 0.9) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(255 71 145 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -4581,7 +4581,7 @@ body.cart-open {
   --tw-gradient-to: rgb(41 214 230 / 0.7) var(--tw-gradient-to-position);
 }
 
-.hover\:to-ejup-pink\/70:hover{
+.hover\:to-ejup-orange\/70:hover{
   --tw-gradient-to: rgb(255 71 145 / 0.7) var(--tw-gradient-to-position);
 }
 
@@ -4615,7 +4615,7 @@ body.cart-open {
   color: rgb(255 122 80 / 0.8);
 }
 
-.hover\:text-ejup-pink:hover{
+.hover\:text-ejup-orange:hover{
   --tw-text-opacity: 1;
   color: rgb(255 71 145 / var(--tw-text-opacity, 1));
 }
@@ -4690,7 +4690,7 @@ body.cart-open {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.hover\:shadow-ejup-pink\/5:hover{
+.hover\:shadow-ejup-orange\/5:hover{
   --tw-shadow-color: rgb(255 71 145 / 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }
@@ -4704,7 +4704,7 @@ body.cart-open {
   border-color: rgb(41 214 230 / 0.5);
 }
 
-.focus\:border-ejup-pink\/50:focus{
+.focus\:border-ejup-orange\/50:focus{
   border-color: rgb(255 71 145 / 0.5);
 }
 
@@ -4755,7 +4755,7 @@ body.cart-open {
   --tw-ring-color: rgb(41 214 230 / 0.5);
 }
 
-.focus\:ring-ejup-pink\/50:focus{
+.focus\:ring-ejup-orange\/50:focus{
   --tw-ring-color: rgb(255 71 145 / 0.5);
 }
 
@@ -4846,7 +4846,7 @@ body.cart-open {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.group:hover .group-hover\:border-ejup-pink\/30{
+.group:hover .group-hover\:border-ejup-orange\/30{
   border-color: rgb(255 71 145 / 0.3);
 }
 
@@ -4869,7 +4869,7 @@ body.cart-open {
   color: rgb(255 122 80 / var(--tw-text-opacity, 1));
 }
 
-.group:hover .group-hover\:text-ejup-pink{
+.group:hover .group-hover\:text-ejup-orange{
   --tw-text-opacity: 1;
   color: rgb(255 71 145 / var(--tw-text-opacity, 1));
 }
@@ -5129,7 +5129,7 @@ body.cart-open {
   background-color: rgb(41 214 230 / 0.2);
 }
 
-.data-\[state\=active\]\:bg-ejup-pink\/20[data-state="active"]{
+.data-\[state\=active\]\:bg-ejup-orange\/20[data-state="active"]{
   background-color: rgb(255 71 145 / 0.2);
 }
 

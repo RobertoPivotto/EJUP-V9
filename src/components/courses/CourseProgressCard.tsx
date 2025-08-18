@@ -45,7 +45,7 @@ const CourseProgressCard = ({ course }: CourseProgressCardProps) => {
               <div className="space-y-2 mb-4">
                 <div className="flex items-center justify-between text-sm">
                   <span>Progresso do curso</span>
-                  <span className="text-ejup-pink">{course.progress}%</span>
+                  <span className="text-ejup-orange">{course.progress}%</span>
                 </div>
                 <Progress value={course.progress} className="h-2" />
                 <div className="flex justify-between text-xs text-zinc-400">
@@ -56,9 +56,14 @@ const CourseProgressCard = ({ course }: CourseProgressCardProps) => {
             </div>
             <div className="flex flex-col gap-2 md:w-auto w-full">
               <Button asChild>
-                <Link to={`/courses/${course.id}/learn`}>
-                  Continuar
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Link to={`/courses/${course.id}/learn`} className="flex items-center">
+                  <span className="md:hidden flex items-center">
+                    Continuar
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </span>
+                  <span className="hidden md:inline">
+                    Acessar Curso
+                  </span>
                 </Link>
               </Button>
               <Button variant="outline" asChild>

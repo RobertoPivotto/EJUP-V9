@@ -13,7 +13,7 @@ const allPartners = [
     description: 'Escritório especializado em direito empresarial, com foco em contratos e negociações.',
     type: 'content',
     logo: '',
-    initialsColor: 'bg-ejup-pink',
+    initialsColor: 'bg-ejup-orange',
     courses: 2,
     events: 1,
   },
@@ -43,7 +43,7 @@ const allPartners = [
     description: 'Empresa de tecnologia focada em soluções para o mercado jurídico.',
     type: 'content',
     logo: '',
-    initialsColor: 'bg-ejup-pink',
+    initialsColor: 'bg-ejup-orange',
     courses: 3,
     events: 1,
   },
@@ -172,10 +172,10 @@ const Partners = () => {
               <input
                 type="text"
                 placeholder="Buscar parceiros..."
-                className="w-full bg-zinc-800 border border-zinc-700 focus:border-ejup-pink/50 text-white px-4 py-2 rounded-lg"
+                className="w-full bg-zinc-800 border border-zinc-700 focus:border-ejup-orange/50 text-white px-4 py-2 rounded-lg"
                 onChange={(e) => handleSearch(e.target.value)}
               />
-              <button className="absolute right-2 top-[6px] bg-ejup-pink text-white px-4 py-1 rounded-md">
+              <button className="absolute right-2 top-[6px] bg-ejup-orange text-white px-4 py-1 rounded-md">
                 Buscar
               </button>
             </div>
@@ -184,7 +184,7 @@ const Partners = () => {
           {filteredPartners.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPartners.map((partner) => (
-                <Link to={`/partners/${partner.id}`} key={partner.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-pink/5">
+                <Link to={`/partners/${partner.id}`} key={partner.id} className="ejup-card hover:scale-[1.02] hover:shadow-lg hover:shadow-ejup-orange/5">
                   <div className="p-6">
                     <div className="flex items-center mb-4">
                       <div className={`w-12 h-12 ${partner.initialsColor} rounded-lg flex items-center justify-center text-base font-bold text-white mr-4`}>
