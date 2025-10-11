@@ -110,7 +110,7 @@ const CourseCard = ({
   return (
     <div className="relative w-full group h-full">
       {/* Efeito de brilho - atrás do card */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+      <div className="absolute -inset-0.5 bg-[#F2CA7E] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
       
       <div className="relative bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col hover:scale-[1.02] transition-all duration-300">
         {/* Imagem do curso */}
@@ -166,7 +166,7 @@ const CourseCard = ({
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="text-base font-medium truncate">{instructors[0].name} <span className="text-zinc-400">+{instructors.length - 1}</span></div>
-                    <div className="text-sm text-orange-700 truncate">{instructors[0].role}</div>
+                    <div className="text-sm text-[#F2CA7E] truncate">{instructors[0].role}</div>
                   </div>
                 </div>
               ) : instructors && instructors.length === 2 ? (
@@ -194,7 +194,7 @@ const CourseCard = ({
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="text-base font-medium truncate">{instructor}</div>
-                    <div className="text-sm text-orange-700 truncate">{instructorRole}</div>
+                    <div className="text-sm text-[#F2CA7E] truncate">{instructorRole}</div>
                   </div>
                 </div>
               )}
@@ -252,12 +252,12 @@ const CourseCard = ({
             </div>
             
             <div className="grid grid-cols-2 gap-2 md:gap-3">
-              <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white border-0 py-2 md:py-4" 
+              <Button className="w-full bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-[#A66F0A] border-0 py-2 md:py-4" 
                 onClick={isInCart ? () => openCart() : handleBuyNow}>
                 <span className="text-xs md:text-sm">Comprar agora</span>
               </Button>
               
-              <Button className="w-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 py-2 md:py-4" asChild>
+              <Button className="w-full bg-zinc-800 hover:bg-[#F2CA7E]/20 hover:text-white hover:border-[#F2CA7E]/50 text-white border border-zinc-700 py-2 md:py-4" asChild>
                 <Link to={`/courses/${id}`}>
                   <span className="text-xs md:text-sm">Ver detalhes</span>
                 </Link>

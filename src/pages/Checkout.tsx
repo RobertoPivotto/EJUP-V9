@@ -178,30 +178,30 @@ const Checkout = () => {
   // Renderiza o indicador de etapas (agora com 3 etapas)
   const renderStepIndicator = () => {
     return (
-      <div className="flex items-center justify-center mb-8">
-        <div className={`flex flex-col items-center ${currentStep >= 1 ? 'text-ejup-orange' : 'text-zinc-500'}`}>
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-ejup-orange text-white' : 'bg-zinc-800 text-zinc-400'}`}>
-            <User className="h-6 w-6" />
+      <div className="flex items-center justify-center mb-8 flex-wrap md:flex-nowrap">
+        <div className={`flex flex-col items-center ${currentStep >= 1 ? 'text-[#F2CA7E]' : 'text-zinc-500'}`}>
+          <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-[#F2CA7E] text-white' : 'bg-zinc-800 text-zinc-400'}`}>
+            <User className="h-5 w-5 md:h-6 md:w-6" />
           </div>
-          <span className="text-sm mt-2 font-medium">Conta</span>
+          <span className="text-xs md:text-sm mt-2 font-medium">Conta</span>
         </div>
         
-        <div className={`w-24 h-0.5 ${currentStep >= 2 ? 'bg-ejup-orange' : 'bg-zinc-700'} mx-4`}></div>
+        <div className={`w-12 md:w-24 h-0.5 ${currentStep >= 2 ? 'bg-[#F2CA7E]' : 'bg-zinc-700'} mx-2 md:mx-4`}></div>
         
-        <div className={`flex flex-col items-center ${currentStep >= 2 ? 'text-ejup-orange' : 'text-zinc-500'}`}>
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-ejup-orange text-white' : 'bg-zinc-800 text-zinc-400'}`}>
-            <MapPin className="h-6 w-6" />
+        <div className={`flex flex-col items-center ${currentStep >= 2 ? 'text-[#F2CA7E]' : 'text-zinc-500'}`}>
+          <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-[#F2CA7E] text-white' : 'bg-zinc-800 text-zinc-400'}`}>
+            <MapPin className="h-5 w-5 md:h-6 md:w-6" />
           </div>
-          <span className="text-sm mt-2 font-medium">Endereço de Faturamento</span>
+          <span className="text-xs md:text-sm mt-2 font-medium text-center">Endereço</span>
         </div>
         
-        <div className={`w-24 h-0.5 ${currentStep >= 3 ? 'bg-ejup-orange' : 'bg-zinc-700'} mx-4`}></div>
+        <div className={`w-12 md:w-24 h-0.5 ${currentStep >= 3 ? 'bg-[#F2CA7E]' : 'bg-zinc-700'} mx-2 md:mx-4`}></div>
         
-        <div className={`flex flex-col items-center ${currentStep >= 3 ? 'text-ejup-orange' : 'text-zinc-500'}`}>
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-ejup-orange text-white' : 'bg-zinc-800 text-zinc-400'}`}>
-            <CardIcon className="h-6 w-6" />
+        <div className={`flex flex-col items-center ${currentStep >= 3 ? 'text-[#F2CA7E]' : 'text-zinc-500'}`}>
+          <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-[#F2CA7E] text-white' : 'bg-zinc-800 text-zinc-400'}`}>
+            <CardIcon className="h-5 w-5 md:h-6 md:w-6" />
           </div>
-          <span className="text-sm mt-2 font-medium">Pagamento</span>
+          <span className="text-xs md:text-sm mt-2 font-medium">Pagamento</span>
         </div>
       </div>
     );
@@ -231,7 +231,7 @@ const Checkout = () => {
                 <Input id="login-password" name="password" type="password" placeholder="Sua senha" required value={formData.password} onChange={handleInputChange} />
               </div>
               
-              <Button type="button" className="w-full bg-ejup-orange hover:bg-ejup-orange/90" onClick={handleNextStep}>
+              <Button type="button" className="w-full bg-[#F2CA7E] hover:bg-[#F2CA7E]/90" onClick={handleNextStep}>
                 Continuar
               </Button>
               
@@ -247,7 +247,7 @@ const Checkout = () => {
               <Button 
                 type="button" 
                 variant="outline" 
-                className="w-full border-zinc-700 flex items-center justify-center gap-2"
+                className="w-full border-zinc-700 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] hover:bg-transparent hover:border-zinc-700 hover:text-white text-white"
                 onClick={handleGoogleAuth}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24">
@@ -296,7 +296,7 @@ const Checkout = () => {
                 <Input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirme sua senha" required value={formData.confirmPassword} onChange={handleInputChange} />
               </div>
               
-              <Button type="button" className="w-full bg-ejup-orange hover:bg-ejup-orange/90" onClick={handleNextStep}>
+              <Button type="button" className="w-full bg-[#F2CA7E] hover:bg-[#F2CA7E]/90" onClick={handleNextStep}>
                 Continuar
               </Button>
               
@@ -338,7 +338,7 @@ const Checkout = () => {
         <h2 className="text-xl font-semibold mb-4">Endereço de Faturamento</h2>
         <div className="space-y-6">
           <div className="flex items-center gap-2 text-sm text-zinc-400">
-            <FileText className="h-4 w-4 text-ejup-orange" />
+            <FileText className="h-4 w-4 text-[#F2CA7E]" />
             <span>Informe seu endereço para emissão da nota fiscal</span>
           </div>
           
@@ -351,7 +351,8 @@ const Checkout = () => {
                   name="cep" 
                   placeholder="00000-000" 
                   value={formData.cep} 
-                  onChange={handleInputChange} 
+                  onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                   required 
                 />
               </div>
@@ -363,7 +364,8 @@ const Checkout = () => {
                   name="address" 
                   placeholder="Rua/Avenida" 
                   value={formData.address} 
-                  onChange={handleInputChange} 
+                  onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                   required 
                 />
               </div>
@@ -377,7 +379,8 @@ const Checkout = () => {
                   name="number" 
                   placeholder="123" 
                   value={formData.number} 
-                  onChange={handleInputChange} 
+                  onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                   required
                 />
               </div>
@@ -390,53 +393,57 @@ const Checkout = () => {
                   placeholder="Apartamento, bloco, etc." 
                   value={formData.complement} 
                   onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                 />
               </div>
             </div>
             
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-4">
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
+              <div className="sm:col-span-4">
                 <Label htmlFor="neighborhood">Bairro</Label>
                 <Input 
                   id="neighborhood" 
                   name="neighborhood" 
                   placeholder="Seu bairro" 
                   value={formData.neighborhood} 
-                  onChange={handleInputChange} 
+                  onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                   required
                 />
               </div>
               
-              <div className="col-span-5">
+              <div className="sm:col-span-5">
                 <Label htmlFor="city">Cidade</Label>
                 <Input 
                   id="city" 
                   name="city" 
                   placeholder="Sua cidade" 
                   value={formData.city} 
-                  onChange={handleInputChange} 
+                  onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                   required
                 />
               </div>
               
-              <div className="col-span-3">
+              <div className="sm:col-span-3">
                 <Label htmlFor="state">Estado</Label>
                 <Input 
                   id="state" 
                   name="state" 
                   placeholder="UF" 
                   value={formData.state} 
-                  onChange={handleInputChange} 
+                  onChange={handleInputChange}
+                  className="border-zinc-700 focus-visible:ring-zinc-600"
                   required
                 />
               </div>
             </div>
             
             <div className="flex gap-4 mt-6">
-              <Button type="button" variant="outline" className="flex-1" onClick={handlePrevStep}>
+              <Button type="button" variant="outline" className="flex-1 border-[#F2CA7E] hover:bg-transparent hover:border-[#F2CA7E] hover:text-white text-white hover:scale-105 transition-transform" onClick={handlePrevStep}>
                 Voltar
               </Button>
-              <Button type="button" className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90" onClick={handleNextStep}>
+              <Button type="button" className="flex-1 bg-[#F2CA7E] hover:bg-[#F2CA7E]/90" onClick={handleNextStep}>
                 Continuar para pagamento
               </Button>
             </div>
@@ -456,7 +463,7 @@ const Checkout = () => {
         <div className="mb-5 bg-zinc-900/50 rounded-lg p-3">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-medium flex items-center">
-              <Tag className="h-4 w-4 mr-1 text-ejup-orange" />
+              <Tag className="h-4 w-4 mr-1 text-[#F2CA7E]" />
               Cupom de desconto
             </h3>
             
@@ -488,9 +495,9 @@ const Checkout = () => {
           </div>
           
           {appliedCoupon && (
-            <div className="mt-2 flex items-center justify-between bg-ejup-orange/10 p-2 rounded-md border border-ejup-orange/30">
+            <div className="mt-2 flex items-center justify-between bg-[#F2CA7E]/10 p-2 rounded-md border border-[#F2CA7E]/30">
               <div className="flex items-center">
-                <Check className="h-4 w-4 text-ejup-orange mr-2" />
+                <Check className="h-4 w-4 text-[#F2CA7E] mr-2" />
                 <p className="text-sm font-medium">
                   {appliedCoupon.code} 
                   <span className="text-xs text-zinc-400 ml-2">
@@ -509,33 +516,33 @@ const Checkout = () => {
         </div>
         
         <Tabs value={paymentMethod} onValueChange={setPaymentMethod}>
-          <TabsList className="grid grid-cols-4 gap-1 bg-zinc-900 p-1 rounded-lg mb-4">
+          <TabsList className="grid grid-cols-4 gap-1 p-1 rounded-lg mb-4 bg-transparent">
             <TabsTrigger 
               value="credit-card" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-[#F2CA7E]/20 data-[state=active]:text-white"
             >
-              <CreditCard className="h-5 w-5 text-ejup-orange mb-1" />
+              <CreditCard className="h-5 w-5 text-[#F2CA7E] mb-1" />
               <span className="text-xs">Cartão</span>
             </TabsTrigger>
             <TabsTrigger 
               value="pix" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-[#F2CA7E]/20 data-[state=active]:text-white"
             >
-              <Key className="h-5 w-5 text-ejup-orange mb-1" />
+              <Key className="h-5 w-5 text-[#F2CA7E] mb-1" />
               <span className="text-xs">PIX</span>
             </TabsTrigger>
             <TabsTrigger 
               value="qrcode" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-[#F2CA7E]/20 data-[state=active]:text-white"
             >
-              <QrCode className="h-5 w-5 text-ejup-orange mb-1" />
+              <QrCode className="h-5 w-5 text-[#F2CA7E] mb-1" />
               <span className="text-xs">QR Code</span>
             </TabsTrigger>
             <TabsTrigger 
               value="bank-slip" 
-              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-ejup-orange/20 data-[state=active]:text-white"
+              className="flex flex-col items-center justify-center py-3 rounded-md transition-all duration-200 data-[state=active]:bg-[#F2CA7E]/20 data-[state=active]:text-white"
             >
-              <Landmark className="h-5 w-5 text-ejup-orange mb-1" />
+              <Landmark className="h-5 w-5 text-[#F2CA7E] mb-1" />
               <span className="text-xs">Boleto</span>
             </TabsTrigger>
           </TabsList>
@@ -545,31 +552,31 @@ const Checkout = () => {
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
                   <Label htmlFor="card-name" className="text-sm">Nome no cartão</Label>
-                  <Input id="card-name" placeholder="Nome impresso no cartão" required className="h-9 mt-1" />
+                  <Input id="card-name" placeholder="Nome impresso no cartão" required className="h-9 mt-1 border-2 border-zinc-600 focus-visible:border-[#F2CA7E] focus-visible:ring-[#F2CA7E]" />
                 </div>
                 
                 <div>
                   <Label htmlFor="card-number" className="text-sm">Número do cartão</Label>
-                  <Input id="card-number" placeholder="0000 0000 0000 0000" required className="h-9 mt-1" />
+                  <Input id="card-number" placeholder="0000 0000 0000 0000" required className="h-9 mt-1 border-2 border-zinc-600 focus-visible:border-[#F2CA7E] focus-visible:ring-[#F2CA7E]" />
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="expiry" className="text-sm">Validade</Label>
-                    <Input id="expiry" placeholder="MM/AA" required className="h-9 mt-1" />
+                    <Input id="expiry" placeholder="MM/AA" required className="h-9 mt-1 border-2 border-zinc-600 focus-visible:border-[#F2CA7E] focus-visible:ring-[#F2CA7E]" />
                   </div>
                   
                   <div>
                     <Label htmlFor="cvc" className="text-sm">CVC</Label>
-                    <Input id="cvc" placeholder="123" required className="h-9 mt-1" />
+                    <Input id="cvc" placeholder="123" required className="h-9 mt-1 border-2 border-zinc-600 focus-visible:border-[#F2CA7E] focus-visible:ring-[#F2CA7E]" />
                   </div>
                 </div>
                 
                 <div className="flex gap-4 mt-4">
-                  <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
+                  <Button type="button" variant="outline" className="flex-1 h-9 text-sm border-[#F2CA7E] hover:bg-transparent hover:border-[#F2CA7E] hover:text-white text-white hover:scale-105 transition-transform" onClick={handlePrevStep}>
                     Voltar
                   </Button>
-                  <Button type="submit" className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
+                  <Button type="submit" className="flex-1 bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 h-9 text-sm" disabled={isProcessing}>
                     {isProcessing ? 'Processando...' : 'Confirmar pagamento'}
                   </Button>
                 </div>
@@ -589,10 +596,10 @@ const Checkout = () => {
                     <code className="text-xs">ejup@exemplo.com.br</code>
                   </div>
                   <div className="flex gap-4">
-                    <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
+                    <Button type="button" variant="outline" className="flex-1 h-9 text-sm border-[#F2CA7E] hover:bg-transparent hover:border-[#F2CA7E] hover:text-white text-white hover:scale-105 transition-transform" onClick={handlePrevStep}>
                       Voltar
                     </Button>
-                    <Button onClick={handleSubmit} className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
+                    <Button onClick={handleSubmit} className="flex-1 bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 h-9 text-sm" disabled={isProcessing}>
                       {isProcessing ? '...' : 'Confirmar'}
                     </Button>
                   </div>
@@ -610,7 +617,7 @@ const Checkout = () => {
                     Escaneie o QR Code com seu aplicativo bancário para realizar o pagamento.
                   </p>
                   <div className="flex gap-4">
-                    <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
+                    <Button type="button" variant="outline" className="flex-1 h-9 text-sm border-[#F2CA7E] hover:bg-transparent hover:border-[#F2CA7E] hover:text-white text-white hover:scale-105 transition-transform" onClick={handlePrevStep}>
                       Voltar
                     </Button>
                     <Button onClick={handleSubmit} className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
@@ -631,7 +638,7 @@ const Checkout = () => {
                     Gere um boleto bancário para pagamento. O acesso será liberado em até 3 dias úteis após o pagamento.
                   </p>
                   <div className="flex gap-4">
-                    <Button type="button" variant="outline" className="flex-1 h-9 text-sm" onClick={handlePrevStep}>
+                    <Button type="button" variant="outline" className="flex-1 h-9 text-sm border-[#F2CA7E] hover:bg-transparent hover:border-[#F2CA7E] hover:text-white text-white hover:scale-105 transition-transform" onClick={handlePrevStep}>
                       Voltar
                     </Button>
                     <Button onClick={handleSubmit} className="flex-1 bg-ejup-orange hover:bg-ejup-orange/90 h-9 text-sm" disabled={isProcessing}>
@@ -664,32 +671,32 @@ const Checkout = () => {
     <div className="min-h-screen bg-ejup-darkBg flex flex-col">
       <Navbar />
       <main className="pt-20 flex-grow">
-        <div className="ejup-container py-12">
+        <div className="ejup-container py-6 md:py-12">
           <div className="max-w-5xl mx-auto">
-            <h1 className="text-3xl font-bold mb-8">Checkout</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">Checkout</h1>
             
             {/* Indicador de etapas */}
             {renderStepIndicator()}
             
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-8">
               <div className="lg:col-span-3">
                 {renderCurrentStep()}
               </div>
               
               <div className="lg:col-span-2">
                 <div className="ejup-card sticky top-24 w-full">
-                  <div className="p-6">
-                    <h2 className="text-xl font-semibold mb-4 flex items-center">
-                      <ShoppingCart className="h-5 w-5 mr-2 text-ejup-orange" />
+                  <div className="p-4 md:p-6">
+                    <h2 className="text-lg md:text-xl font-semibold mb-4 flex items-center">
+                      <ShoppingCart className="h-4 w-4 md:h-5 md:w-5 mr-2 text-[#F2CA7E]" />
                       Resumo do pedido
                     </h2>
                     
                     {/* Resumo melhorado com imagens e mais detalhes */}
-                    <div className="space-y-4 mb-6 max-h-[320px] overflow-y-auto pr-2">
+                    <div className="space-y-4 mb-6 max-h-[280px] md:max-h-[320px] overflow-y-auto pr-2">
                       {items.map((item) => (
                         <div key={item.id} className="flex gap-3 py-3 border-b border-zinc-800 group">
                           {item.image && (
-                            <div className="w-16 h-16 shrink-0 bg-zinc-800 rounded-md overflow-hidden">
+                            <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 bg-zinc-800 rounded-md overflow-hidden">
                               <img 
                                 src={item.image} 
                                 alt={item.title} 
@@ -714,7 +721,7 @@ const Checkout = () => {
                                 Digital
                               </span>
                             </div>
-                            <div className="font-semibold text-ejup-orange text-sm mt-1">
+                            <div className="font-semibold text-[#F2CA7E] text-sm mt-1">
                               R$ {item.price.toFixed(2).replace('.', ',')}
                             </div>
                           </div>
@@ -760,4 +767,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout; 
+export default Checkout;

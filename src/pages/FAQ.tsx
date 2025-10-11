@@ -285,7 +285,7 @@ const FAQ = () => {
                         href="https://wa.me/5585999271405" 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-ejup-orange hover:text-ejup-orange/80 font-medium"
+                        className="text-[#d3ccb2] hover:text-[#d3ccb2]/80 font-medium"
                       >
                         +55 (85) 99927-1405
                       </a>
@@ -300,7 +300,7 @@ const FAQ = () => {
                       </p>
                       <a 
                         href="mailto:atendimento@ejup.com.br" 
-                        className="text-ejup-orange hover:text-ejup-orange/80 font-medium"
+                        className="text-[#d3ccb2] hover:text-[#d3ccb2]/80 font-medium"
                       >
                         atendimento@ejup.com.br
                       </a>

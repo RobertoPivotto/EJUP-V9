@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/ui/Logo";
 import {
   FiHome,
   FiBook,
@@ -60,11 +61,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <div className="flex flex-col h-full">
           {/* Header com Logo - Aumentado para h-28 */}
           <div className="flex items-center justify-center h-28 px-4 border-b border-zinc-800">
-            <img 
-              src="/lovable-uploads/e5e6ce5d-0718-4a69-892b-3f9d0d68a7a1.png" 
-              alt="EJUP Logo" 
-              className="h-24"
-            />
+            <Logo className="h-12" />
           </div>
 
           {/* Navegação */}
@@ -153,4 +150,4 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       </main>
     </div>
   );
-} 
+}

@@ -474,7 +474,7 @@ const Creator = () => {
                 {/* Content Card */}
                 <div className="relative w-full group h-[26rem]">
                   {/* Efeito de brilho - visível apenas no hover */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-0.5 bg-[#be9e77] rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
                   
                   <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 h-full">
                     <div className="bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
@@ -1238,4 +1238,4 @@ const Creator = () => {
   );
 };
 
-export default Creator; 
+export default Creator;

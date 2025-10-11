@@ -55,7 +55,7 @@ const SearchAndFilter = ({ onSearch, onFilterChange, filters, activeFilters = {}
             />
             <Button 
               size="sm" 
-              className="absolute right-1 top-1 h-8 bg-ejup-orange hover:bg-ejup-orange/90 text-white"
+              className="absolute right-1 top-1 h-8 bg-[#F2CA7E] hover:bg-[#F2CA7E]/20 hover:text-white hover:border-[#F2CA7E]/50 text-[#A66F0A]"
               onClick={handleSearch}
             >
               Buscar
@@ -70,13 +70,13 @@ const SearchAndFilter = ({ onSearch, onFilterChange, filters, activeFilters = {}
               value={activeFilters[filter.id] || ""}
               onValueChange={(value) => onFilterChange(filter.id, value)}
             >
-              <SelectTrigger className="w-[200px] bg-zinc-800 border-zinc-700 [&>span]:text-left [&>span]:justify-start">
+              <SelectTrigger className="w-[200px] bg-zinc-800 border-zinc-700 data-[state=open]:border-[#f2ca7e] focus:ring-0 focus:ring-offset-0 [&>span]:text-left [&>span]:justify-start text-white">
                 <SelectValue placeholder={filter.name} />
               </SelectTrigger>
-              <SelectContent className="bg-zinc-900 border-zinc-700 min-w-[200px] z-50">
+              <SelectContent className="bg-zinc-900 border-[#F2CA7E]/20 min-w-[200px] z-50 shadow-2xl shadow-[#F2CA7E]/10">
                 <SelectItem 
                   value="all"
-                  className="text-zinc-300 hover:text-white hover:bg-ejup-orange/20 focus:bg-ejup-orange/20 cursor-pointer"
+                  className="text-zinc-300 hover:text-white hover:bg-[#F2CA7E]/80 focus:bg-[#F2CA7E]/80 focus:text-white cursor-pointer"
                 >
                   Limpar filtros
                 </SelectItem>
@@ -84,9 +84,9 @@ const SearchAndFilter = ({ onSearch, onFilterChange, filters, activeFilters = {}
                   <SelectItem 
                     key={option.id} 
                     value={option.id}
-                    className={`text-zinc-300 hover:text-white hover:bg-ejup-orange/20 focus:bg-ejup-orange/20 cursor-pointer ${
+                    className={`text-zinc-300 hover:text-white hover:bg-[#F2CA7E]/80 focus:bg-[#F2CA7E]/80 focus:text-white cursor-pointer ${
                       activeFilters[filter.id] === option.id
-                        ? "bg-ejup-orange/20 text-ejup-orange"
+                        ? "bg-[#F2CA7E]/80 text-white"
                         : ""
                     }`}
                   >
@@ -100,7 +100,7 @@ const SearchAndFilter = ({ onSearch, onFilterChange, filters, activeFilters = {}
           <Button 
             variant="outline" 
             size="sm" 
-            className="h-10 bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white"
+            className="h-10 bg-zinc-800 border-zinc-700 hover:bg-[#F2CA7E]/20 hover:text-white hover:border-[#F2CA7E]/50 text-white"
             onClick={() => {
               Object.keys(activeFilters).forEach(filterId => {
                 onFilterChange(filterId, "all");

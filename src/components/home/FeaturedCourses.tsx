@@ -64,21 +64,21 @@ const FeaturedCourses = () => {
             <h2 className="text-3xl md:text-4xl font-bold">Cursos em Destaque</h2>
             <p className="text-zinc-400 mt-2">Conhecimento prático e atualizado para profissionais do Direito</p>
           </div>
-          <Button className="mt-4 md:mt-0" variant="outline" asChild>
+          <Button className="mt-4 md:mt-0 bg-black/30 hover:bg-zinc-700 backdrop-blur-xl border-0 ring-1 ring-[#F2CA7E]/50 text-white hover:text-white group text-xs md:text-sm px-3 md:px-6 py-3 transition-all duration-300" asChild>
             <Link to="/courses">Ver todos os cursos</Link>
           </Button>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {featuredCourses.map((course) => (
             <div className="relative w-full group h-auto md:h-[580px] lg:h-[580px]" key={course.id}>
-              {/* Efeito de brilho */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+              {/* Efeito de brilho apenas no hover */}
+              <div className="absolute -inset-0.5 bg-[#F2CA7E] rounded-2xl blur opacity-0 group-hover:opacity-40 group-hover:scale-[1.02] transition-all duration-300"></div>
               
-              <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 h-full">
-                <div className="bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
+              <div className="relative rounded-2xl overflow-hidden group-hover:scale-[1.02] transition-all duration-300 h-full">
+                <div className="bg-[#151515] rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
                   {/* Imagem padronizada */}
-                  <div className="relative h-32 md:h-48 overflow-hidden flex-shrink-0">
+                  <div className="relative h-40 md:h-48 overflow-hidden flex-shrink-0">
                     <img 
                       src={course.image} 
                       alt={course.title}
@@ -89,13 +89,13 @@ const FeaturedCourses = () => {
                   
                   {/* Conteúdo com estrutura compacta */}
                   <div className="p-3 md:p-4 flex flex-col flex-grow">
-                    {/* Título */}
-                    <div className="mb-2">
-                      <h3 className="text-sm md:text-lg font-semibold leading-tight line-clamp-2 text-white group-hover:text-ejup-orange transition-colors duration-300">{course.title}</h3>
+                    {/* Título com altura fixa */}
+                    <div className="h-14 md:h-16 mb-2 flex items-start">
+                      <h3 className="text-sm md:text-lg font-semibold leading-tight line-clamp-2 text-white group-hover:text-[#F2CA7E] transition-colors duration-300">{course.title}</h3>
                     </div>
                     
-                    {/* Descrição */}
-                    <div className="mb-3">
+                    {/* Descrição com altura fixa */}
+                    <div className="h-10 md:h-12 mb-3 flex items-start">
                       <p className="text-zinc-400 text-xs md:text-sm line-clamp-2 leading-relaxed">{course.description}</p>
                     </div>
                     
@@ -108,7 +108,7 @@ const FeaturedCourses = () => {
                       />
                       <div className="min-w-0 flex-1 flex flex-col justify-center">
                         <div className="text-xs md:text-sm font-medium text-white truncate">{course.instructor}</div>
-                        <div className="text-xs text-orange-700 truncate">{course.instructorRole}</div>
+                        <div className="text-xs text-[#F2CA7E] truncate">{course.instructorRole}</div>
                       </div>
                     </div>
                     
@@ -128,7 +128,7 @@ const FeaturedCourses = () => {
                     </div>
                     
                     {/* Botão */}
-                    <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white py-2 group border-0" asChild>
+                    <Button className="w-full bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-[#A66F0A] py-2 group border-0" asChild>
                       <Link 
                         to={`/courses/${course.id}`} 
                         onClick={scrollToTop}

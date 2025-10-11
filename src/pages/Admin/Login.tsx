@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FiLock, FiMail, FiAlertCircle } from "react-icons/fi";
+import Logo from "@/components/ui/Logo";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -56,21 +57,17 @@ export default function AdminLogin() {
       
       <div className="w-full max-w-md relative z-10">
         <div className="flex justify-center mb-8">
-          <img 
-            src="/lovable-uploads/e5e6ce5d-0718-4a69-892b-3f9d0d68a7a1.png" 
-            alt="EJUP Logo" 
-            className="h-28"
-          />
+          <Logo className="h-16" />
         </div>
         
         {/* Card com efeito de borda brilhante */}
         <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-700"></div>
+          <div className="absolute -inset-0.5 bg-[#be9e77] rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-700"></div>
           
           <Card className="relative bg-zinc-900/90 backdrop-blur-xl border-zinc-800 shadow-2xl rounded-xl">
             <CardHeader className="space-y-1 text-center pb-2">
               <div className="flex justify-center mb-1">
-                <div className="bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange h-1 w-16 rounded-full"></div>
+                <div className="bg-[#be9e77] h-1 w-16 rounded-full"></div>
               </div>
               <CardTitle className="text-2xl font-bold bg-gradient-to-r from-white to-zinc-300 text-transparent bg-clip-text">Área Administrativa</CardTitle>
               <CardDescription className="text-zinc-400">
@@ -149,4 +146,4 @@ export default function AdminLogin() {
       </div>
     </div>
   );
-} 
+}

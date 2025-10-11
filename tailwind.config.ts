@@ -62,27 +62,43 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// EJUP brand colors
+				// EJUP brand colors - Nova paleta baseada em CMYK
 				ejup: {
+					// C85M75Y60K85 - Cor principal escura (mais azulada e escura)
+					primary: '#070A12',
+					// C98M85Y45K70 - Cor secundária escura (mais azulada e escura)
+					secondary: '#030A16',
+					// C90M70Y46K40 - Cor terciária média (mais azulada)
+					tertiary: '#0F2038',
+					// C0M0Y0K90 - Cinza escuro
+					darkGray: '#1A1A1A',
+					// C0M0Y0K77 - Cinza médio
+					mediumGray: '#3D3D3D',
+					// C0M0Y0K20 - Cinza claro
+					lightGray: '#CCCCCC',
+					// C0M23Y93K6 - Cor de destaque (amarelo/dourado)
+					accent: '#EFC227',
+					// Cores antigas mantidas para compatibilidade
 					pink: '#FF46B9',
 					cyan: '#ffffff',
 					orange: '#CC5A28',
 					purple: '#8A33F1',
-					darkBg: '#18181B',
-					darkCard: '#27272A',
+					darkBg: '#0A0E1A',
+					darkCard: '#111827',
 					grayText: '#A1A1AA',
 					// Admin theme colors
-					adminBg: '#09090B',
-					adminCard: '#18181B',
-					adminBorder: '#27272A',
-					adminHover: '#27272A',
+					adminBg: '#050914',
+					adminCard: '#0A0E1A',
+					adminBorder: '#111827',
+					adminHover: '#111827',
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				heading: ['Poppins', 'sans-serif'],
-				modern: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-			},
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
+        modern: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        gotham: ['Gotham', 'sans-serif'],
+      },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

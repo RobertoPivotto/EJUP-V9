@@ -21,7 +21,9 @@ interface CourseProgressCardProps {
 
 const CourseProgressCard = ({ course }: CourseProgressCardProps) => {
   return (
-    <div className="ejup-card overflow-hidden">
+    <div className="relative w-full group h-full">
+      <div className="absolute -inset-0.5 bg-[#F2CA7E] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+      <div className="ejup-card overflow-hidden relative group-hover:scale-[1.02] transition-all duration-300">
       <div className="flex flex-col md:flex-row">
         <div className={`h-40 md:h-auto md:w-40 ${course.imageBg} flex items-center justify-center`}>
           <div className="w-16 h-16 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm">
@@ -73,6 +75,7 @@ const CourseProgressCard = ({ course }: CourseProgressCardProps) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

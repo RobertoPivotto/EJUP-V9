@@ -36,8 +36,7 @@ const featuredContent = [
     category: 'Direito Digital',
     image: 'https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
     path: '/content/blog/2'
-  },
-
+  }
 ];
 
 const Hero = () => {
@@ -54,50 +53,45 @@ const Hero = () => {
   const activeContent = featuredContent[activeIndex];
   
   return (
-    <div className="relative min-h-screen flex items-start md:items-center pt-32 md:pt-24 pb-16 md:pb-8">
+    <div className="relative min-h-screen flex items-start md:items-center pt-24 md:pt-24 pb-12 md:pb-8 bg-[#1d1d1d]">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-ejup-darkBg">
-        <div className="absolute top-0 left-0 right-0 h-[70%] bg-gradient-to-br from-ejup-orange/20 via-ejup-cyan/10 to-ejup-orange/10 opacity-60 blur-3xl"></div>
+        <div className="absolute top-0 left-0 right-0 h-[70%] bg-gradient-to-br from-[#050D1A]/20 via-ejup-cyan/10 to-[#050D1A]/10 opacity-60 blur-3xl"></div>
       </div>
       
       {/* Content */}
-      <div className="ejup-container relative z-10 px-20 md:px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+      <div className="ejup-container relative z-10 px-4 md:px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-24">
           {/* Left Column - Text Content */}
           <div className="w-full md:w-1/2 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-modern font-medium tracking-tight mb-6 md:mb-8">
-              <span className="block md:hidden">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-gotham font-medium tracking-tight mb-6 md:mb-8">
+              <span className="block md:hidden font-gotham">
                 Direito com quem faz<br />
-                <span className="font-bold text-ejup-orange border-b-2 border-ejup-orange whitespace-nowrap">na prática</span>
+                <span className="font-bold text-[#F2CA7E] border-b-2 border-[#F2CA7E] whitespace-nowrap font-gotham">na prática</span>
               </span>
-              <span className="hidden md:block">
-                Direito com quem faz <span className="font-bold text-ejup-orange border-b-2 border-ejup-orange whitespace-nowrap">na prática</span>
+              <span className="hidden md:block font-gotham">
+                Direito com quem faz <span className="font-bold text-[#F2CA7E] border-b-2 border-[#F2CA7E] whitespace-nowrap font-gotham">na prática</span>
               </span>
             </h1>
             
-            <p className="text-base md:text-lg text-zinc-300 mb-6 md:mb-10 max-w-xl leading-relaxed">
-              <span className="block md:hidden">
-                Educação jurídica que conecta profissionais<br />
-                e estudantes ao conhecimento prático e atualizado
+            <p className="text-base md:text-lg text-zinc-300 mb-6 md:mb-10 max-w-xl leading-relaxed font-gotham">
+              <span className="block md:hidden font-gotham">
+                Aprenda com quem faz o mercado jurídico acontecer.<br />
+                Cursos práticos e estratégicos, pensados para transformar sua carreira.
               </span>
-              <span className="hidden md:block">
-                Educação jurídica que conecta profissionais e estudantes ao conhecimento prático e atualizado
+              <span className="hidden md:block font-gotham">
+                Aprenda com quem faz o mercado jurídico acontecer. Cursos práticos e estratégicos, pensados para transformar sua carreira.
               </span>
             </p>
             
             <div className="flex justify-center md:justify-start mb-8 md:mb-12">
-              <div className="flex gap-3 w-full max-w-md md:max-w-none md:w-auto">
-              <Button className="bg-orange-900/40 hover:bg-orange-800/50 backdrop-blur-md border border-orange-800/30 text-orange-100 hover:text-white group text-xs md:text-sm px-3 md:px-6 py-3 transition-all duration-300 flex-1 md:flex-none" asChild>
-                <Link to="/courses">
-                  <span>Explorar Cursos</span>
-                  <ArrowRight className="ml-1 md:ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button variant="outline" className="ejup-button-secondary text-xs md:text-sm px-3 md:px-6 py-3 flex-1 md:flex-none" asChild>
-                <Link to="/creator">
-                  Seja Creator
-                </Link>
-              </Button>
+              <div className="w-full max-w-md md:max-w-none md:w-auto">
+                <Button className="bg-black/30 hover:bg-black/40 backdrop-blur-xl border-0 ring-1 ring-[#F2CA7E]/50 text-white hover:text-white group text-xs md:text-sm px-3 md:px-6 py-3 transition-all duration-300 flex-1 md:flex-none shadow-sm font-gotham" asChild>
+                  <Link to="/courses">
+                    <span>Explorar Cursos</span>
+                    <ArrowRight className="ml-1 md:ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
               </div>
             </div>
             
@@ -120,7 +114,7 @@ const Hero = () => {
                 />
                 <div className="w-10 h-10 rounded-full bg-zinc-700 border-2 border-white flex items-center justify-center text-xs font-medium">+</div>
               </div>
-              <div className="text-sm text-zinc-300">
+              <div className="text-sm text-zinc-300 font-gotham">
                 Mais de <span className="text-white font-semibold">500</span> profissionais capacitados
               </div>
             </div>
@@ -135,29 +129,29 @@ const Hero = () => {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="h-8 w-8 md:h-10 md:w-10 hover:bg-zinc-800/50 transition-colors bg-black/50" 
+                  className="h-7 w-7 md:h-9 md:w-9 hover:bg-transparent transition-colors" 
                   onClick={prevContent}
                 >
-                  <ChevronLeft className="h-4 w-4 md:h-6 md:w-6 text-white hover:text-ejup-orange transition-colors" />
+                  <ChevronLeft className="h-6 w-6 md:h-8 md:w-8 text-[#F2CA7E] transition-colors" />
                 </Button>
               </div>
               
               {/* Content Card */}
-              <div className="relative w-full group h-[360px] md:h-[520px] flex-grow">
+              <div className="relative w-full group h-[360px] md:h-[520px] flex-grow transition-all duration-300">
               {/* Content Label - Positioned over the card */}
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-30">
                 <div className="bg-zinc-800 border border-white/20 px-5 py-2 rounded-lg h-9 flex items-center justify-center min-w-0">
-                  <span className="text-sm font-semibold text-zinc-300 whitespace-nowrap">
+                  <span className="text-sm font-semibold text-zinc-300 whitespace-nowrap font-gotham">
                     {activeContent.type} em destaque
                   </span>
                 </div>
               </div>
               
-              {/* Efeito de brilho - visível apenas no hover */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+              {/* Efeito de brilho fixo que acompanha a expansão */}
+              <div className="absolute -inset-0.5 bg-[#F2CA7E] rounded-2xl blur opacity-40 group-hover:scale-[1.02] transition-all duration-300"></div>
               
-              <div className="relative rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 h-full">
-                <div className="bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
+              <div className="relative rounded-2xl overflow-hidden h-full group-hover:scale-[1.02] transition-all duration-300">
+                <div className="bg-[#151515] rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
                   <div className="relative h-44 md:h-72 overflow-hidden">
                     <img 
                       src={activeContent.image}
@@ -189,7 +183,7 @@ const Hero = () => {
                     </div>
                     
                     <Link to={activeContent.path} className="block mb-2">
-                      <h3 className="text-lg md:text-xl font-semibold leading-tight group-hover:text-ejup-orange transition-colors cursor-pointer hover:text-ejup-orange">{activeContent.title}</h3>
+                      <h3 className="text-lg md:text-xl font-semibold leading-tight group-hover:text-[#F2CA7E] transition-colors cursor-pointer hover:text-[#F2CA7E] font-gotham">{activeContent.title}</h3>
                     </Link>
                     
                     <div className="flex items-center mb-2 md:mb-3">
@@ -198,7 +192,7 @@ const Hero = () => {
                         alt={activeContent.author} 
                         className="w-8 h-8 md:w-10 md:h-10 rounded-full mr-2 md:mr-3 object-cover border-2 border-zinc-700" 
                       />
-                      <div>
+                      <div className="font-gotham">
                         <div className="text-xs md:text-sm font-medium">{activeContent.author}</div>
                         <div className="text-xs text-zinc-500">{activeContent.authorRole}</div>
                       </div>
@@ -208,34 +202,34 @@ const Hero = () => {
                       {activeContent.type === 'Curso' && (
                         <>
                           <div className="bg-zinc-800/60 p-1 md:p-1.5 rounded-lg">
-                            <div className="text-xs text-zinc-500">Duração</div>
-                            <div className="text-xs md:text-sm font-medium">{activeContent.duration}</div>
+                            <div className="text-xs text-zinc-500 font-gotham">Duração</div>
+                            <div className="text-xs md:text-sm font-medium font-gotham">{activeContent.duration}</div>
                           </div>
                           <div className="bg-zinc-800/60 p-1 md:p-1.5 rounded-lg">
-                            <div className="text-xs text-zinc-500">Módulos</div>
-                            <div className="text-xs md:text-sm font-medium">{activeContent.modules}</div>
+                            <div className="text-xs text-zinc-500 font-gotham">Módulos</div>
+                            <div className="text-xs md:text-sm font-medium font-gotham">{activeContent.modules}</div>
                           </div>
                         </>
                       )}
                       
                       {activeContent.type === 'Podcast' && (
                         <div className="bg-zinc-800/60 p-1 md:p-1.5 rounded-lg col-span-2">
-                          <div className="text-xs text-zinc-500">Duração</div>
-                          <div className="text-xs md:text-sm font-medium">{activeContent.duration}</div>
+                          <div className="text-xs text-zinc-500 font-gotham">Duração</div>
+                          <div className="text-xs md:text-sm font-medium font-gotham">{activeContent.duration}</div>
                         </div>
                       )}
                       
                       {activeContent.type === 'Artigo' && (
                         <div className="bg-zinc-800/60 p-1 md:p-1.5 rounded-lg col-span-2">
-                          <div className="text-xs text-zinc-500">Tempo de Leitura</div>
-                          <div className="text-xs md:text-sm font-medium">{activeContent.readTime}</div>
+                          <div className="text-xs text-zinc-500 font-gotham">Tempo de Leitura</div>
+                          <div className="text-xs md:text-sm font-medium font-gotham">{activeContent.readTime}</div>
                         </div>
                       )}
                     </div>
                     
                     <div className="mt-auto">
                       <Button 
-                        className="w-full flex items-center justify-center py-2 md:py-3 group bg-zinc-800 hover:bg-zinc-700 text-white" 
+                        className="w-full flex items-center justify-center py-2 md:py-3 group bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-[#A66F0A] font-gotham" 
                         variant="secondary"
                         asChild
                       >
@@ -252,30 +246,30 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
               
               {/* Right Arrow */}
               <div className="flex-shrink-0 md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-14 md:z-20">
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="h-8 w-8 md:h-10 md:w-10 hover:bg-zinc-800/50 transition-colors bg-black/50" 
+                  className="h-7 w-7 md:h-9 md:w-9 hover:bg-transparent transition-colors" 
                   onClick={nextContent}
                 >
-                  <ChevronRight className="h-4 w-4 md:h-6 md:w-6 text-white hover:text-ejup-orange transition-colors" />
+                  <ChevronRight className="h-6 w-6 md:h-8 md:w-8 text-[#F2CA7E] transition-colors" />
                 </Button>
               </div>
             </div>
             
             {/* Indicadores de página */}
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-8">
               <div className="flex gap-2">
                 {featuredContent.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
                     className={`h-2 rounded-full transition-all duration-300 ${
-                      index === activeIndex ? "w-8 bg-ejup-orange" : "w-2 bg-zinc-600"
+                      index === activeIndex ? "w-8 bg-[#F2CA7E]" : "w-2 bg-zinc-600"
                     }`}
                     aria-label={`Ver slide ${index + 1}`}
                   />

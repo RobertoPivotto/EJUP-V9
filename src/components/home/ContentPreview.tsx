@@ -69,14 +69,13 @@ const podcastEpisodes = [
 
 const ContentPreview = () => {
   return (
-    <section className="ejup-section relative overflow-hidden">
-      <div className="absolute inset-0 bg-ejup-darkBg">
-        <div className="absolute top-0 left-0 right-0 h-[50%] bg-gradient-to-br from-ejup-orange/10 via-ejup-cyan/5 to-ejup-orange/5 opacity-30 blur-3xl"></div>
-      </div>
-      
+    <div className="ejup-section pt-10 pb-24 relative">
+      {/* Efeitos de iluminação específicos do ContentPreview */}
+      <div className="absolute top-[0%] left-[5%] w-[40%] h-[30%] bg-[#29D6E6]/10 blur-[100px] rounded-full"></div>
+      <div className="absolute top-[60%] right-[-5%] w-[40%] h-[30%] bg-[#29D6E6]/10 blur-[100px] rounded-full"></div>
       <div className="ejup-container relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Conteúdos On Demand</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#f2ca7e]">Conteúdos On Demand</h2>
           <p className="text-zinc-400 max-w-3xl mx-auto">
             Acompanhe nosso podcast e coluna para se manter atualizado com as tendências e discussões do mundo jurídico
           </p>
@@ -86,10 +85,10 @@ const ContentPreview = () => {
         <div className="mb-24">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center">
-              <BookOpen className="text-ejup-orange mr-3 h-6 w-6" />
+              <BookOpen className="text-[#f2ca7e] mr-3 h-6 w-6" />
               <h3 className="text-2xl font-bold">Coluna Jurídica</h3>
             </div>
-            <Link to="/content/articles" className="text-ejup-orange hover:text-ejup-orange/80 flex items-center text-sm font-medium group">
+            <Link to="/content/articles" className="text-[#f2ca7e] hover:text-[#f2ca7e]/80 flex items-center text-sm font-medium group">
               <span>Ver todos os artigos</span>
               <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -98,7 +97,7 @@ const ContentPreview = () => {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {blogPosts.map((post, index) => (
               <div className={`relative w-full group ${index >= 2 ? 'hidden lg:block' : ''}`} key={post.id}>
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute -inset-0.5 bg-[#f2ca7e] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                 
                 <Link to={`/content/blog/${post.id}`} className="relative block rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300">
                   <div className="bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
@@ -115,7 +114,7 @@ const ContentPreview = () => {
                           {post.category}
                         </span>
                       </div>
-                      <h4 className="text-sm md:text-lg font-semibold mb-2 text-zinc-300 group-hover:text-ejup-orange transition-colors line-clamp-2">{post.title}</h4>
+                      <h4 className="text-sm md:text-lg font-semibold mb-2 text-zinc-300 group-hover:text-[#f2ca7e] transition-colors line-clamp-2">{post.title}</h4>
                       <p className="text-zinc-400 text-xs md:text-sm mb-3 line-clamp-2">{post.excerpt}</p>
                       <div className="text-xs text-zinc-500 flex justify-between items-center mt-auto">
                         <span>{post.author}</span>
@@ -129,7 +128,7 @@ const ContentPreview = () => {
           </div>
           
           <div className="mt-8 text-center">
-            <Button asChild className="bg-ejup-orange hover:bg-ejup-orange/90">
+            <Button asChild className="bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-base px-8 py-4" variant="secondary">
               <Link to="/content/articles">Ver todo o conteúdo</Link>
             </Button>
           </div>
@@ -139,10 +138,10 @@ const ContentPreview = () => {
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center">
-              <Headphones className="text-ejup-orange mr-3 h-6 w-6" />
+              <Headphones className="text-[#f2ca7e] mr-3 h-6 w-6" />
               <h3 className="text-2xl font-bold">Podcast EJUP</h3>
             </div>
-            <Link to="/content/podcast" className="text-ejup-orange hover:text-ejup-orange/80 flex items-center text-sm font-medium group">
+            <Link to="/content/podcast" className="text-[#f2ca7e] hover:text-[#f2ca7e]/80 flex items-center text-sm font-medium group">
               <span>Ver todos os episódios</span>
               <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -152,7 +151,7 @@ const ContentPreview = () => {
             {podcastEpisodes.slice(0, 3).map((episode, index) => (
               <div key={episode.id} className={`relative w-full group h-full ${index >= 2 ? 'hidden lg:block' : ''}`}>
                 {/* Efeito de brilho - visível apenas no hover */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute -inset-0.5 bg-[#f2ca7e] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                 
                 <Link to={`/content/podcast/${episode.id}`} className="relative block rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 h-full">
                   <div className="bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col">
@@ -165,17 +164,17 @@ const ContentPreview = () => {
                       <div className="absolute inset-0 bg-black/30"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-4">
                         <div className="flex items-center mb-1">
-                          <div className="bg-ejup-orange/90 rounded-full h-8 w-8 flex items-center justify-center group-hover:bg-ejup-orange transition-colors">
+                          <div className="bg-[#f2ca7e]/90 rounded-full h-8 w-8 flex items-center justify-center group-hover:bg-[#f2ca7e] transition-colors">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"></path>
                             </svg>
                           </div>
-                          <span className="text-white text-sm ml-2">{episode.duration}</span>
+                          <span className="text-white text-sm ml-2 font-medium">{episode.duration}</span>
                         </div>
                       </div>
                     </div>
                     <div className="p-3 md:p-5 flex flex-col flex-grow">
-                      <h4 className="text-sm md:text-lg font-semibold mb-2 line-clamp-2 group-hover:text-ejup-orange transition-colors">{episode.title}</h4>
+                      <h4 className="text-sm md:text-lg font-semibold mb-2 line-clamp-2 group-hover:text-[#f2ca7e] transition-colors">{episode.title}</h4>
                       <p className="text-zinc-400 text-xs md:text-sm mb-3 line-clamp-2">{episode.excerpt}</p>
                       <div className="text-xs text-zinc-500 flex justify-between items-center mt-auto">
                         <span>Com {episode.guests}</span>
@@ -189,7 +188,7 @@ const ContentPreview = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

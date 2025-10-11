@@ -256,7 +256,7 @@ const Events = () => {
               {filteredEvents.map((event) => (
                 <div key={event.id} className="relative w-full group h-full">
                   {/* Efeito de brilho - atrás do card */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-0.5 bg-[#be9e77] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                   
                   <div className="relative bg-ejup-darkCard rounded-2xl border border-zinc-700/50 overflow-hidden h-full flex flex-col hover:scale-[1.02] transition-all duration-300">
                     {/* Imagem do evento */}

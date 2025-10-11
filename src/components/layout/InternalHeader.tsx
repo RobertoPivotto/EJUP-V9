@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Logo from '@/components/ui/Logo';
 import { Button } from '@/components/ui/button';
 import { LogOut, Settings } from 'lucide-react';
 
@@ -13,11 +14,7 @@ const InternalHeader = () => {
     <header className="bg-zinc-900/95 backdrop-blur-lg border-b border-zinc-800 sticky top-0 z-50">
       <div className="flex items-center justify-between h-20 px-6">
         <Link to="/my-courses" className="flex items-center">
-          <img 
-            src="/lovable-uploads/e5e6ce5d-0718-4a69-892b-3f9d0d68a7a1.png" 
-            alt="EJUP Logo"
-            className="h-28"
-          />
+          <Logo className="h-12" />
         </Link>
         
         <nav className="hidden md:flex items-center space-x-6">

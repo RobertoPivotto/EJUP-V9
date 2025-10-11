@@ -247,7 +247,7 @@ const CourseDetail = ({
                 
                 <div className="space-y-4 text-sm mb-6">
                   <div className="flex items-center">
-                    <div className="mr-3 text-ejup-cyan">
+                    <div className="mr-3 text-[#F2CA7E]">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
@@ -255,7 +255,7 @@ const CourseDetail = ({
                     <span>{duration} de curso</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="mr-3 text-ejup-cyan">
+                    <div className="mr-3 text-[#F2CA7E]">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
                       </svg>
@@ -263,7 +263,7 @@ const CourseDetail = ({
                     <span>{modules.length} módulos</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="mr-3 text-ejup-cyan">
+                    <div className="mr-3 text-[#F2CA7E]">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                       </svg>
@@ -271,7 +271,7 @@ const CourseDetail = ({
                     <span>{calculateTotalLessons(modules)} aulas</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="mr-3 text-ejup-cyan">
+                    <div className="mr-3 text-[#F2CA7E]">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                       </svg>
@@ -279,7 +279,7 @@ const CourseDetail = ({
                     <span>Acesso online</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="mr-3 text-ejup-cyan">
+                    <div className="mr-3 text-[#F2CA7E]">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
@@ -291,7 +291,7 @@ const CourseDetail = ({
                 {isPurchased ? (
                   // Se o curso foi comprado, mostrar botão de continuar/iniciar
                   <Link to={getContinueLink(1, 1)}>
-                    <Button className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white">
+                    <Button className="w-full bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-black">
                       <Play className="w-4 h-4 mr-2" />
                       {hasProgress ? 'Continuar Assistindo' : 'Acessar Curso'}
                     </Button>
@@ -299,11 +299,7 @@ const CourseDetail = ({
                 ) : (
                   // Se não foi comprado, mostrar apenas opção de compra
                   <Button 
-                    className={`w-full ${
-                      isInCart || showSuccess
-                        ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-black'
-                        : 'bg-ejup-orange/20 hover:bg-ejup-orange/30 text-white border border-ejup-orange/30 hover:border-ejup-orange/50'
-                    } font-semibold transition-all duration-300`}
+                    className="w-full bg-black hover:bg-black text-white border border-[#F2CA7E] hover:border-[#F2CA7E] font-semibold transition-all duration-300"
                     onClick={handleAddToCart}
                   >
                     {isInCart ? (
@@ -344,8 +340,8 @@ const CourseDetail = ({
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                   {objectives.map((objective, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="mr-2 mt-0.5 bg-ejup-orange/20 rounded-full p-0.5">
-                        <CheckIcon className="h-4 w-4 text-ejup-orange" />
+                      <div className="mr-2 mt-0.5 bg-[#F2CA7E]/20 rounded-full p-0.5">
+                        <CheckIcon className="h-4 w-4 text-[#F2CA7E]" />
                       </div>
                       <span className="text-zinc-300 text-sm">{objective}</span>
                     </li>
@@ -574,8 +570,8 @@ const CourseDetail = ({
                   <Button 
                     className={`w-full ${
                       isInCart || showSuccess
-                        ? 'bg-ejup-cyan hover:bg-ejup-cyan/90 text-black'
-                        : 'bg-ejup-orange/20 hover:bg-ejup-orange/30 text-white border border-ejup-orange/30 hover:border-ejup-orange/50'
+                        ? 'bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-black'
+                        : 'bg-[#3A2E1C] hover:bg-[#3A2E1C] text-white border border-[#F2CA7E] hover:border-[#F2CA7E]'
                     } font-semibold transition-all duration-300`}
                     onClick={handleAddToCart}
                   >

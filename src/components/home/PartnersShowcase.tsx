@@ -27,16 +27,16 @@ const partners = [
 
 const PartnersShowcase = () => {
   return (
-    <section className="bg-ejup-darkBg py-12 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-br from-ejup-orange/10 via-ejup-cyan/5 to-ejup-orange/5 opacity-30 blur-3xl"></div>
-      </div>
+    <section className="relative mt-[-2rem] pt-20 pb-16">
+      {/* Efeitos de iluminação com destaque na área de parceiros */}
+      <div className="absolute top-[8%] right-[-10%] w-[55%] h-[40%] bg-[#29D6E6]/9 blur-[170px] rounded-full"></div>
+      <div className="absolute bottom-[5%] left-[30%] w-[60%] h-[40%] bg-[#29D6E6]/8 blur-[160px] rounded-full"></div>
+      <div className="absolute top-[40%] left-[10%] w-[70%] h-[50%] bg-[#29D6E6]/5 blur-[140px] rounded-full"></div>
       
       <div className="ejup-container relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-3">QUEM CONFIA EM NÓS</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto">Parcerias com as principais instituições jurídicas do Brasil para oferecer conteúdo de qualidade e atualizado</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#f2ca7e]">QUEM CONFIA NA EJUP</h2>
+          <p className="text-zinc-400 max-w-3xl mx-auto">Parcerias com as principais instituições jurídicas do Brasil para oferecer conteúdo de qualidade e atualizado</p>
         </div>
         
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-10">
@@ -46,7 +46,7 @@ const PartnersShowcase = () => {
               className="relative group cursor-pointer"
             >
               {/* Sombra com gradiente colorido - Efeito bem sutil */}
-              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange opacity-0 group-hover:opacity-15 blur-sm transition-all duration-300"></div>
+              <div className="absolute -inset-1 rounded-xl bg-[#be9e77] opacity-0 group-hover:opacity-15 blur-sm transition-all duration-300"></div>
               
               {/* Card principal */}
               <div className="relative ejup-card hover:scale-[1.02] transition-all duration-300">

@@ -220,7 +220,7 @@ const Terms = () => {
                       <div className="space-y-2">
                         <p className="text-zinc-300">
                           <strong>E-mail:</strong>{' '}
-                          <a href="mailto:atendimento@ejup.com.br" className="text-ejup-orange hover:text-ejup-orange/80">
+                          <a href="mailto:atendimento@ejup.com.br" className="text-[#d3ccb2] hover:text-[#d3ccb2]/80">
                             atendimento@ejup.com.br
                           </a>
                         </p>

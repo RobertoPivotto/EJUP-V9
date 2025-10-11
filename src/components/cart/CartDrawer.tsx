@@ -68,9 +68,9 @@ const CartDrawer: React.FC = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-zinc-800">
             <div className="flex items-center space-x-2">
-              <ShoppingCart className="h-5 w-5 text-ejup-orange" />
+              <ShoppingCart className="h-5 w-5 text-[#F2CA7E]" />
               <h2 className="text-xl font-semibold">Seu Carrinho</h2>
-              <span className="bg-ejup-orange/20 text-ejup-orange text-xs font-medium px-2.5 py-0.5 rounded-full">
+              <span className="bg-[#F2CA7E]/20 text-[#F2CA7E] text-xs font-medium px-2.5 py-0.5 rounded-full">
                 {totalItems} {getCartTypeText()}
               </span>
             </div>
@@ -93,7 +93,7 @@ const CartDrawer: React.FC = () => {
                 <p className="text-zinc-400 mb-6">Que tal explorar nossos cursos e encontrar o conhecimento que você precisa?</p>
                 <Button 
                   onClick={handleGoToCourses}
-                  className="bg-ejup-orange hover:bg-ejup-orange/90 text-white mb-3 w-full"
+                  className="bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-white mb-3 w-full"
                 >
                   Veja agora os melhores cursos
                 </Button>
@@ -133,7 +133,7 @@ const CartDrawer: React.FC = () => {
                 </div>
                 
                 <Button 
-                  className="w-full bg-ejup-orange hover:bg-ejup-orange/90 text-white py-6 mt-4"
+                  className="w-full bg-[#F2CA7E] hover:bg-[#F2CA7E]/90 text-white py-6 mt-4"
                   onClick={handleCheckout}
                 >
                   <span>Finalizar Compra</span>
@@ -178,7 +178,7 @@ const CartItem: React.FC<{
           {/* Badge indicando o tipo */}
           <div className="absolute top-1 left-1">
             <span className={`text-xs px-1.5 py-0.5 rounded text-white font-medium ${
-              isEvent ? 'bg-ejup-orange/80' : 'bg-ejup-cyan/80'
+              isEvent ? 'bg-[#F2CA7E]/80' : 'bg-ejup-cyan/80'
             }`}>
               {typeText}
             </span>
@@ -190,7 +190,7 @@ const CartItem: React.FC<{
         <div className="flex justify-between items-start gap-2">
           <Link 
             to={linkPath} 
-            className="font-medium line-clamp-2 text-sm hover:text-ejup-orange transition-colors"
+            className="font-medium line-clamp-2 text-sm hover:text-[#F2CA7E] transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             {item.title}
@@ -208,7 +208,7 @@ const CartItem: React.FC<{
         
         <div className="mt-2 flex justify-between items-center">
           <span className="text-xs text-zinc-500 capitalize">{typeText}</span>
-          <span className="font-semibold text-ejup-orange">
+          <span className="font-semibold text-[#F2CA7E]">
             R$ {item.price.toFixed(2).replace('.', ',')}
           </span>
         </div>
@@ -217,4 +217,4 @@ const CartItem: React.FC<{
   );
 };
 
-export default CartDrawer; 
+export default CartDrawer;

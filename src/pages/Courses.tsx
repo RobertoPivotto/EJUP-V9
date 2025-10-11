@@ -142,6 +142,16 @@ const Courses = () => {
     handleFilterChange(filterId, 'all');
   };
 
+  const clearFilters = () => {
+    setActiveFilters({});
+    if (schoolId) {
+      const schoolCourses = getCoursesBySchool(schoolId);
+      setFilteredCourses(schoolCourses);
+    } else {
+      const allCourses = getAllCourses();
+      setFilteredCourses(allCourses);
+    }
+  };
 
   const getFilterDisplayName = (filterId: string, value: string) => {
     const dynamicFilters = getDynamicFilters();
@@ -154,77 +164,91 @@ const Courses = () => {
     <div className="min-h-screen bg-ejup-darkBg">
       <Navbar />
       <main className="pt-20">
-        <div className="ejup-container py-12">
-          <div className="mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              {currentSchool ? currentSchool.name : 'Cursos'}
-            </h1>
-            <p className="text-zinc-400">
-              {currentSchool 
-                ? currentSchool.description
-                : 'Explore nossa coleção de cursos jurídicos práticos e atualizados'
-              }
-            </p>
+        <div className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-ejup-darkBg">
+            {/* Efeitos de iluminação */}
+            <div className="absolute top-[3%] left-[-10%] w-[50%] h-[35%] bg-[#29D6E6]/12 blur-[150px] rounded-full"></div>
+            <div className="absolute bottom-[-15%] left-[15%] w-[55%] h-[40%] bg-[#29D6E6]/8 blur-[180px] rounded-full"></div>
+            <div className="absolute top-[-10%] right-[-15%] w-[80%] h-[60%] bg-[#29D6E6]/8 blur-[200px] rounded-full"></div>
+            <div className="absolute top-[40%] right-[-10%] w-[50%] h-[35%] bg-[#29D6E6]/12 blur-[150px] rounded-full"></div>
           </div>
+          <div className="ejup-container py-12 relative z-10">
+            <div className="mb-12">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                {currentSchool ? currentSchool.name : 'Escola de Direito'}
+              </h1>
+              <p className="text-zinc-400">
+                {currentSchool 
+                  ? currentSchool.description
+                  : 'Cursos focados em áreas tradicionais e especializadas do Direito'
+                }
+              </p>
+            </div>
           
-          <SearchAndFilter 
-            onSearch={handleSearch}
-            onFilterChange={handleFilterChange}
-            filters={getDynamicFilters()}
-            activeFilters={activeFilters}
-          />
+            <SearchAndFilter 
+              onSearch={handleSearch}
+              onFilterChange={handleFilterChange}
+              filters={getDynamicFilters()}
+              activeFilters={activeFilters}
+            />
           
-          {/* Active Filters */}
-          {Object.keys(activeFilters).length > 0 && (
-            <div className="mb-6">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-zinc-400">Filtros ativos:</span>
-                {Object.entries(activeFilters).map(([filterId, value]) => (
-                  <span 
-                    key={`${filterId}-${value}`}
-                    className="inline-flex items-center gap-1 text-sm text-ejup-orange"
-                  >
-                    {getFilterDisplayName(filterId, value)}
-                    <button
-                      onClick={() => removeFilter(filterId)}
-                      className="ml-1 hover:text-white transition-colors"
+            {/* Active Filters */}
+            {Object.keys(activeFilters).length > 0 && (
+              <div className="mb-6">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm text-zinc-400">Filtros ativos:</span>
+                  {Object.entries(activeFilters).map(([filterId, value]) => (
+                    <span 
+                      key={`${filterId}-${value}`}
+                      className="inline-flex items-center gap-1 text-sm text-ejup-orange"
                     >
-                      <X className="h-3 w-3" />
-                    </button>
-                  </span>
+                      {getFilterDisplayName(filterId, value)}
+                      <button
+                        onClick={() => removeFilter(filterId)}
+                        className="text-zinc-400 hover:text-white"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          
+            {filteredCourses.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {filteredCourses.map((course) => (
+                  <CourseCard 
+                    key={course.id}
+                    id={course.id}
+                    title={course.title}
+                    description={course.description}
+                    instructor={course.instructor}
+                    instructorRole={course.instructorRole}
+                    instructorInitials={course.instructorInitials}
+                    instructors={course.instructors}
+                    duration={course.duration}
+                    modules={course.modules}
+                    level={course.level}
+                    imageBg={course.imageBg}
+                    image={course.image}
+                    promoted={course.promoted}
+                    price={course.price}
+                  />
                 ))}
               </div>
-            </div>
-          )}
-          
-          {filteredCourses.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-              {filteredCourses.map((course) => (
-                <CourseCard 
-                  key={course.id}
-                  id={course.id}
-                  title={course.title}
-                  description={course.description}
-                  instructor={course.instructor}
-                  instructorRole={course.instructorRole}
-                  instructorInitials={course.instructorInitials}
-                  instructors={course.instructors}
-                  duration={course.duration}
-                  modules={course.modules}
-                  level={course.level}
-                  imageBg={course.imageBg}
-                  image={course.image}
-                  promoted={course.promoted}
-                  price={course.price}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <h3 className="text-xl font-medium mb-2">Nenhum curso encontrado</h3>
-              <p className="text-zinc-400">Tente ajustar os filtros ou termos de busca</p>
-            </div>
-          )}
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-zinc-400">Nenhum curso encontrado com os filtros selecionados.</p>
+                <button 
+                  onClick={clearFilters}
+                  className="mt-4 text-ejup-orange hover:text-ejup-orange/80"
+                >
+                  Limpar todos os filtros
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <Footer />

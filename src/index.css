@@ -1,5 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap');
 
+/* Importação da fonte Gotham com suas variações */
+@font-face {
+  font-family: 'Gotham';
+  src: url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot');
+  src: url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot?#iefix') format('embedded-opentype'),
+       url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8965acbaf1fc.eot');
+  src: url('https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8965acbaf1fc.eot?#iefix') format('embedded-opentype'),
+       url('https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8965acbaf1fc.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8965acbaf1fc.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/0c724f6aa457310440cf8965acbaf1fc.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('https://db.onlinewebfonts.com/t/9a2bc11be56851dde98c1b49c6bf356a.eot');
+  src: url('https://db.onlinewebfonts.com/t/9a2bc11be56851dde98c1b49c6bf356a.eot?#iefix') format('embedded-opentype'),
+       url('https://db.onlinewebfonts.com/t/9a2bc11be56851dde98c1b49c6bf356a.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/9a2bc11be56851dde98c1b49c6bf356a.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/9a2bc11be56851dde98c1b49c6bf356a.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,25 +47,26 @@
   }
   
   :root {
-    --background: 240 10% 3.9%;
+    /* Nova paleta de cores baseada em CMYK */
+    --background: 220 30% 4%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 220 30% 5%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 220 30% 5%;
     --popover-foreground: 0 0% 98%;
-    --primary: 16 70% 47%;
+    --primary: 220 30% 5%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 220 40% 6%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --muted: 0 0% 24%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 36 30% 61%; /* #bb9e7b */
+    --accent-foreground: 0 0% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 16 70% 47%;
+    --border: 220 40% 6%;
+    --input: 220 40% 6%;
+    --ring: 47 83% 54%;
     --radius: 0.75rem;
   }
 
@@ -66,7 +104,13 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-ejup-orange/20 selection:text-white;
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  ::selection {
+    background-color: rgba(239, 194, 39, 0.2);
+    color: white;
   }
   
   html {
@@ -80,9 +124,14 @@
     overflow-x: hidden;
     transition: padding-right 0.3s ease;
   }
+  
+  .gold-metallic {
+    color: #c49b3a;
+    text-shadow: 0px 0px 1px rgba(196, 155, 58, 0.3);
+  }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-semibold tracking-tight;
+    @apply font-heading font-semibold tracking-tight text-foreground;
   }
 
   h1 {
@@ -102,7 +151,7 @@
   }
 
   p {
-    @apply leading-7;
+    @apply leading-7 text-foreground;
   }
 }
 
@@ -112,27 +161,27 @@
   }
 
   .ejup-card {
-    @apply bg-ejup-darkCard border border-zinc-700/50 rounded-xl overflow-hidden transition-all duration-300;
+    @apply bg-background border border-border/50 rounded-xl overflow-hidden transition-all duration-300;
   }
 
   .ejup-gradient-text {
-    @apply bg-gradient-to-r from-ejup-orange via-ejup-cyan to-ejup-orange bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent via-muted to-accent bg-clip-text text-transparent;
   }
   
   .ejup-button-primary {
-    @apply bg-ejup-orange hover:bg-ejup-orange/90 text-white font-medium rounded-lg px-6 py-3 transition-all;
+    @apply bg-accent hover:bg-accent/90 text-primary font-medium rounded-lg px-6 py-3 transition-all;
   }
 
   .ejup-button-secondary {
-    @apply border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-white;
+    @apply border border-border bg-secondary hover:bg-muted text-foreground;
   }
 
   .ejup-button-cyan {
-    @apply bg-ejup-cyan hover:bg-ejup-cyan/90 text-zinc-900 font-medium rounded-lg px-6 py-3 transition-all;
+    @apply bg-muted-foreground hover:bg-muted-foreground/90 text-primary font-medium rounded-lg px-6 py-3 transition-all;
   }
 
   .ejup-input {
-    @apply bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 focus:border-ejup-orange/50 focus:ring-1 focus:ring-ejup-orange/30 outline-none transition-all;
+    @apply bg-secondary border border-border rounded-lg px-4 py-3 focus:border-accent/50 focus:ring-1 focus:ring-accent/30 outline-none transition-all;
   }
 
   .ejup-section {
@@ -140,20 +189,20 @@
   }
 
   .ejup-section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 text-center;
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center text-foreground;
   }
   
   /* Estilos para a visualização de artigos */
   .prose {
-    @apply text-zinc-200;
+    @apply text-foreground;
   }
   
   .prose h2 {
-    @apply text-2xl font-serif font-bold mt-8 mb-4 text-white;
+    @apply text-2xl font-serif font-bold mt-8 mb-4 text-foreground;
   }
   
   .prose h3 {
-    @apply text-xl font-serif font-semibold mt-6 mb-3 text-white;
+    @apply text-xl font-serif font-semibold mt-6 mb-3 text-foreground;
   }
   
   .prose p {
@@ -169,19 +218,19 @@
   }
   
   .prose li {
-    @apply text-zinc-300;
+    @apply text-foreground/80;
   }
   
   .prose a {
-    @apply text-ejup-cyan hover:underline;
+    @apply text-accent hover:underline;
   }
   
   .prose strong {
-    @apply text-white font-semibold;
+    @apply text-foreground font-semibold;
   }
   
   .prose blockquote {
-    @apply pl-4 border-l-4 border-ejup-cyan/50 italic my-6 text-zinc-400;
+    @apply pl-4 border-l-4 border-accent/50 italic my-6 text-muted-foreground;
   }
   
   .prose img {

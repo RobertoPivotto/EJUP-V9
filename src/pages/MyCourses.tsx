@@ -218,6 +218,20 @@ const MyCourses = () => {
     <InternalLayout>
       <div className="ejup-container py-10">
         <h1 className="text-3xl font-bold mb-6">Bem-vindo, {userName}!</h1>
+        {/* Player embed - Área de membros */}
+        <section className="mb-10">
+          <Card className="bg-zinc-800/50 border-zinc-700 overflow-hidden">
+            <CardContent className="p-0">
+              <iframe
+                src="https://player.scaleup.com.br/embed/798645c51d36bbd1656b9355790b93cfe14e055d"
+                title="Sergio Sacani"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                style={{ width: '100%', aspectRatio: '16 / 9', border: 0, margin: '0 auto' }}
+              />
+            </CardContent>
+          </Card>
+        </section>
         
         {/* Seção de Notícias em Destaque - Carrossel */}
         <section className="mb-10">

@@ -1,0 +1,1 @@
+export const LOGO_SRC = "/lovable-uploads/logos/Logo EJUP 1.png";
